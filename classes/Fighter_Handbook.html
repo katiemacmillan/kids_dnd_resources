@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighter Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>The Fighter</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Ultimate Weapon Master!</strong></p>
+        <p>Do you want to be the best at combat? The Fighter is an expert with every weapon and every piece of armor in the world. Whether you want to be an archer shooting arrows from afar, a knight with a sword and shield, or a warrior swinging a giant hammer, the Fighter is for you!</p>
+    </div>
+
+    <h2 class="chapter-title first">Class Mechanics</h2>
+    
+    <div class="callout">
+        <h3>⚔️ Action Surge</h3>
+        <p>This is what makes Fighters amazing! Once per short rest, you can push yourself past your normal limits and take a <strong>whole extra Action</strong> on your turn. You can use this to attack twice as many times, run super far, or attack and then dodge!</p>
+    </div>
+
+    <h3>Second Wind</h3>
+    <p>Fighters never give up! On your turn, you can use a Bonus Action to catch your breath and magically heal yourself for 1d10 + your Fighter level. You can do this once per short rest, which keeps you in the fight longer!</p>
+
+    <h3>Fighting Style</h3>
+    <p>At level 1, you choose what kind of fighter you are. You get a permanent bonus based on your style! For example, the <em>Archery</em> style makes you more accurate with bows, while the <em>Defense</em> style gives you +1 to your Armor Class when wearing armor.</p>
+
+    <h2 class="chapter-title">Strengths & Weaknesses</h2>
+    
+    <h3>Strengths</h3>
+    <ul>
+        <li><strong>Combat King:</strong> You are the most reliable damage dealer in the game.</li>
+        <li><strong>Tough:</strong> You can wear heavy armor, use shields, and heal yourself with Second Wind.</li>
+        <li><strong>Lots of Attacks:</strong> As you level up, you get to attack more times per turn than any other class!</li>
+    </ul>
+    
+    <h3>Weaknesses</h3>
+    <ul>
+        <li><strong>No Magic:</strong> Unless you choose a specific subclass later, you don't get any spells.</li>
+        <li><strong>Out of Combat:</strong> You don't have as many skills for talking or sneaking as a Rogue or a Bard.</li>
+    </ul>
+
+    <h2 class="chapter-title">What to do with this class</h2>
+    
+    <h3>In Combat</h3>
+    <p>You are the <strong>Damage Dealer</strong>. Your job is to pick the biggest, meanest monster on the battlefield and take it down! Use your Action Surge when you really need to finish off a bad guy quickly. Don't forget to use your Second Wind if your health gets low!</p>
+    
+    <h3>Roleplay Tips</h3>
+    <p>Fighters can be anything from noble knights and royal guards to wandering mercenaries or gladiators. Think about where you learned to fight. Did you train in an army? Did an old master teach you? You are brave, disciplined, and always ready to protect your friends when danger strikes!</p>
+</div>
+
+</body>
+</html>

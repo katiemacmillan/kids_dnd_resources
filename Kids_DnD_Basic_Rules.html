@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids D&D Basic Rules - Comprehensive Edition</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always; /* Forces a new page when printing */
+            break-before: page;
+        }
+
+        /* Don't break the first chapter title */
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .monster-block {
+            background-color: #f4eedc;
+            border: 1px solid #c5a059;
+            padding: 15px;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 8px;
+        }
+
+        .monster-block h4 {
+            margin-top: 0;
+            color: #58180D;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+
+        img.line-art {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 20px auto;
+            mix-blend-mode: multiply; /* Blends the white background into the parchment */
+            border-radius: 10px;
+            break-inside: avoid;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th, .monster-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout, img, .monster-block {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>Dungeons & Dragons<br>Hero's Handbook</h1>
+    
+    <div class="intro-text">
+        <p><strong>Welcome, Adventurer!</strong></p>
+        <p>Dungeons & Dragons is a game of imagination, teamwork, and rolling dice. You and your friends will create heroes, explore dangerous dungeons, outsmart villains, and find epic treasure.</p>
+        <p>One person is the <strong>Dungeon Master (DM)</strong>. They are the narrator and the referee. They describe the world, play the monsters, and tell you what happens when you try to do something cool.</p>
+    </div>
+
+    <h2 class="chapter-title first">Chapter 1: The Core Rules</h2>
+    
+    <img src="assets/dice_roll_lineart.png" class="line-art" alt="Rolling a d20">
+    
+    <div class="callout">
+        <h3>🎲 The Golden Rule: The d20</h3>
+        <p>Whenever you want to do something risky—like jumping over a pit, sneaking past a guard, or swinging a sword—you roll the <strong>20-sided die (d20)</strong>.</p>
+        <ol>
+            <li><strong>Roll the d20.</strong></li>
+            <li><strong>Add your bonus</strong> (written on your character sheet).</li>
+            <li><strong>Tell the DM your total.</strong></li>
+        </ol>
+        <p>If your total meets or beats the Target Number (called a Difficulty Class or Armor Class), you succeed! If it’s lower, you fail (which usually leads to something funny or dangerous!).</p>
+    </div>
+
+    <h3>Advantage & Disadvantage</h3>
+    <p>Sometimes, things are really easy or really hard. The DM might tell you that you have <strong>Advantage</strong> or <strong>Disadvantage</strong>.</p>
+    <ul>
+        <li><strong>Advantage:</strong> You have the upper hand! Roll <strong>two d20s</strong> and take the <strong>HIGHER</strong> number.</li>
+        <li><strong>Disadvantage:</strong> Things are tough! Roll <strong>two d20s</strong> and take the <strong>LOWER</strong> number.</li>
+    </ul>
+    <p><em>Note: If you have both Advantage and Disadvantage at the same time, they cancel each other out. You just roll one d20 normally.</em></p>
+
+    <h3>Natural 20s and Natural 1s</h3>
+    <p>When you roll the d20 for an attack, look at the number on the die <em>before</em> you add your bonuses.</p>
+    <ul>
+        <li><strong>Natural 20:</strong> A critical success! You automatically hit the monster, and it's a <strong>Critical Hit</strong> (you get to roll double the damage dice!).</li>
+        <li><strong>Natural 1:</strong> A critical failure! You automatically miss your attack, no matter how high your bonuses are.</li>
+    </ul>
+
+    <h3>Heroic Inspiration</h3>
+    <p>If you do something really brave, funny, or clever, the DM might give you <strong>Heroic Inspiration</strong>. You can spend this Inspiration later to reroll any d20 roll that you just failed! You can only have one Inspiration at a time, so use it to save the day!</p>
+
+    <h3>Specific Beats General</h3>
+    <p>This rulebook has a lot of general rules (like "you can only take one Action per turn"). But sometimes, a special spell or class ability says something different (like "you can take two Actions"). When a specific rule breaks a general rule, the <strong>specific rule wins!</strong></p>
+
+    <h3>Rounding Down</h3>
+    <p>If you ever have to divide a number in half (like taking half damage from a fire spell), and it ends up as a fraction (like 7 divided by 2 is 3.5), <strong>always round down</strong> (so it becomes 3). </p>
+
+    <h2 class="chapter-title">Chapter 2: Your Hero's Origins</h2>
+    
+    <img src="assets/species_lineart.png" class="line-art" alt="Different D&D Species">
+    <p>To make your hero, the first thing you choose is your <strong>Species</strong>. This is what your character looks like and where they come from. There are 10 main species in D&D, and each one gives you special, magical traits!</p>
+
+    <h3>Aasimar</h3>
+    <p class="flavor-text">Heroes touched by the magic of the upper heavens.</p>
+    <ul>
+        <li><strong>Celestial Resistance:</strong> You are resistant to radiant (holy) and necrotic (dark) magic.</li>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+        <li><strong>Healing Hands:</strong> You can magically heal a friend by touching them.</li>
+        <li><strong>Celestial Revelation:</strong> When you get stronger, you can temporarily sprout glowing wings or shine with blinding light!</li>
+    </ul>
+
+    <h3>Dragonborn</h3>
+    <p class="flavor-text">Tall, scaly warriors who look like humanoid dragons.</p>
+    <ul>
+        <li><strong>Draconic Ancestry:</strong> You choose a dragon color (like Red, Blue, or Green). This gives you resistance to that type of damage (like Fire, Lightning, or Poison).</li>
+        <li><strong>Breath Weapon:</strong> You can exhale a blast of destructive energy from your mouth! A Red Dragonborn breathes fire, while a White Dragonborn breathes ice.</li>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+    </ul>
+
+    <h3>Dwarf</h3>
+    <p class="flavor-text">Tough, bearded miners and smiths who live in mountain fortresses.</p>
+    <ul>
+        <li><strong>Dwarven Resilience:</strong> You have advantage on saving throws against poison, and you resist poison damage.</li>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+        <li><strong>Stonecunning:</strong> You have a magical sense for underground areas and stonework.</li>
+        <li><strong>Toughness:</strong> You get extra Hit Points (health) every time you level up.</li>
+    </ul>
+
+    <h3>Elf</h3>
+    <p class="flavor-text">Graceful, long-lived people with pointy ears who love nature and magic.</p>
+    <ul>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+        <li><strong>Fey Ancestry:</strong> Magic can't put you to sleep, and it's hard to charm you.</li>
+        <li><strong>Keen Senses:</strong> You are naturally very good at spotting hidden things.</li>
+        <li><strong>Trance:</strong> Elves don't sleep! You just meditate for 4 hours a night while remaining totally aware of your surroundings.</li>
+    </ul>
+
+    <h3>Gnome</h3>
+    <p class="flavor-text">Short, energetic inventors and illusionists who love discovering new things.</p>
+    <ul>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+        <li><strong>Gnomish Cunning:</strong> You have Advantage on Intelligence, Wisdom, and Charisma saving throws against magic. (It's very hard to trick a Gnome!).</li>
+    </ul>
+
+    <h3>Goliath</h3>
+    <p class="flavor-text">Massive, incredibly strong people who live on the highest mountain peaks.</p>
+    <ul>
+        <li><strong>Giant Ancestry:</strong> You are related to Giants! You can choose a giant type (like Stone, Fire, or Cloud) to get a special power, like turning your skin to stone to block damage, or teleporting short distances.</li>
+        <li><strong>Powerful Build:</strong> You count as one size larger when determining how much weight you can carry, push, or drag. You are super strong!</li>
+    </ul>
+
+    <h3>Halfling</h3>
+    <p class="flavor-text">Short, cheerful people who love good food, cozy homes, and grand adventures.</p>
+    <ul>
+        <li><strong>Lucky:</strong> If you roll a 1 on a d20 for an attack, ability check, or saving throw, you can reroll the die! (You must use the new roll).</li>
+        <li><strong>Brave:</strong> You have Advantage on saving throws against being frightened.</li>
+        <li><strong>Halfling Nimbleness:</strong> You are so small you can run right through the legs of giant monsters!</li>
+    </ul>
+
+    <h3>Human</h3>
+    <p class="flavor-text">Adaptable, ambitious, and brave. Humans are good at a little bit of everything.</p>
+    <ul>
+        <li><strong>Versatile:</strong> You get to choose an extra Skill to be good at.</li>
+        <li><strong>Resourceful:</strong> You get a free "Heroic Inspiration" every day after you sleep, which lets you reroll a bad die roll when you really need it!</li>
+    </ul>
+
+    <h3>Orc</h3>
+    <p class="flavor-text">Fierce, unstoppable warriors with powerful builds and tusks.</p>
+    <ul>
+        <li><strong>Adrenaline Rush:</strong> You can run super fast toward an enemy as a Bonus Action, and doing so gives you temporary extra health!</li>
+        <li><strong>Relentless Endurance:</strong> If you get knocked down to 0 Hit Points, you can choose to drop to 1 Hit Point instead. You refuse to fall down!</li>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+    </ul>
+
+    <h3>Tiefling</h3>
+    <p class="flavor-text">People with horns and tails who have a tiny bit of fiendish magic in their blood.</p>
+    <ul>
+        <li><strong>Darkvision:</strong> You can see in the dark.</li>
+        <li><strong>Fiendish Legacy:</strong> You can choose to be resistant to Fire, Cold, or Poison damage.</li>
+        <li><strong>Innate Magic:</strong> As you level up, you naturally learn how to cast a few spells, like creating magical darkness or rebuking enemies with fire, without needing a spellbook!</li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 3: Your Hero's Job (Classes)</h2>
+    
+    <img src="assets/adventurers_lineart.png" class="line-art" alt="Adventurers Line Art">
+
+    <p>Your <strong>Class</strong> is your job in the adventuring party. It determines what weapons you use, if you can cast spells, and what special moves you have. There are 12 main classes!</p>
+
+    <div class="callout">
+        <h4>Barbarian</h4>
+        <p>A fierce warrior who uses their anger to become unstoppable. When a Barbarian enters a <strong>Rage</strong>, they hit harder and take less damage from weapons. They don't wear heavy armor; their muscles and toughness protect them! <em>(Primary Stat: Strength)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Bard</h4>
+        <p>A magical musician or storyteller. Bards use songs and speeches to cast spells. They can heal friends, charm enemies, and give out <strong>Bardic Inspiration</strong>—a magical bonus die that helps their friends succeed on important rolls. <em>(Primary Stat: Charisma)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Cleric</h4>
+        <p>A holy champion who gets their magic from a powerful god. Clerics are the best healers in the game, but they also wear heavy armor and can blast undead monsters with blinding holy light! <em>(Primary Stat: Wisdom)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Druid</h4>
+        <p>A protector of the wilderness. Druids cast nature magic (like controlling vines or summoning lightning). Their coolest power is <strong>Wild Shape</strong>, which lets them magically transform into animals like wolves, bears, or giant spiders! <em>(Primary Stat: Wisdom)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Fighter</h4>
+        <p>The ultimate weapon master. Fighters know how to use every sword, bow, and shield in the world. They get a power called <strong>Action Surge</strong>, which lets them take a whole extra turn in the middle of combat to attack super fast! <em>(Primary Stat: Strength or Dexterity)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Monk</h4>
+        <p>A martial arts expert. Monks don't need swords or armor. They use a magical energy called <strong>Focus</strong> to run up walls, catch arrows out of the air, and punch enemies multiple times in a single second. <em>(Primary Stat: Dexterity & Wisdom)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Paladin</h4>
+        <p>A holy knight who swears a sacred oath to do good. Paladins wear the heaviest armor, heal with their hands, and use <strong>Divine Smite</strong> to make their sword strikes explode with radiant holy energy. <em>(Primary Stat: Strength & Charisma)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Ranger</h4>
+        <p>A wilderness survival expert and monster hunter. Rangers are amazing with bows and tracking. They cast a little bit of nature magic and often have animal companions (like a pet wolf or hawk) that help them fight. <em>(Primary Stat: Dexterity & Wisdom)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Rogue</h4>
+        <p>A sneaky ninja or clever thief. Rogues are experts at picking locks and disarming traps. In combat, they use <strong>Sneak Attack</strong> to do massive damage if they hit an enemy who is distracted or if they are hiding in the shadows. <em>(Primary Stat: Dexterity)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Sorcerer</h4>
+        <p>A magic user who was born with superpowers (maybe their great-grandpa was a dragon!). Sorcerers don't study books; magic just flows out of them. They use <strong>Sorcery Points</strong> to twist their spells, like casting two spells at once or casting a spell silently. <em>(Primary Stat: Charisma)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Warlock</h4>
+        <p>A magic user who made a deal with a powerful, spooky creature (like an alien, a fairy queen, or a demon) to get their powers. Warlocks shoot powerful magical lasers called <strong>Eldritch Blasts</strong> and get their magic back very quickly when they rest. <em>(Primary Stat: Charisma)</em></p>
+    </div>
+
+    <div class="callout">
+        <h4>Wizard</h4>
+        <p>A brilliant student of magic. Wizards carry a giant Spellbook. They are the most versatile magic users in the game, capable of learning hundreds of different spells, from shooting fireballs to turning invisible or teleporting! <em>(Primary Stat: Intelligence)</em></p>
+    </div>
+
+    <h2 class="chapter-title">Chapter 4: Stats & Skills</h2>
+    
+    <img src="assets/skills_lineart.png" class="line-art" alt="Rogue Picking a Lock">
+    <p>Every character has 6 main <strong>Ability Scores</strong>. These numbers measure how good you are at different things. They give you a <strong>Modifier</strong> (usually between -1 and +5) that you add to your d20 rolls.</p>
+
+    <table>
+        <tr>
+            <th>Ability Score</th>
+            <th>What it measures</th>
+            <th>Example of when you use it</th>
+        </tr>
+        <tr>
+            <td><strong>Strength (STR)</strong></td>
+            <td>Muscle and physical power.</td>
+            <td>Swinging an axe, lifting a boulder, breaking down a door.</td>
+        </tr>
+        <tr>
+            <td><strong>Dexterity (DEX)</strong></td>
+            <td>Agility, reflexes, and balance.</td>
+            <td>Shooting a bow, doing a backflip, dodging a fireball.</td>
+        </tr>
+        <tr>
+            <td><strong>Constitution (CON)</strong></td>
+            <td>Health, stamina, and toughness.</td>
+            <td>Holding your breath underwater, surviving poison.</td>
+        </tr>
+        <tr>
+            <td><strong>Intelligence (INT)</strong></td>
+            <td>Memory, reasoning, and book-smarts.</td>
+            <td>Remembering history, figuring out how a magic puzzle works.</td>
+        </tr>
+        <tr>
+            <td><strong>Wisdom (WIS)</strong></td>
+            <td>Awareness, intuition, and street-smarts.</td>
+            <td>Spotting a hidden trap, tracking a monster in the woods.</td>
+        </tr>
+        <tr>
+            <td><strong>Charisma (CHA)</strong></td>
+            <td>Charm, confidence, and leadership.</td>
+            <td>Tricking a guard, performing a song, intimidating a bully.</td>
+        </tr>
+    </table>
+
+    <h3>Skills and Proficiency</h3>
+    <p>Skills are specific things you can be good at. When you create your character, you pick a few Skills to be <strong>Proficient</strong> in. This means you have trained in them! When you roll a d20 for a Skill you are Proficient in, you get to add a special bonus called your <strong>Proficiency Bonus</strong>.</p>
+    
+    <p>Here are the 18 Skills in the game and the Stat they use:</p>
+    <ul>
+        <li><strong>Acrobatics (DEX):</strong> Balancing on a tightrope, escaping a grab.</li>
+        <li><strong>Animal Handling (WIS):</strong> Calming down a scared horse or angry dog.</li>
+        <li><strong>Arcana (INT):</strong> Knowing secrets about magic, spells, and magical items.</li>
+        <li><strong>Athletics (STR):</strong> Climbing a cliff, swimming in a rushing river, wrestling.</li>
+        <li><strong>Deception (CHA):</strong> Telling a convincing lie or wearing a disguise.</li>
+        <li><strong>History (INT):</strong> Remembering lore about ancient kingdoms and wars.</li>
+        <li><strong>Insight (WIS):</strong> Reading someone's face to tell if they are lying to you.</li>
+        <li><strong>Intimidation (CHA):</strong> Acting scary to make someone back down.</li>
+        <li><strong>Investigation (INT):</strong> Searching a room for hidden clues or secret doors.</li>
+        <li><strong>Medicine (WIS):</strong> Bandaging wounds and diagnosing sickness.</li>
+        <li><strong>Nature (INT):</strong> Knowing about plants, weather, and animals.</li>
+        <li><strong>Perception (WIS):</strong> Spotting hiding enemies or hearing quiet footsteps.</li>
+        <li><strong>Performance (CHA):</strong> Singing, dancing, or acting for an audience.</li>
+        <li><strong>Persuasion (CHA):</strong> Convincing someone to help you nicely.</li>
+        <li><strong>Religion (INT):</strong> Knowing about gods, holy symbols, and demons.</li>
+        <li><strong>Sleight of Hand (DEX):</strong> Picking a pocket or doing a coin trick.</li>
+        <li><strong>Stealth (DEX):</strong> Sneaking around without being seen or heard.</li>
+        <li><strong>Survival (WIS):</strong> Following tracks, finding food, and not getting lost.</li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 5: Equipment & Magic Items</h2>
+    
+    <img src="assets/weapons_lineart.png" class="line-art" alt="Weapons Line Art">
+
+    <p>A hero is only as good as their gear! Before you leave town, you need to buy armor to protect you and weapons to fight with.</p>
+
+    <h3>Armor Class (AC)</h3>
+    <p>Your Armor Class is how hard it is for monsters to hit you. If you wear no armor, your AC is 10 + your Dexterity modifier. Wearing armor makes this number go up!</p>
+    
+    <table>
+        <tr>
+            <th>Armor Type</th>
+            <th>Examples</th>
+            <th>How it protects you</th>
+        </tr>
+        <tr>
+            <td><strong>Light Armor</strong></td>
+            <td>Leather, Studded Leather</td>
+            <td>Very flexible! You add your full Dexterity modifier to your AC.</td>
+        </tr>
+        <tr>
+            <td><strong>Medium Armor</strong></td>
+            <td>Hide, Chain Shirt, Scale Mail</td>
+            <td>A mix of metal and leather. You can add up to +2 from your Dexterity to your AC.</td>
+        </tr>
+        <tr>
+            <td><strong>Heavy Armor</strong></td>
+            <td>Chain Mail, Plate Armor</td>
+            <td>Thick steel! It gives you a very high AC, but you don't get to add your Dexterity to it at all. It's also very loud, so you have Disadvantage on Stealth checks.</td>
+        </tr>
+        <tr>
+            <td><strong>Shields</strong></td>
+            <td>Wooden or Metal Shield</td>
+            <td>Holding a shield in one hand gives you a flat +2 to your AC!</td>
+        </tr>
+    </table>
+
+    <h3>Weapons</h3>
+    <p>Weapons are split into two categories: <strong>Simple</strong> (easy to use, like a club) and <strong>Martial</strong> (requires training, like a giant broadsword). They also have special properties!</p>
+    <ul>
+        <li><strong>Finesse:</strong> You can use your Dexterity instead of Strength to attack with this weapon (like a Dagger or Rapier).</li>
+        <li><strong>Heavy / Two-Handed:</strong> You must use two hands to swing this massive weapon (like a Greataxe or Greatsword). Small races (like Halflings and Gnomes) have Disadvantage using Heavy weapons because they are too big!</li>
+        <li><strong>Thrown:</strong> You can throw this weapon at an enemy (like a Javelin or Handaxe).</li>
+    </ul>
+
+    <h3>Awesome Magic Items</h3>
+    <p>As you explore dungeons, you might find magical treasure! Here are some famous items:</p>
+    <ul>
+        <li><strong>Bag of Holding:</strong> A magic backpack that is bigger on the inside. You can fit 500 pounds of treasure inside it, but it always weighs exactly 15 pounds!</li>
+        <li><strong>Boots of Elvenkind:</strong> Magic boots that make your footsteps completely silent.</li>
+        <li><strong>Healing Potion:</strong> A red liquid that tastes like cherries. Drink it as a Bonus Action to heal 2d4 + 2 Hit Points!</li>
+        <li><strong>Immovable Rod:</strong> An iron rod with a button on it. If you press the button, the rod magically freezes in mid-air and cannot be moved by anything, even gravity!</li>
+    </ul>
+
+    <h3>Upgrading Your Gear</h3>
+    <p>If you have extra gold, you can take your normal weapons and armor to a Master Blacksmith or an Enchanter to make them even better!</p>
+    <ul>
+        <li><strong>Silvered Weapons:</strong> The blacksmith coats your weapon in pure silver. This hurts monsters (like Werewolves and Ghosts) that are immune to normal weapons!</li>
+        <li><strong>Adamantine Armor:</strong> Made from the hardest metal in the world. If you wear Adamantine armor, any Critical Hit against you becomes a normal hit instead.</li>
+        <li><strong>Mithral Armor:</strong> A beautiful, shiny metal that is as strong as steel but as light as a feather. If you wear heavy Mithral armor, it doesn't give you Disadvantage on Stealth checks!</li>
+        <li><strong>Magical Pluses (+1, +2, +3):</strong> An enchanter can add a magical "Plus" to your weapon or armor. A +1 weapon gives you a +1 bonus to your attack and damage rolls. +1 armor increases your Armor Class by +1!</li>
+        <li><strong>Elemental Runes:</strong> An enchanter can carve a glowing magical Rune into your weapon. When you hit a monster, it explodes with Fire, Frost, or Lightning damage!</li>
+        <li><strong>Ioun Stones:</strong> These are legendary glowing crystals. When you activate one, it floats in the air and slowly orbits around your head like a tiny moon, giving you a permanent magical power (like no longer needing to eat, or boosting your Strength!).</li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 6: Adventuring & Exploration</h2>
+    
+    <img src="assets/exploration_lineart.png" class="line-art" alt="Adventurer Exploring a Dungeon">
+    <p>When you aren't fighting monsters, you are exploring the world! The DM will describe what you see, and you tell the DM what you want to do.</p>
+
+    <h3>Vision and Light</h3>
+    <p>Dungeons are dark and scary. You need to be able to see!</p>
+    <ul>
+        <li><strong>Bright Light:</strong> Normal daylight or standing right next to a torch. You can see perfectly.</li>
+        <li><strong>Dim Light:</strong> Shadows or moonlight. It's hard to see, so you have Disadvantage on Perception checks that rely on sight.</li>
+        <li><strong>Darkness:</strong> Pitch black! You are totally Blinded unless you have a torch or special vision.</li>
+        <li><strong>Darkvision:</strong> Many species (like Elves and Dwarves) have Darkvision. This lets them see in the dark as if it were Dim Light!</li>
+    </ul>
+
+    <h3>Resting & Healing</h3>
+    <p>Adventuring is tiring work! You need to rest to heal your wounds and get your magic back.</p>
+    <ul>
+        <li><strong>Short Rest:</strong> A 1-hour break to eat lunch and bandage your wounds. You can spend "Hit Dice" (special dice on your character sheet) to heal some of your Hit Points.</li>
+        <li><strong>Long Rest:</strong> 8 hours of sleep. You heal ALL your Hit Points and get all your magic Spell Slots back. You can only do this once a day!</li>
+    </ul>
+
+    <h3>Hazards</h3>
+    <ul>
+        <li><strong>Falling:</strong> If you fall from a high place, you take 1d6 bludgeoning damage for every 10 feet you fall! Be careful around cliffs!</li>
+        <li><strong>Suffocating:</strong> You can hold your breath for a number of minutes equal to 1 + your Constitution modifier. After that, you start running out of air!</li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 7: Combat!</h2>
+    
+    <img src="assets/combat_lineart.png" class="line-art" alt="Knight Blocking an Attack">
+    <p>When monsters attack, time slows down into <strong>Rounds</strong> and <strong>Turns</strong>. A Round is 6 seconds in the game world, but it gives everyone at the table a chance to take a turn.</p>
+
+    <h3>Step 1: Roll Initiative</h3>
+    <p>Before the fight starts, everybody rolls <strong>Initiative</strong> (a d20 + your DEX bonus). The DM rolls for the monsters. The DM counts down from the highest number to the lowest. This is the turn order!</p>
+
+    <h3>Step 2: Take Your Turn</h3>
+    <p>On your turn, you can do <strong>THREE</strong> things (plus talking!):</p>
+    
+    <h4>1. Move</h4>
+    <p>You can walk up to your Speed (usually 30 feet, or 6 squares on a map). You can break this up! For example, you can move 15 feet, attack a goblin, and then move 15 feet back.</p>
+    
+    <h4>2. Action</h4>
+    <p>This is your main move! You can choose ONE of these:</p>
+    <ul>
+        <li><strong>Attack:</strong> Swing your sword or shoot your bow.</li>
+        <li><strong>Cast a Spell:</strong> Use a magical attack or heal a friend.</li>
+        <li><strong>Dash:</strong> Run twice as fast (giving you extra movement).</li>
+        <li><strong>Disengage:</strong> Run away safely. If you do this, monsters don't get a free hit on you when you run away.</li>
+        <li><strong>Dodge:</strong> Focus on dodging. Any monster attacking you has Disadvantage until your next turn.</li>
+        <li><strong>Help:</strong> Distract a monster to give your friend Advantage on their next attack.</li>
+        <li><strong>Hide:</strong> Roll a Stealth check to try and become unseen.</li>
+        <li><strong>Use an Object:</strong> Drink a healing potion or pull a lever.</li>
+    </ul>
+
+    <h4>3. Bonus Action</h4>
+    <p>A quick extra move. <em>You can only do this if a spell, weapon, or class rule specifically says it takes a "Bonus Action."</em> If you don't have a special Bonus Action ability, you just skip this step.</p>
+
+    <div class="callout">
+        <h3>Reactions (Not on your turn!)</h3>
+        <p>You get one <strong>Reaction</strong> per round. This is a special move you can do when it is <em>not</em> your turn.</p>
+        <p>The most common Reaction is an <strong>Opportunity Attack</strong>. If a monster is standing right next to you and tries to run away without using the Disengage action, you get to swing your sword at them for free as they run away!</p>
+    </div>
+
+    <h3>Cover</h3>
+    <p>Hiding behind things makes you harder to hit! If you are behind a barrel or a wall, your Armor Class (AC) goes up.</p>
+    <ul>
+        <li><strong>Half Cover:</strong> (Like a low wall). Gives you +2 to your AC.</li>
+        <li><strong>Three-Quarters Cover:</strong> (Like peeking out of a window). Gives you +5 to your AC.</li>
+        <li><strong>Total Cover:</strong> (Completely behind a wall). You can't be targeted by attacks or spells at all!</li>
+    </ul>
+
+    <h3>Damage Types, Resistance, and Vulnerability</h3>
+    <p>There are many ways to get hurt in D&D! Weapons usually do Slashing (swords), Piercing (arrows), or Bludgeoning (hammers) damage. Magic can do Fire, Cold, Lightning, Poison, Acid, Radiant (holy), Necrotic (dark), Force, Psychic, or Thunder damage.</p>
+    <ul>
+        <li><strong>Resistance:</strong> If you are Resistant to a damage type, you take <strong>HALF</strong> damage from it. (A Red Dragonborn takes half damage from fire!).</li>
+        <li><strong>Vulnerability:</strong> If you are Vulnerable to a damage type, you take <strong>DOUBLE</strong> damage from it. (An Ice Monster takes double damage from fire!).</li>
+        <li><strong>Immunity:</strong> If you are Immune, you take <strong>ZERO</strong> damage.</li>
+    </ul>
+
+    <h3>Health & Dying</h3>
+    <ul>
+        <li><strong>Hit Points (HP):</strong> This is your health. If you take damage, your HP goes down.</li>
+        <li><strong>Zero HP:</strong> If your HP hits 0, you fall unconscious. You aren't dead yet, but you are dying!</li>
+        <li><strong>Death Saving Throws:</strong> On your turn, if you are at 0 HP, you must roll a d20 (no bonuses). If you roll a 10 or higher, it's a Success. If you roll a 9 or lower, it's a Failure. 
+            <ul>
+                <li>If you get 3 Successes, you stabilize (you stop dying, but stay asleep).</li>
+                <li>If you get 3 Failures, your character dies.</li>
+                <li>If a friend heals you even 1 HP, you wake up instantly!</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 8: Conditions & Hazards</h2>
+    
+    <img src="assets/conditions_lineart.png" class="line-art" alt="Adventurer Restrained in a Spider Web">
+    <p>Sometimes monsters do nasty things to you that give you a "Condition." Here is what they mean:</p>
+    
+    <table>
+        <tr>
+            <th>Condition</th>
+            <th>What happens to you?</th>
+        </tr>
+        <tr>
+            <td><strong>Blinded</strong></td>
+            <td>You can't see! You automatically fail checks that require sight. Your attacks have Disadvantage, and enemies attacking you have Advantage.</td>
+        </tr>
+        <tr>
+            <td><strong>Charmed</strong></td>
+            <td>You think the monster is your best friend! You can't attack the monster that charmed you.</td>
+        </tr>
+        <tr>
+            <td><strong>Deafened</strong></td>
+            <td>You can't hear! You automatically fail checks that require hearing.</td>
+        </tr>
+        <tr>
+            <td><strong>Exhaustion</strong></td>
+            <td>You are super tired! You get a minus to your d20 rolls. The more exhausted you get, the bigger the minus! Get some sleep to fix it.</td>
+        </tr>
+        <tr>
+            <td><strong>Frightened</strong></td>
+            <td>You are terrified! You have Disadvantage on ability checks and attacks as long as you can see the monster, and you can't willingly walk closer to it.</td>
+        </tr>
+        <tr>
+            <td><strong>Grappled</strong></td>
+            <td>A monster grabbed you! Your Speed becomes 0. You can't move until you escape.</td>
+        </tr>
+        <tr>
+            <td><strong>Invisible</strong></td>
+            <td>No one can see you! You have Advantage on your attacks, and enemies have Disadvantage when attacking you.</td>
+        </tr>
+        <tr>
+            <td><strong>Paralyzed</strong></td>
+            <td>You are frozen stiff! You can't move or speak. Attacks against you have Advantage, and if a monster hits you from close up, it's an automatic Critical Hit!</td>
+        </tr>
+        <tr>
+            <td><strong>Poisoned</strong></td>
+            <td>You feel sick! You have Disadvantage on attack rolls and ability checks.</td>
+        </tr>
+        <tr>
+            <td><strong>Prone</strong></td>
+            <td>You fell down! You have to spend half your movement to stand back up. If you attack while lying down, you have Disadvantage. Enemies standing right next to you have Advantage to hit you!</td>
+        </tr>
+        <tr>
+            <td><strong>Restrained</strong></td>
+            <td>You are tied up (like in a giant spider web)! Your Speed is 0, your attacks have Disadvantage, and enemies have Advantage to hit you.</td>
+        </tr>
+    </table>
+
+    <h2 class="chapter-title">Chapter 9: Magic & Spells</h2>
+    
+    <img src="assets/magic_lineart.png" class="line-art" alt="Magic Line Art">
+
+    <p>If your character can cast spells, you are a spellcaster! Magic is powerful, but it has rules.</p>
+
+    <h3>Cantrips vs. Leveled Spells</h3>
+    <ul>
+        <li><strong>Cantrips:</strong> Simple, easy magic tricks (like shooting a small fire bolt or making a glowing light). You can cast these as many times as you want, all day long!</li>
+        <li><strong>Leveled Spells:</strong> Powerful magic (like shooting a massive fireball). To cast these, you have to spend a <strong>Spell Slot</strong> (think of them like magic energy batteries).
+            <ul>
+                <li>If you cast a Level 1 spell, you use up a Level 1 Spell Slot.</li>
+                <li>When you run out of Spell Slots, you can't cast powerful magic until you take a Long Rest to recharge!</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>How to Cast a Spell (Components)</h3>
+    <p>To cast a spell, you usually need to do three things (the spell will tell you which ones you need):</p>
+    <ul>
+        <li><strong>Verbal (V):</strong> You have to chant magic words out loud. (You can't cast these if you are gagged or in a magical zone of silence!).</li>
+        <li><strong>Somatic (S):</strong> You have to wave your hands in a magical pattern. (You need at least one free hand to do this).</li>
+        <li><strong>Material (M):</strong> You need a magical item, like a magic wand, a wizard's staff, or a holy symbol, to focus the magic.</li>
+    </ul>
+
+    <h3>Areas of Effect</h3>
+    <p>Some spells don't just hit one person; they explode and hit a whole area! If you are caught in an Area of Effect, you usually have to make a Saving Throw to dodge out of the way.</p>
+    <ul>
+        <li><strong>Cone:</strong> Shoots out from your hands like a megaphone (like a Dragon's breath).</li>
+        <li><strong>Line:</strong> Shoots straight forward in a thick beam (like a Lightning Bolt).</li>
+        <li><strong>Sphere:</strong> Explodes outward in a giant circle (like a Fireball).</li>
+        <li><strong>Cube:</strong> Fills a square room with magic.</li>
+    </ul>
+
+    <h3>Concentration</h3>
+    <p>Some spells are so powerful that you have to focus really hard to keep them going (like a spell that makes you fly, or a spell that summons a flaming sword). This is called <strong>Concentration</strong>.</p>
+    <ul>
+        <li>You can only concentrate on <strong>ONE</strong> spell at a time. If you cast a new concentration spell, the old one turns off instantly!</li>
+        <li>If you get hit by a monster while concentrating, you have to roll a Constitution Saving Throw. If you fail, you lose your focus and the spell turns off!</li>
+    </ul>
+
+    <h2 class="chapter-title">Chapter 10: Know Your Monsters</h2>
+    
+    <img src="assets/dragon_lineart.png" class="line-art" alt="Dragon Line Art">
+
+    <p>The world is filled with dangerous creatures. Instead of memorizing every single monster, it helps to know the different <strong>Monster Types</strong>. Each type shares similar traits, which can help you figure out how to defeat them!</p>
+
+    <div class="monster-block">
+        <h4>Beasts</h4>
+        <p>Normal, non-magical animals like Wolves, Bears, and Giant Spiders. They rely on their claws, teeth, and natural instincts. Spells that let you talk to animals work great on them!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Undead</h4>
+        <p>Creepy creatures brought back to life by dark magic, like Zombies, Skeletons, and Vampires. They usually don't need to breathe or sleep, and they are often immune to poison. Holy magic (Radiant damage) is their biggest weakness!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Fiends (Demons & Devils)</h4>
+        <p>Evil creatures from the lower planes of existence. They are tricky, love making bad deals, and are often resistant to fire and normal weapons. You usually need magic or holy weapons to really hurt them.</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Aberrations (Outsiders)</h4>
+        <p>Alien, weird creatures with tentacles and mind powers, like Mind Flayers. They don't follow the normal rules of nature and often attack your mind directly with Psychic damage.</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Constructs</h4>
+        <p>Magical robots and animated objects, like Stone Golems or flying swords. Because they are made of stone, metal, or wood, you can't poison them, put them to sleep, or read their minds!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Elementals</h4>
+        <p>Creatures made entirely out of pure elements: Fire, Water, Earth, or Air. A Fire Elemental will burn you if you touch it, but it takes extra damage if you hit it with cold or water magic!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Fey</h4>
+        <p>Magical tricksters from the fairy realms, like Sprites and Pixies. They love nature, illusions, and playing pranks on adventurers. They are very hard to charm because they are the masters of charming others!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Monstrosities</h4>
+        <p>Strange, cursed, or magically mutated creatures that aren't normal animals. The Owlbear (half owl, half bear) and the Mimic (a monster disguised as a treasure chest) are classic monstrosities!</p>
+    </div>
+
+    <div class="monster-block">
+        <h4>Dragons</h4>
+        <p>The ultimate boss monsters. Giant, flying, magical reptiles. They are highly intelligent, have terrifying breath weapons (like fire, ice, or acid), and love hoarding treasure. Never fight a dragon unless you are fully prepared!</p>
+    </div>
+
+    <h2 class="chapter-title">Chapter 11: How to be a Great Player</h2>
+    
+    <img src="assets/teamwork_lineart.png" class="line-art" alt="Adventurers High Fiving">
+    <p>D&D is a team game! The goal isn't to "win" or "beat the DM." The goal is to tell an awesome story with your friends. Here are some tips to be the best player at the table:</p>
+
+    <ul>
+        <li><strong>Share the Spotlight:</strong> Make sure everyone gets a turn to do something cool. If your friend hasn't spoken in a while, ask their character for advice!</li>
+        <li><strong>Listen to the DM:</strong> The DM works hard to prepare the game. Listen closely when they describe the room, and don't talk over them.</li>
+        <li><strong>Accept Failure:</strong> Sometimes you roll a 1. It happens to everyone! Instead of getting mad, lean into it. Failing a roll often leads to the funniest and most memorable moments in the game.</li>
+        <li><strong>Be Creative:</strong> You don't just have to say "I attack with my sword." You can say, "I swing on the chandelier, kick the table over, and slash at the goblin!" The DM loves it when you use your imagination.</li>
+        <li><strong>Have Fun!</strong> At the end of the day, you are playing a game with your friends. Cheer when they roll a 20, laugh when things go wrong, and enjoy the adventure!</li>
+    </ul>
+
+    <div class="center-text">
+        <p>You have learned the rules. Now, grab your dice, gather your friends, and step into the dungeon. Your adventure awaits!</p>
+    </div>
+</div>
+
+</body>
+</html>

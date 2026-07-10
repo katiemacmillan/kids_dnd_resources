@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warlock Booklet - Kids D&D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always; /* Forces a new page when printing */
+            break-before: page;
+        }
+
+        /* Don't break the first chapter title */
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        .section-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: avoid;
+            break-before: auto;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .monster-block {
+            background-color: #f4eedc;
+            border: 1px solid #c5a059;
+            padding: 15px;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 8px;
+        }
+
+        .monster-block h4 {
+            margin-top: 0;
+            color: #58180D;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+
+        img.line-art {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 20px auto;
+            mix-blend-mode: multiply; /* Blends the white background into the parchment */
+            border-radius: 10px;
+            break-inside: avoid;
+            column-span: all;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th, .monster-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout, img, .monster-block {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- PAGE 1: Intro & Mechanics -->
+    <h1>Warlock Booklet</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Magical Deal-Maker!</strong></p>
+        <p>Welcome, seeker of secrets! As a Warlock, you didn't study magic or get born with it. Instead, you made a deal (a "Pact") with a powerful, mysterious creature! Maybe it's a fairy queen, a spooky alien from the stars, or a fiery fiend. They gave you awesome magical powers in exchange for your loyalty!</p>
+    </div>
+
+    <img src="../assets/warlock_lineart.png" class="line-art" alt="Warlock Line Art">
+
+    <h2 class="chapter-title first">Awesome Warlock Powers</h2>
+    
+    <div class="callout">
+        <h3>💥 Eldritch Blast</h3>
+        <p>This is the coolest, most famous spell in the game, and only Warlocks get it! It's a Cantrip, which means you can cast it all day long. It shoots a beam of crackling magical energy at your enemies, and as you level up, it shoots multiple beams at once!</p>
+    </div>
+
+    <div class="callout">
+        <h3>📖 Pact Magic</h3>
+        <p>Your magic works differently than other spellcasters. You only have a few Spell Slots, but they are ALWAYS cast at the highest possible level! Even better, you get all your Spell Slots back after just a <strong>Short Rest</strong> (like eating lunch), while Wizards have to sleep for 8 hours to get theirs back!</p>
+    </div>
+
+    <div class="callout">
+        <h3>👁️ Eldritch Invocations</h3>
+        <p>Your patron gives you special magical secrets called Invocations. These let you do amazing things, like seeing perfectly in magical darkness, reading any language in the world, or making your Eldritch Blast push monsters backward!</p>
+    </div>
+
+    <h2 class="section-title">Strengths and Weaknesses</h2>
+    <ul>
+        <li><strong>Strengths:</strong> You have the best basic attack spell in the game (Eldritch Blast). You also get your big spells back very quickly, so you are always ready for a fight. You are also very charismatic!</li>
+        <li><strong>Weaknesses:</strong> Because you only have a few Spell Slots at a time, you have to be very careful about when you use your big magic. You can't just cast spells all the time like a Wizard can.</li>
+    </ul>
+
+    <!-- PAGE 2: Leveling Up -->
+    <h2 class="chapter-title">Leveling Up!</h2>
+    <p>As you go on adventures and defeat monsters, you will gain Experience Points (XP) and level up! Here is what you get for your first 5 levels as a Warlock:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Awesome New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 1</strong></td>
+            <td><strong>Otherworldly Patron:</strong> You pick the powerful creature you made a deal with (like a Fairy or an Angel).<br><strong>Pact Magic:</strong> You learn 2 Cantrips (pick <em>Eldritch Blast</em>!) and get 1 Spell Slot.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 2</strong></td>
+            <td><strong>Eldritch Invocations:</strong> You learn 2 secret magical tricks! You can pick "Agonizing Blast" to make your Eldritch Blast do extra damage, or "Armor of Shadows" to magically protect yourself.<br><strong>Extra Spell Slot:</strong> You now have 2 Spell Slots!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 3</strong></td>
+            <td><strong>Pact Boon:</strong> Your Patron gives you a special gift! You can pick a magical pet (Pact of the Chain), a magic sword (Pact of the Blade), or a magic book (Pact of the Tome).<br><strong>Level 2 Spells:</strong> Your Spell Slots level up, so all your spells are stronger!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 4</strong></td>
+            <td><strong>Ability Score Improvement:</strong> You can increase your Charisma to make your spells even harder to dodge, or pick a cool Feat!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 5</strong></td>
+            <td><strong>Level 3 Spells:</strong> Your Spell Slots level up again! You can now cast powerful spells like <em>Fly</em> or <em>Vampiric Touch</em>.<br><strong>Extra Invocation:</strong> You learn a 3rd magical secret!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 3: Subclasses -->
+    <h2 class="chapter-title">Awesome Subclasses</h2>
+    <p>At Level 1, you choose your <strong>Otherworldly Patron</strong>. This is the creature who gave you your magic! Here are two really fun options:</p>
+
+    <div class="callout">
+        <h3>🦋 The Archfey</h3>
+        <p class="flavor-text">"My magic comes from the glittering forests of the fairy world!"</p>
+        <p>You made a deal with a powerful fairy, like a Fairy Queen or a magical talking unicorn. Your magic is tricky, sparkly, and full of illusions!</p>
+        <ul>
+            <li><strong>Fey Presence:</strong> You can magically project the tricky beauty or scary power of the fairies. You can make everyone around you suddenly become your friend (Charmed) or run away in fear (Frightened)!</li>
+            <li><strong>Misty Escape:</strong> At Level 6, when you get hurt, you can turn into a puff of glittering mist and teleport away, turning invisible for a moment!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>👼 The Celestial</h3>
+        <p class="flavor-text">"I bring the healing light of the angels!"</p>
+        <p>You made a deal with a creature of pure good, like an Angel, a Pegasus, or a magical glowing lion. Your magic is bright, warm, and helps your friends!</p>
+        <ul>
+            <li><strong>Bonus Cantrips:</strong> You learn the <em>Light</em> and <em>Sacred Flame</em> cantrips for free, so you can always light up the dark.</li>
+            <li><strong>Healing Light:</strong> You get a pool of magical healing energy! You can use a bonus action to send a beam of healing light to fix your friends' boo-boos from far away.</li>
+            <li><strong>Radiant Soul:</strong> At Level 6, your fire and light spells become super-charged and do extra damage!</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 4: Gear & Strategy -->
+    <h2 class="chapter-title">Gear & Strategy</h2>
+    
+    <h3>What to Wear and Carry 🎒</h3>
+    <p>Warlocks are a little tougher than Wizards, but you still rely mostly on your magic!</p>
+    <ul>
+        <li><strong>Armor:</strong> You can wear Light Armor (like leather armor) to protect yourself.</li>
+        <li><strong>Weapons:</strong> You can use simple weapons like a dagger or a crossbow. If you chose the "Pact of the Blade" at Level 3, you can summon a magical sword, axe, or even a glowing hammer!</li>
+        <li><strong>Arcane Focus:</strong> This is a special item you use to cast spells. It could be a glowing orb, a magical wand, or a spooky crystal!</li>
+    </ul>
+
+    <h3>How to Fight ⚔️</h3>
+    <div class="callout">
+        <h4>1. Blast Away!</h4>
+        <p>Your best friend is <strong>Eldritch Blast</strong>. Stand back and shoot magical beams at the bad guys every single turn! It doesn't cost any spell slots, so you can use it all day.</p>
+    </div>
+    <div class="callout">
+        <h4>2. Save Your Big Spells</h4>
+        <p>You only have a couple of Spell Slots! Don't use them on small problems. Save them for when you really need to turn invisible, trap a big monster, or escape from danger.</p>
+    </div>
+    <div class="callout">
+        <h4>3. Take Short Rests</h4>
+        <p>Remind your team to take a break! If you sit down and eat a snack for an hour (a Short Rest), you get ALL your Spell Slots back!</p>
+    </div>
+
+    <!-- PAGE 5: Roleplaying -->
+    <h2 class="chapter-title">Roleplaying Your Warlock</h2>
+    
+    <h3>Who Are You? 🎭</h3>
+    <p>Warlocks are very Charismatic, which means you are great at talking to people. But you also have a secret—your Patron! How do you feel about the creature who gave you your powers?</p>
+    
+    <ul>
+        <li><strong>The Best Friends:</strong> You and your Patron are best buddies! You talk to them all the time, and they give you helpful advice.</li>
+        <li><strong>The Secret Agent:</strong> Your Patron gives you secret missions to complete, and you have to sneak away from the party to do them!</li>
+        <li><strong>The Accidental Warlock:</strong> You didn't mean to make a deal! You just picked up a weird glowing rock, and now a fairy won't stop talking in your head!</li>
+    </ul>
+
+    <h3>What Does Your Magic Look Like? ✨</h3>
+    <p>Your magic should look like your Patron! Think about how your spells look:</p>
+    <ul>
+        <li>If your Patron is a Fairy, does your <em>Eldritch Blast</em> look like a swarm of angry glowing butterflies?</li>
+        <li>If your Patron is an Angel, does your magic smell like fresh cookies and glow with golden light?</li>
+        <li>What does your Pact Boon look like? If you have a magic pet (Pact of the Chain), is it a tiny dragon or a flying glowing cat?</li>
+    </ul>
+    
+    <p><strong>Have fun, be creative, and make your Patron proud!</strong></p>
+    <!-- PAGE 6: Leveling Up (Levels 6 to 10) -->
+    <h2 class="chapter-title">More Leveling Up! (Levels 6-10)</h2>
+    <p>Your Patron is rewarding you with even more magic! Here is what you get next:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Amazing New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 6</strong></td>
+            <td><strong>Patron Feature:</strong> Your Patron gives you a new special ability! (Like teleporting away when hurt, or getting a huge boost of healing light.)</td>
+        </tr>
+        <tr>
+            <td><strong>Level 7</strong></td>
+            <td><strong>Level 4 Spells:</strong> Your Spell Slots grow again! You can cast powerful magic like <em>Banishment</em> to send bad guys to another dimension!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 8</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Increase your Charisma, or pick a cool Feat!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 9</strong></td>
+            <td><strong>Level 5 Spells:</strong> Your slots hit their highest normal level! You can cast huge spells to contact other worlds or hold monsters still.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 10</strong></td>
+            <td><strong>Patron Feature:</strong> Another awesome gift from your Patron to make you super tough to beat!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 7: Famous Heroes & Legends -->
+    <h2 class="chapter-title">Famous Warlocks</h2>
+    <p>There are many stories of heroes who made clever deals to get their powers. Here are a couple of legends:</p>
+    
+    <div class="callout">
+        <h3>🌌 Kaelen the Star-Seeker</h3>
+        <p>Kaelen found a glowing rock that let him speak to a friendly alien from the stars. He uses his alien magic to read minds and float through the air, helping lost travelers find their way home safely.</p>
+    </div>
+    
+    <div class="callout">
+        <h3>🦋 Lyra of the Summer Court</h3>
+        <p>Lyra made a deal with a beautiful Fairy Queen. She uses her tricky fairy magic to turn invisible and sneak past sleeping dragons. Her magic always smells like fresh flowers and sparkles with pink glitter!</p>
+    </div>
+
+    <!-- PAGE 8: Best Magic Items -->
+    <h2 class="chapter-title">Best Magic Items</h2>
+    <p>Keep your eyes peeled for these amazing treasures on your adventures!</p>
+    <ul>
+        <li><strong>Rod of the Pact Keeper:</strong> A super cool glowing stick that makes your spells hit harder and lets you regain one Warlock spell slot once per day. It's the best tool for any Warlock!</li>
+        <li><strong>Illusionist's Bracers:</strong> Fancy arm-bands that let you cast your favorite Cantrip (like <em>Eldritch Blast</em>) TWICE in one turn!</li>
+        <li><strong>Ring of Protection:</strong> A magical ring that makes your armor tougher and helps you dodge out of the way of danger.</li>
+        <li><strong>Boots of Elvenkind:</strong> Magical boots that make your footsteps completely silent. Perfect for sneaking around!</li>
+    </ul>
+
+    <!-- PAGE 9: Combat Cheat Sheet -->
+    <h2 class="chapter-title">Combat Cheat Sheet</h2>
+    <p>Not sure what to do on your turn? Here is a quick guide to being an awesome Warlock in battle:</p>
+    
+    <div class="monster-block">
+        <h4>⚡ Your Action</h4>
+        <ul>
+            <li><strong>Cast Eldritch Blast:</strong> This is your bread and butter! Zap the bad guys with crackling energy from far away.</li>
+            <li><strong>Cast a Big Spell:</strong> Use one of your precious Spell Slots to do something huge, like frightening a whole group of monsters.</li>
+        </ul>
+    </div>
+    
+    <div class="monster-block">
+        <h4>✨ Your Bonus Action</h4>
+        <ul>
+            <li><strong>Use Hex:</strong> If you know the <em>Hex</em> spell, you can use a Bonus Action to curse a monster so your Eldritch Blast does even MORE damage!</li>
+            <li><strong>Command your Pet:</strong> If you have a Pact of the Chain pet, tell them where to fly or who to bite!</li>
+        </ul>
+    </div>
+    
+    <div class="monster-block">
+        <h4>🛡️ Your Reaction</h4>
+        <ul>
+            <li><strong>Hellish Rebuke:</strong> If a monster hits you, use this spell to instantly blast them back with fire as a Reaction!</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 10: Draw Your Hero! -->
+    <h2 class="chapter-title">Draw Your Hero!</h2>
+    <p>What does your Warlock look like? Grab some crayons or colored pencils and draw them here!</p>
+    <ul>
+        <li>What is your Warlock's name? _________________________</li>
+        <li>What does your Patron look like? _________________________</li>
+        <li>What is your favorite snack to eat on a Short Rest? _________________________</li>
+    </ul>
+    <div style="border: 4px dashed #c5a059; height: 500px; margin-top: 20px; background-color: #fff; border-radius: 10px;"></div>
+</div>
+</body>
+</html>

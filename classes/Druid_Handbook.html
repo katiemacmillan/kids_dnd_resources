@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Druid Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>The Druid</h1>
+    
+    <div class="intro-text">
+        <p><strong>Master of the Wild!</strong></p>
+        <p>Do you love animals, plants, and the power of nature? The Druid is a magical protector of the wilderness. You can summon lightning storms, talk to animals, make vines grow to trap your enemies, and—best of all—magically transform into animals yourself!</p>
+    </div>
+
+    <h2 class="chapter-title first">Class Mechanics</h2>
+    
+    <div class="callout">
+        <h3>🐻 Wild Shape</h3>
+        <p>This is your coolest power! You can magically turn into an animal you have seen before. You could become a sneaky spider to spy on guards, a fast horse to run away, or a giant bear to fight monsters! When you are an animal, you get their Hit Points. If your animal form drops to 0 Hit Points, you just turn back into your normal self!</p>
+    </div>
+
+    <h3>Nature Spellcasting</h3>
+    <p>You use your <strong>Wisdom</strong> to cast spells. Your magic is all about nature. You can heal friends, shoot fire, create fog, or summon magical animals to fight for you. You use a druidic focus (like a special wooden staff or a piece of mistletoe) to cast your spells.</p>
+
+    <h3>Druidic Language</h3>
+    <p>You know a secret language called Druidic. You can leave hidden messages on trees or rocks that only other Druids can read!</p>
+
+    <h2 class="chapter-title">Strengths & Weaknesses</h2>
+    
+    <h3>Strengths</h3>
+    <ul>
+        <li><strong>Super Versatile:</strong> You can heal, fight, use magic, and sneak around. You can do a little bit of everything!</li>
+        <li><strong>Extra Health:</strong> Wild Shape gives you a whole second health bar! You are very hard to defeat.</li>
+        <li><strong>Great Explorer:</strong> You are amazing at surviving in the woods and finding paths.</li>
+    </ul>
+    
+    <h3>Weaknesses</h3>
+    <ul>
+        <li><strong>No Metal Armor:</strong> Druids refuse to wear armor or use shields made of metal, so your Armor Class (AC) might be a little lower than a Fighter's.</li>
+        <li><strong>Complicated:</strong> You have to manage your spells AND remember the stats for the animals you turn into.</li>
+    </ul>
+
+    <h2 class="chapter-title">What to do with this class</h2>
+    
+    <h3>In Combat</h3>
+    <p>You are a <strong>Controller and Fighter</strong>. You can cast spells like <em>Entangle</em> to trap enemies in vines so your friends can hit them easily. If the fighting gets close, use your Wild Shape to turn into a tough animal like a Dire Wolf or a Brown Bear and bite the bad guys!</p>
+    
+    <h3>Roleplay Tips</h3>
+    <p>Druids are deeply connected to the earth. You might prefer sleeping under the stars instead of in an inn. You can talk to animals to get clues about the dungeon. Think about what your favorite animal is, and what kind of environment you grew up in (a dark forest, a hot desert, or a snowy mountain). Protect nature, and it will protect you!</p>
+</div>
+
+</body>
+</html>

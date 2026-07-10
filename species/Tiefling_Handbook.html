@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiefling - Kids D&D Species Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>Tiefling Handbook</h1>
+    
+    <div class="intro-text">
+        <p><strong>People with horns and tails who have a tiny bit of fiendish magic in their blood!</strong></p>
+        <p>If you want to play a character who looks super cool, has natural magical powers, and loves proving that you can't judge a book by its cover, the Tiefling is for you!</p>
+    </div>
+
+    <h2 class="chapter-title first">Personality</h2>
+    <p>Tieflings are independent, mysterious, and sometimes a bit guarded. Because they have horns, tails, and sometimes brightly colored skin (like red, blue, or purple!), some people judge them before getting to know them. Because of this, Tieflings learn to take care of themselves. But once you earn a Tiefling's trust, they are fiercely loyal and will protect you forever!</p>
+
+    <h2 class="chapter-title">History & Lore</h2>
+    <p>A long, long time ago, the ancestors of the Tieflings made a deal with powerful fiends. This left a magical mark on their family line forever! Tieflings aren't evil themselves, but they carry that magical legacy. They usually live in human cities, making their own way in the world as clever rogues, brilliant wizards, or charming bards.</p>
+
+    <h2 class="chapter-title">General Alignment</h2>
+    <p>Most Tieflings are <strong>Chaotic Neutral</strong> or <strong>Chaotic Good</strong>. They don't like people telling them what to do, especially since society hasn't always been kind to them. They often want to do the right thing and prove to the world that they are heroes, not villains!</p>
+
+    <h2 class="chapter-title">Feelings Towards Others</h2>
+    <p>Tieflings are cautious around strangers, but they love making true friends.</p>
+    <ul>
+        <li><strong>Humans:</strong> Tieflings often live in Human cities, so they understand Humans well, even if Humans can be a bit judgmental.</li>
+        <li><strong>Other Outcasts:</strong> Tieflings get along great with anyone who feels a bit different or left out. They appreciate anyone who looks past their appearance!</li>
+    </ul>
+
+    <h2 class="chapter-title">Specific Traits</h2>
+    <div class="callout">
+        <h3>Innate Magic</h3>
+        <p>You have magic in your blood! Even if you aren't a Wizard or a Sorcerer, you naturally learn how to cast a few spells as you level up. You might learn how to create magical darkness to hide in, or how to rebuke enemies with a blast of fire, all without needing a spellbook!</p>
+    </div>
+    
+    <div class="callout">
+        <h3>Fiendish Legacy</h3>
+        <p>Your magical blood protects you! You can choose to be resistant to Fire, Cold, or Poison damage. This means you take half damage from those attacks. Walking through fire is no big deal for a Tiefling!</p>
+    </div>
+
+    <div class="callout">
+        <h3>Darkvision</h3>
+        <p>Your magical eyes let you see perfectly well in the dark. You can see in the dark as if it were Dim Light!</p>
+    </div>
+
+</div>
+
+</body>
+</html>

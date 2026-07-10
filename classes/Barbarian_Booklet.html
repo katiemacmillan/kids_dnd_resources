@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbarian Booklet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .line-art {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            column-span: all;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- PAGE 1: Intro & Mechanics -->
+    <h1>The Barbarian</h1>
+    
+    <div class="intro-text">
+        <p><strong>Unleash Your Inner Fury!</strong></p>
+        <p>Are you ready to smash through doors, lift heavy boulders, and roar in the face of danger? The Barbarian is a fierce warrior who uses their anger to become an unstoppable force. You don't need fancy armor or complicated magic—just a giant weapon and a lot of courage!</p>
+    </div>
+
+    <img src="../assets/Barbarian_lineart.png" class="line-art" alt="Barbarian Line Art">
+
+    <h2 class="chapter-title first">Class Mechanics</h2>
+    
+    <div class="callout">
+        <h3>😡 Rage</h3>
+        <p>This is your superpower! As a Bonus Action, you can enter a <strong>Rage</strong>. While raging, you are a combat monster:</p>
+        <ul>
+            <li>You get Advantage on Strength checks and Strength saving throws.</li>
+            <li>You deal extra damage when you hit with a melee weapon.</li>
+            <li>You have Resistance to bludgeoning, piercing, and slashing damage (you take HALF damage from most weapons!).</li>
+        </ul>
+        <p><em>Note: You can't cast spells or concentrate on them while raging. You're too angry!</em></p>
+    </div>
+
+    <h3>Unarmored Defense</h3>
+    <p>Barbarians are so tough they don't even need to wear armor! If you aren't wearing armor, your Armor Class (AC) is <strong>10 + your Dexterity modifier + your Constitution modifier</strong>. Your muscles literally block swords!</p>
+
+    <h3>Reckless Attack</h3>
+    <p>When you really want to hit something, you can swing wildly! You can choose to have <strong>Advantage</strong> on your first attack on your turn. But be careful: if you do this, enemies also get Advantage to hit you until your next turn.</p>
+
+    <h3>Strengths</h3>
+    <ul>
+        <li><strong>Super Tough:</strong> You have the highest Hit Points (health) of any class in the game!</li>
+        <li><strong>Massive Damage:</strong> With giant weapons and Rage damage, you hit incredibly hard.</li>
+        <li><strong>Simple to Play:</strong> You don't have to memorize a giant list of spells. You just rage and smash!</li>
+    </ul>
+    
+    <h3>Weaknesses</h3>
+    <ul>
+        <li><strong>No Magic:</strong> You can't cast spells to solve problems.</li>
+        <li><strong>Ranged Combat:</strong> You are best up close. If a monster is flying or far away, you might have a hard time reaching them.</li>
+        <li><strong>Mind Tricks:</strong> You might be weak to spells that target your Wisdom or Intelligence.</li>
+    </ul>
+
+    <!-- PAGE 2: Leveling Up -->
+    <h2 class="chapter-title">Leveling Up (Levels 1-5)</h2>
+    
+    <p>As you go on adventures and defeat monsters, you earn Experience Points (XP). When you get enough XP, you level up! Here is what you get as you grow stronger:</p>
+
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 1</strong></td>
+            <td><strong>Rage & Unarmored Defense:</strong> You start with your core powers! You can Rage 2 times per day.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 2</strong></td>
+            <td><strong>Reckless Attack & Danger Sense:</strong> You can attack wildly for Advantage! Plus, Danger Sense gives you Advantage on Dexterity saving throws against things you can see (like traps and spells).</td>
+        </tr>
+        <tr>
+            <td><strong>Level 3</strong></td>
+            <td><strong>Primal Path:</strong> You choose your subclass! (See the next page). You also get 3 Rages per day.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 4</strong></td>
+            <td><strong>Ability Score Improvement:</strong> You get stronger! You can add +2 to one of your stats (like Strength or Constitution) or +1 to two different stats.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 5</strong></td>
+            <td><strong>Extra Attack & Fast Movement:</strong> You can attack TWICE every time you take the Attack action! You also move 10 feet faster. You are a speedy powerhouse!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 3: Subclasses -->
+    <h2 class="chapter-title">Subclasses (Primal Paths)</h2>
+    
+    <p>At Level 3, your Barbarian connects with a special kind of power called a Primal Path. Here are two fun, awesome choices:</p>
+
+    <div class="callout">
+        <h3>🐻 Path of the Totem Warrior</h3>
+        <p>You connect with animal spirits who lend you their magical strength when you rage!</p>
+        <ul>
+            <li><strong>Bear Spirit:</strong> While raging, you resist ALMOST ALL damage (except psychic). You are basically indestructible!</li>
+            <li><strong>Eagle Spirit:</strong> You become super fast! Enemies have a hard time hitting you when you run past them.</li>
+            <li><strong>Wolf Spirit:</strong> You help your friends! Your friends get Advantage when attacking enemies standing next to you.</li>
+        </ul>
+        <p><em>Pick this if you love animals and want to be the toughest tank in the game!</em></p>
+    </div>
+
+    <div class="callout">
+        <h3>⚡ Path of the Storm Herald</h3>
+        <p>Your rage creates a magical storm around you! When you rage, you blast enemies with weather magic.</p>
+        <ul>
+            <li><strong>Desert Storm:</strong> You blast fire all around you, burning enemies who get too close!</li>
+            <li><strong>Sea Storm:</strong> You shoot lightning bolts at your foes and can breathe underwater!</li>
+            <li><strong>Tundra Storm:</strong> You freeze the ground, giving your friends temporary hit points (like an icy shield)!</li>
+        </ul>
+        <p><em>Pick this if you want to mix your smashing with some awesome elemental magic!</em></p>
+    </div>
+
+    <!-- PAGE 4: Gear & Strategy -->
+    <h2 class="chapter-title">Gear & Strategy</h2>
+    
+    <h3>Choosing Your Weapons</h3>
+    <p>Barbarians love big, heavy weapons that deal a lot of damage. Here are some great choices:</p>
+    <ul>
+        <li><strong>Greataxe or Greatsword:</strong> These are huge two-handed weapons that deal massive damage. Perfect for a strong Barbarian!</li>
+        <li><strong>Battleaxe and Shield:</strong> If you want to be extra safe, you can hold a one-handed weapon and a shield to boost your Armor Class.</li>
+        <li><strong>Javelins:</strong> Always carry a few javelins! If a monster is flying or too far to hit with your axe, you can throw a javelin at them.</li>
+    </ul>
+
+    <h3>How to Fight Like a Barbarian</h3>
+    <p>Your job in battle is to protect your friends by being the biggest threat in the room!</p>
+    <ol>
+        <li><strong>Rage Early:</strong> Don't wait! Use your Bonus Action to Rage on your first turn so you start taking half damage right away.</li>
+        <li><strong>Charge the Boss:</strong> Find the biggest, scariest monster and run right up to it. Keep it busy so it doesn't attack your wizard or bard friends.</li>
+        <li><strong>Use Reckless Attack Smartly:</strong> If you really need to hit an enemy to finish them off, use Reckless Attack! Just remember they might hit you back harder.</li>
+    </ol>
+
+    <!-- PAGE 5: Roleplaying -->
+    <h2 class="chapter-title">Roleplaying Your Barbarian</h2>
+    
+    <h3>Who Are You?</h3>
+    <p>Barbarians often come from tribes, clans, or wild places far away from big cities. Think about your backstory:</p>
+    <ul>
+        <li>Did you grow up in a frozen tundra, a hot desert, or a deep jungle?</li>
+        <li>Why did you leave your home to go adventuring? Are you looking for a legendary weapon? Trying to prove you are the strongest?</li>
+        <li>What makes you Rage? Do you hate bullies? Are you protecting a younger sibling? Or do you just really hate spiders?</li>
+    </ul>
+
+    <h3>How to Act</h3>
+    <p>You don't have to be a grumpy grump all the time! Barbarians can be loud, cheerful, and fiercely loyal to their friends.</p>
+    <ul>
+        <li><strong>Be the Strong Friend:</strong> Offer to carry all the heavy treasure, kick down locked doors, or arm-wrestle the local tavern champion.</li>
+        <li><strong>Trust Your Instincts:</strong> You might not read a lot of books, but you have great survival instincts. You can smell danger and track animals!</li>
+        <li><strong>Protect the "Squishies":</strong> Treat your magic-user friends like little siblings. If anyone messes with them, show them your axe!</li>
+    </ul>
+    
+    <p class="flavor-text">"You can keep your magic spells and fancy armor. I have my axe, my friends, and a whole lot of anger!"</p>
+
+    <!-- PAGE 6: Leveling Up (Levels 6 to 10) -->
+    <h2 class="chapter-title">Leveling Up (Levels 6-10)</h2>
+    
+    <p>Your adventures are getting more dangerous, but you are getting even stronger! Here is what happens as your Barbarian reaches level 10:</p>
+
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 6</strong></td>
+            <td><strong>Path Feature:</strong> Your subclass gets a new power! For example, Bear Totem warriors become super strong and can lift incredibly heavy things. You also get 4 Rages per day!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 7</strong></td>
+            <td><strong>Feral Instinct:</strong> You are like a wild animal! You get Advantage on Initiative rolls, meaning you almost always get to go first in battle. Nobody can surprise you!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 8</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Add +2 to one stat or +1 to two different stats to become even more powerful!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 9</strong></td>
+            <td><strong>Brutal Critical:</strong> When you score a critical hit (rolling a 20!), you get to roll an EXTRA damage die. Your giant hits are now MEGA hits!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 10</strong></td>
+            <td><strong>Path Feature:</strong> Another awesome subclass power! You also get 5 Rages per day. You can stay angry almost all day long!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 7: Famous Heroes -->
+    <h2 class="chapter-title">Famous Heroes &amp; Legends</h2>
+    
+    <p>Throughout history, many mighty Barbarians have become legends. Which of these heroes sounds most like you?</p>
+
+    <div class="callout">
+        <h3>🪓 Krog the Mountain-Breaker</h3>
+        <p>Krog was a giant of a man who loved his friends more than anything. Legend says that when a dragon trapped his party in a cave, Krog got so mad that he punched the mountain until it broke apart, creating a tunnel for them to escape!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🐺 Sheera the Wolf-Rider</h3>
+        <p>Sheera never walked if she could ride! She rode into battle on the back of a giant dire wolf. She was so fierce that even the monsters were scared of her loud, terrifying battle cry. She once arm-wrestled an ogre and won!</p>
+    </div>
+
+    <!-- PAGE 8: Best Magic Items -->
+    <h2 class="chapter-title">Best Magic Items</h2>
+    
+    <p>If you find a treasure chest, look for these awesome magic items! They are perfect for a Barbarian:</p>
+
+    <ul>
+        <li><strong>Belt of Dwarvenkind:</strong> This magical wrestling belt gives you extra Constitution (more health!) and lets you grow a fabulous beard, even if you are not a dwarf!</li>
+        <li><strong>Cloak of the Manta Ray:</strong> A cool cape that lets you breathe underwater and swim super fast. Perfect for when you need to smash sea-monsters!</li>
+        <li><strong>Flametongue Weapon:</strong> A magical sword or axe that bursts into flames when you say a secret command word. It deals extra fire damage every time you hit!</li>
+        <li><strong>Boots of Striding and Springing:</strong> These boots make you jump incredibly far. You can leap right over the small monsters to attack the big boss!</li>
+    </ul>
+
+    <!-- PAGE 9: Combat Cheat Sheet -->
+    <h2 class="chapter-title">Combat Cheat Sheet</h2>
+    
+    <p>What should you do on your turn? Use this quick guide to remember your options!</p>
+
+    <div class="callout">
+        <h3>🟢 Action</h3>
+        <p>Choose one big thing to do:</p>
+        <ul>
+            <li><strong>Attack:</strong> Swing your big weapon! (At level 5, you get to swing TWICE!)</li>
+            <li><strong>Dash:</strong> Run twice as far if you need to catch up to a fast enemy.</li>
+            <li><strong>Shove or Grapple:</strong> Push a monster over or grab them so they can't run away!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🟡 Bonus Action</h3>
+        <p>Choose one quick thing to do (if you have one):</p>
+        <ul>
+            <li><strong>Rage!:</strong> Get angry! Do this on your very first turn so you take half damage and hit harder.</li>
+            <li><strong>Two-Weapon Fighting:</strong> If you hold a small weapon in each hand, you can attack with the second one.</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🔴 Reaction</h3>
+        <p>A quick move when it's NOT your turn:</p>
+        <ul>
+            <li><strong>Opportunity Attack:</strong> If an enemy tries to run away from you without defending themselves, you get to smack them for free!</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 10: Draw Your Hero -->
+    <h2 class="chapter-title">Draw Your Hero!</h2>
+    
+    <p>What does your mighty Barbarian look like? Draw them here!</p>
+
+    <ul>
+        <li><strong>What is their name?</strong> ________________________________</li>
+        <li><strong>What is their favorite food?</strong> _________________________</li>
+        <li><strong>What do they yell when they Rage?</strong> _____________________</li>
+    </ul>
+
+    <div style="border: 4px dashed #c5a059; border-radius: 10px; height: 450px; margin-top: 20px; background-color: rgba(255, 255, 255, 0.5);"></div>
+
+</div>
+
+</body>
+</html>

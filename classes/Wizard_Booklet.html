@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizard Booklet - Kids D&D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always; /* Forces a new page when printing */
+            break-before: page;
+        }
+
+        /* Don't break the first chapter title */
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        .section-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: avoid;
+            break-before: auto;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .monster-block {
+            background-color: #f4eedc;
+            border: 1px solid #c5a059;
+            padding: 15px;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 8px;
+        }
+
+        .monster-block h4 {
+            margin-top: 0;
+            color: #58180D;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+
+        img.line-art {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 20px auto;
+            mix-blend-mode: multiply; /* Blends the white background into the parchment */
+            border-radius: 10px;
+            break-inside: avoid;
+            column-span: all;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th, .monster-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout, img, .monster-block {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- PAGE 1: Intro & Mechanics -->
+    <h1>Wizard Booklet</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Master of Spells!</strong></p>
+        <p>Welcome, brilliant scholar! As a Wizard, you have spent years reading dusty old books and practicing magical formulas. You carry a heavy Spellbook filled with secrets. You are the ultimate magic user, capable of learning more spells than any other class in the game!</p>
+    </div>
+
+    <img src="../assets/wizard_lineart.png" class="line-art" alt="Wizard Line Art">
+
+    <h2 class="chapter-title first">Awesome Wizard Powers</h2>
+    
+    <div class="callout">
+        <h3>📚 The Spellbook</h3>
+        <p>Your Spellbook is your most prized possession! Whenever you find magical scrolls or other wizards' books during your adventures, you can copy their spells into your own book. This means you can learn hundreds of different spells!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🧠 Arcane Recovery</h3>
+        <p>Studying magic has made your brain super powerful. Once per day, when you take a Short Rest (like stopping for lunch), you can study your Spellbook to magically get some of your used Spell Slots back!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🎓 Arcane Traditions</h3>
+        <p>As you level up, you choose a school of magic to specialize in. You could be an Evocation Wizard (who loves blowing things up with Fireballs), an Illusion Wizard (who tricks enemies with fake walls and invisibility), or a Necromancer (who controls spooky undead magic)!</p>
+    </div>
+
+    <h2 class="section-title">Strengths and Weaknesses</h2>
+    <ul>
+        <li><strong>Strengths:</strong> You have a spell for EVERY situation! Need to fly? You got it. Need to turn a monster into a sheep? You can do that. Need to explode a room full of goblins? Easy! You are also super smart and know a lot about history and magic.</li>
+        <li><strong>Weaknesses:</strong> You are the squishiest character in the game. You wear no armor and have very low health. If a monster gets close to you, you are in big trouble!</li>
+    </ul>
+
+    <!-- PAGE 2: Leveling Up -->
+    <h2 class="chapter-title">Leveling Up!</h2>
+    <p>As you go on adventures and defeat monsters, you will gain Experience Points (XP) and level up! Here is what you get for your first 5 levels as a Wizard:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Awesome New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 1</strong></td>
+            <td><strong>Spellcasting:</strong> You get your Spellbook! It starts with 6 Level 1 spells. You also know 3 Cantrips (easy spells) and get 2 Spell Slots.<br><strong>Arcane Recovery:</strong> You can get some Spell Slots back during a short rest.</td>
+        </tr>
+        <tr>
+            <td><strong>Level 2</strong></td>
+            <td><strong>Arcane Tradition:</strong> You pick your favorite type of magic to study! (Like Evocation or Illusion).<br><strong>More Magic:</strong> You get another Spell Slot and add 2 more spells to your book!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 3</strong></td>
+            <td><strong>Level 2 Spells:</strong> You unlock stronger magic! You can now learn spells like <em>Invisibility</em> or <em>Misty Step</em> (which lets you teleport!).</td>
+        </tr>
+        <tr>
+            <td><strong>Level 4</strong></td>
+            <td><strong>Ability Score Improvement:</strong> You can increase your Intelligence to make your spells even harder to dodge, or pick a cool Feat!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 5</strong></td>
+            <td><strong>Level 3 Spells:</strong> You unlock super powerful magic! You can now cast the famous <em>Fireball</em> spell, or cast <em>Haste</em> to make your friends run super fast!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 3: Subclasses -->
+    <h2 class="chapter-title">Awesome Subclasses</h2>
+    <p>At Level 2, you choose your <strong>Arcane Tradition</strong>. This is the type of magic you want to be an expert in! Here are two really fun options:</p>
+
+    <div class="callout">
+        <h3>💥 School of Evocation</h3>
+        <p class="flavor-text">"I cast FIREBALL!"</p>
+        <p>Evocation magic is all about creating powerful blasts of energy, like fire, ice, and lightning. You are the ultimate magical cannon!</p>
+        <ul>
+            <li><strong>Evocation Savant:</strong> It costs you less money and time to copy Evocation spells into your Spellbook.</li>
+            <li><strong>Sculpt Spells:</strong> This is amazing! When you cast a big explosion spell (like Fireball), you can magically create "safe pockets" so your friends don't get hurt by the blast. You can blow up the monsters without blowing up your team!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🎩 School of Illusion</h3>
+        <p class="flavor-text">"You thought that was a wall? Nope, just a magical picture!"</p>
+        <p>Illusion magic is all about tricking people's eyes and ears. You can create fake monsters, hide your friends, and confuse the bad guys!</p>
+        <ul>
+            <li><strong>Illusion Savant:</strong> It costs you less money and time to copy Illusion spells into your Spellbook.</li>
+            <li><strong>Improved Minor Illusion:</strong> You learn the <em>Minor Illusion</em> cantrip for free. Even better, when you cast it, you can create BOTH a sound and a picture at the same time! You could make a fake roaring lion to scare away goblins!</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 4: Gear & Strategy -->
+    <h2 class="chapter-title">Gear & Strategy</h2>
+    
+    <h3>What to Wear and Carry 🎒</h3>
+    <p>Wizards are the classic magic users. You don't need heavy armor when you have a big brain!</p>
+    <ul>
+        <li><strong>The Spellbook:</strong> This is your most important item! Guard it with your life. If you lose it, you can't change your spells!</li>
+        <li><strong>Weapons:</strong> You might carry a quarterstaff (a cool walking stick) or a dagger, but you will almost always use your magic instead.</li>
+        <li><strong>Arcane Focus:</strong> This is a special item you use to cast spells. It could be a glowing crystal, a magical wand, or your staff!</li>
+    </ul>
+
+    <h3>How to Fight ⚔️</h3>
+    <div class="callout">
+        <h4>1. Stay Far Away!</h4>
+        <p>You have the lowest hit points in the game. Hide behind the Fighter, stand on a tall rock, or cast <em>Fly</em> to get out of reach. Do not let the monsters hit you!</p>
+    </div>
+    <div class="callout">
+        <h4>2. Protect Yourself</h4>
+        <p>Always have the <em>Shield</em> spell ready. If a monster tries to hit you, you can cast <em>Shield</em> as a reaction to magically block their attack!</p>
+    </div>
+    <div class="callout">
+        <h4>3. Control the Battlefield</h4>
+        <p>You don't always have to do damage. Casting <em>Sleep</em> on a group of guards or <em>Web</em> to trap a giant spider is sometimes better than just blasting them with fire!</p>
+    </div>
+
+    <!-- PAGE 5: Roleplaying -->
+    <h2 class="chapter-title">Roleplaying Your Wizard</h2>
+    
+    <h3>Who Are You? 🎭</h3>
+    <p>Because Intelligence is your highest stat, you are a total nerd (in the best way possible)! You know a lot of facts about history, magic, and monsters.</p>
+    
+    <ul>
+        <li><strong>The Bookworm:</strong> You always have your nose in a book. Whenever the party finds a library, you are the first one inside!</li>
+        <li><strong>The Mad Scientist:</strong> You love experimenting with magic. Sometimes your spells smell weird or make funny noises because you are always tinkering with them.</li>
+        <li><strong>The Know-It-All:</strong> You love explaining things to your friends. "Actually, did you know that goblins are afraid of horses?"</li>
+    </ul>
+
+    <h3>What Does Your Spellbook Look Like? 📖</h3>
+    <p>Every Wizard's Spellbook is unique! Think about what yours looks like:</p>
+    <ul>
+        <li>Is it a neat, tidy book with perfect handwriting and beautiful drawings?</li>
+        <li>Is it a messy journal filled with crazy notes, spilled ink, and loose papers sticking out?</li>
+        <li>Maybe it's not a book at all! Maybe you carve your spells into small stones, or tie them in knots on a long string!</li>
+    </ul>
+    
+    <p><strong>Have fun, be creative, and keep studying that magic!</strong></p>
+    <!-- PAGE 6: Leveling Up (Levels 6 to 10) -->
+    <h2 class="chapter-title">More Leveling Up! (Levels 6-10)</h2>
+    <p>Your big brain is getting even smarter! Here is what happens when you study hard and level up:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Amazing New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 6</strong></td>
+            <td><strong>Tradition Feature:</strong> You learn a new trick from your magic school! (Like making your illusions super convincing, or your fireballs hurt even more.)</td>
+        </tr>
+        <tr>
+            <td><strong>Level 7</strong></td>
+            <td><strong>Level 4 Spells:</strong> You unlock bigger spells! You can turn your enemies into harmless animals with <em>Polymorph</em> or conjure giant black tentacles!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 8</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Increase your Intelligence again, or pick a smart new Feat!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 9</strong></td>
+            <td><strong>Level 5 Spells:</strong> Wow! You can now cast <em>Wall of Force</em> to trap bad guys, or magically build your very own house with <em>Telepathic Bond</em>!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 10</strong></td>
+            <td><strong>Tradition Feature:</strong> Your mastery of your magic school gives you a super powerful new ability!</td>
+        </tr>
+    </table>
+
+    <!-- PAGE 7: Famous Heroes & Legends -->
+    <h2 class="chapter-title">Famous Wizards</h2>
+    <p>Books are filled with stories of the smartest and most powerful Wizards. Here are a couple of legends:</p>
+    
+    <div class="callout">
+        <h3>🧙‍♂️ Mordenkainen the Brilliant</h3>
+        <p>Mordenkainen is one of the most famous Wizards ever! He invented many of the spells you might learn, like <em>Mordenkainen's Faithful Hound</em>. He was always writing new spells and balancing the forces of good and evil in the universe.</p>
+    </div>
+    
+    <div class="callout">
+        <h3>✨ Tasha the Clever</h3>
+        <p>Tasha is famous for inventing spells that make people laugh, like <em>Tasha's Hideous Laughter</em>! She traveled the world discovering magical secrets and writing books full of funny and powerful magic.</p>
+    </div>
+
+    <!-- PAGE 8: Best Magic Items -->
+    <h2 class="chapter-title">Best Magic Items</h2>
+    <p>Keep your eyes peeled for these amazing treasures on your adventures!</p>
+    <ul>
+        <li><strong>Pearl of Power:</strong> A shiny pearl you can wear as a ring or necklace. It helps you succeed on your saving throws and makes you generally safer!</li>
+        <li><strong>Wand of Magic Missiles:</strong> This wand is packed full of extra <em>Magic Missile</em> spells so you don't have to use your own Spell Slots to shoot them!</li>
+        <li><strong>Enduring Spellbook:</strong> A magical spellbook that can't be burned, soaked in water, or ruined. It keeps all your precious spells perfectly safe!</li>
+        <li><strong>Robe of Useful Items:</strong> A cool robe covered in magical patches. You can pull off a patch and it turns into a real item, like a ladder, a boat, or even a riding horse!</li>
+    </ul>
+
+    <!-- PAGE 9: Combat Cheat Sheet -->
+    <h2 class="chapter-title">Combat Cheat Sheet</h2>
+    <p>Not sure what to do on your turn? Here is a quick guide to being an awesome Wizard in battle:</p>
+    
+    <div class="monster-block">
+        <h4>⚡ Your Action</h4>
+        <ul>
+            <li><strong>Cast a Big Spell:</strong> Use a Spell Slot to change the battle! Blast the bad guys with <em>Fireball</em> or cast <em>Web</em> to trap them!</li>
+            <li><strong>Cast a Cantrip:</strong> If you want to save your big magic, throw a <em>Fire Bolt</em> or <em>Ray of Frost</em> for free!</li>
+        </ul>
+    </div>
+    
+    <div class="monster-block">
+        <h4>✨ Your Bonus Action</h4>
+        <ul>
+            <li><strong>Misty Step:</strong> If bad guys get too close, cast <em>Misty Step</em> to magically teleport 30 feet away to safety!</li>
+        </ul>
+    </div>
+    
+    <div class="monster-block">
+        <h4>🛡️ Your Reaction</h4>
+        <ul>
+            <li><strong>Cast Shield:</strong> If a monster tries to hit you, use your Reaction to instantly put up a magical force field!</li>
+            <li><strong>Cast Counterspell:</strong> If an evil wizard tries to cast a spell on you, you can shout "No you don't!" and cancel their spell!</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 10: Draw Your Hero! -->
+    <h2 class="chapter-title">Draw Your Hero!</h2>
+    <p>What does your Wizard look like? Grab some crayons or colored pencils and draw them here!</p>
+    <ul>
+        <li>What is your Wizard's name? _________________________</li>
+        <li>What does your Spellbook look like? _________________________</li>
+        <li>What is your favorite book to read before bed? _________________________</li>
+    </ul>
+    <div style="border: 4px dashed #c5a059; height: 500px; margin-top: 20px; background-color: #fff; border-radius: 10px;"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighter Booklet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .line-art {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            column-span: all;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- PAGE 1: Intro & Mechanics -->
+    <h1>The Fighter</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Ultimate Weapon Master!</strong></p>
+        <p>Do you want to be the best at combat? The Fighter is an expert with every weapon and every piece of armor in the world. Whether you want to be an archer shooting arrows from afar, a knight with a sword and shield, or a warrior swinging a giant hammer, the Fighter is for you!</p>
+    </div>
+
+    <img src="../assets/Fighter_lineart.png" class="line-art" alt="Fighter line art">
+
+    <h2 class="chapter-title first">Class Mechanics</h2>
+    
+    <div class="callout">
+        <h3>⚔️ Action Surge</h3>
+        <p>This is what makes Fighters amazing! Once per short rest, you can push yourself past your normal limits and take a <strong>whole extra Action</strong> on your turn. You can use this to attack twice as many times, run super far, or attack and then dodge!</p>
+    </div>
+
+    <h3>Second Wind</h3>
+    <p>Fighters never give up! On your turn, you can use a Bonus Action to catch your breath and magically heal yourself for 1d10 + your Fighter level. You can do this once per short rest, which keeps you in the fight longer!</p>
+
+    <h3>Fighting Style</h3>
+    <p>At level 1, you choose what kind of fighter you are. You get a permanent bonus based on your style! For example, the <em>Archery</em> style makes you more accurate with bows, while the <em>Defense</em> style gives you +1 to your Armor Class when wearing armor.</p>
+
+    <h3>Strengths</h3>
+    <ul>
+        <li><strong>Combat King:</strong> You are the most reliable damage dealer in the game.</li>
+        <li><strong>Tough:</strong> You can wear heavy armor, use shields, and heal yourself with Second Wind.</li>
+        <li><strong>Lots of Attacks:</strong> As you level up, you get to attack more times per turn than any other class!</li>
+    </ul>
+    
+    <h3>Weaknesses</h3>
+    <ul>
+        <li><strong>No Magic:</strong> Unless you choose a specific subclass later, you don't get any spells.</li>
+        <li><strong>Out of Combat:</strong> You don't have as many skills for talking or sneaking as a Rogue or a Bard.</li>
+    </ul>
+
+    <!-- PAGE 2: Leveling Up -->
+    <h2 class="chapter-title">Leveling Up</h2>
+    
+    <div class="intro-text">
+        <p>Every time you level up, your fighting skills become more legendary. Let's see what awesome powers you unlock from Levels 1 to 5!</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Awesome New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>1</strong></td>
+            <td><strong>Fighting Style & Second Wind:</strong> Pick your favorite way to fight (like Archery or Two-Weapon Fighting). Plus, you can instantly heal yourself with Second Wind in the middle of battle!</td>
+        </tr>
+        <tr>
+            <td><strong>2</strong></td>
+            <td><strong>Action Surge:</strong> You are so fast and skilled that you can take an entire EXTRA Action on your turn! Double the attacks, double the fun!</td>
+        </tr>
+        <tr>
+            <td><strong>3</strong></td>
+            <td><strong>Martial Archetype (Subclass):</strong> You choose your special Fighter path! Will you be a magical warrior, a tactical commander, or a pure champion of strength?</td>
+        </tr>
+        <tr>
+            <td><strong>4</strong></td>
+            <td><strong>Ability Score Improvement:</strong> You can increase your Strength or Dexterity to hit harder and more often, or take a "Feat" to learn a special trick!</td>
+        </tr>
+        <tr>
+            <td><strong>5</strong></td>
+            <td><strong>Extra Attack:</strong> The best level ever! Whenever you take the Attack action, you get to swing your weapon TWICE instead of once. Paired with Action Surge, you can attack FOUR times in one turn!</td>
+        </tr>
+    </table>
+
+    <div class="callout">
+        <h3>Leveling Up Tip!</h3>
+        <p>If you use big swords, boost your <strong>Strength</strong>. If you use bows or nimble swords (like Rapiers), boost your <strong>Dexterity</strong>. Always try to make your main attacking stat higher!</p>
+    </div>
+
+    <!-- PAGE 3: Subclasses -->
+    <h2 class="chapter-title">Subclasses: Martial Archetypes</h2>
+    
+    <p>At Level 3, you choose your "Martial Archetype." This is the special fighting technique you have mastered. Here are two incredibly fun subclasses to pick:</p>
+
+    <h3>🏆 The Champion</h3>
+    <p>Do you want to hit the bad guys really, really hard? The Champion is all about pure, incredible physical power. You train your body to be the absolute best.</p>
+    <ul>
+        <li><strong>Improved Critical:</strong> Normally, you only get a Critical Hit (double damage!) when you roll a 20 on the 20-sided die. As a Champion, you get a Critical Hit on a 19 AND a 20! You will deal huge damage much more often.</li>
+        <li><strong>Remarkable Athlete:</strong> You become a master at jumping, running, and climbing. You can jump farther than anyone else, making it easy to leap over pits or jump onto monsters!</li>
+    </ul>
+
+    <h3>🏹 The Arcane Archer</h3>
+    <p>Why choose between a bow and magic when you can have both? Arcane Archers are fighters who have learned elven magic. They shoot special glowing arrows that have amazing magical effects!</p>
+    <ul>
+        <li><strong>Arcane Shots:</strong> Twice per rest, you can unleash a super-powered magical arrow. You get to pick which ones you know!</li>
+        <li><strong>Grasping Arrow:</strong> Your arrow wraps the enemy in poisonous, thorny brambles, slowing them down and hurting them if they try to move!</li>
+        <li><strong>Bursting Arrow:</strong> Your arrow hits the target and then explodes with force energy, hurting all the bad guys standing nearby!</li>
+        <li><strong>Seeking Arrow:</strong> You can shoot an arrow that curves around corners to hit an enemy you can't even see!</li>
+    </ul>
+
+    <!-- PAGE 4: Gear & Strategy -->
+    <h2 class="chapter-title">Gear & Strategy</h2>
+
+    <h3>What Gear Should I Use?</h3>
+    <p>You can use anything, so pick what sounds the coolest to you!</p>
+    <ul>
+        <li><strong>Armor:</strong> If you are strong, wear Heavy Armor (like Chain Mail or Plate Armor). You will be an unstoppable tank! If you are fast and stealthy, wear Light or Medium Armor.</li>
+        <li><strong>Shield:</strong> If you want to protect yourself and your friends, hold a shield! It makes you very hard to hit.</li>
+        <li><strong>Weapons:</strong> 
+            <ul>
+                <li><em>For big damage:</em> A Greatsword or a Greataxe (uses 2 hands).</li>
+                <li><em>For defense:</em> A Longsword or Warhammer with a Shield (uses 1 hand).</li>
+                <li><em>For range:</em> A Longbow to shoot from safety!</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>How to Fight Like a Fighter</h3>
+    <p>You are the leader on the battlefield. Here is how you win the day:</p>
+    <ul>
+        <li><strong>Be the Wall:</strong> Stand in the front! Put yourself between the scary monsters and your squishy friends (like Wizards and Bards). Let the monsters try to hit your high Armor Class!</li>
+        <li><strong>Focus Fire:</strong> Pick the most dangerous enemy and hit them with everything you have. Use your Action Surge to take them out before they can hurt your team.</li>
+        <li><strong>Don't Be Afraid:</strong> You have high health and Second Wind. Don't be afraid to take a few hits to save your friends. You are tough enough to handle it!</li>
+    </ul>
+
+    <div class="callout">
+        <h3>Strategy Secret</h3>
+        <p>Save your Action Surge for a tough moment! If the boss monster is almost defeated, or if a friend is in trouble and needs you to run over and help <em>right now</em>, Action Surge is the ultimate hero button!</p>
+    </div>
+
+    <!-- PAGE 5: Roleplaying -->
+    <h2 class="chapter-title">Roleplaying Your Fighter</h2>
+
+    <p>Fighters are brave warriors, but they can come from anywhere! A Fighter can be a royal knight, a pirate, or a farm kid who picked up a pitchfork to save the village.</p>
+
+    <h3>Where Did You Come From?</h3>
+    <ul>
+        <li><strong>The Noble Knight:</strong> You wear shiny armor and serve a king or queen. You are very polite and always keep your promises.</li>
+        <li><strong>The Gladiator:</strong> You fought in the grand arena for cheering crowds! You love showing off your cool weapon spins and trick shots.</li>
+        <li><strong>The Veteran Soldier:</strong> You used to be in an army. You are serious, organized, and always keep your gear perfectly clean.</li>
+    </ul>
+
+    <h3>Fun Quirks & Habits</h3>
+    <p>Give your character a fun habit to make them memorable!</p>
+    <ul>
+        <li>You name all your weapons and talk to them while you polish them by the campfire.</li>
+        <li>You challenge everyone you meet to an arm-wrestling contest.</li>
+        <li>You are secretly afraid of something very silly, like spiders or the dark, even though you fight giant dragons.</li>
+        <li>You loudly yell a super cool battle cry every time you use Action Surge!</li>
+    </ul>
+
+    <div class="callout">
+        <h3>Be the Brave Leader!</h3>
+        <p>When the team is scared to open a dark door or fight a scary monster, your Fighter should step up and say, "Stand behind me! I've got this!"</p>
+    </div>
+
+    <!-- PAGE 6: Leveling Up (Levels 6 to 10) -->
+    <h2 class="chapter-title">Leveling Up (Levels 6 to 10)</h2>
+    
+    <div class="intro-text">
+        <p>You are becoming an unstoppable force on the battlefield! From levels 6 to 10, your fighting skills reach legendary levels.</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Awesome New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>6</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Fighters get more of these than anyone else! Boost your Strength or Dexterity, or learn a cool new Feat (like becoming a master with a shield)!</td>
+        </tr>
+        <tr>
+            <td><strong>7</strong></td>
+            <td><strong>Subclass Feature:</strong> Your Martial Archetype gives you a new trick! Champions get a bonus to jumping and moving, while Arcane Archers learn magical curving arrows!</td>
+        </tr>
+        <tr>
+            <td><strong>8</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Another one! Keep boosting those stats so you never miss an attack, or learn how to wear heavy armor even better.</td>
+        </tr>
+        <tr>
+            <td><strong>9</strong></td>
+            <td><strong>Indomitable:</strong> If you fail a saving throw (like trying to dodge a dragon's fire breath or resist mind-control magic), you can reroll the dice and try again! You refuse to quit!</td>
+        </tr>
+        <tr>
+            <td><strong>10</strong></td>
+            <td><strong>Subclass Feature:</strong> Champions get to pick a second Fighting Style (now you can be great at archery AND defense!), while Arcane Archers learn even more magical shots!</td>
+        </tr>
+    </table>
+
+    <div class="callout">
+        <h3>Leveling Up Tip!</h3>
+        <p>Don't forget to use your Indomitable power when things look bad. A true Fighter never gives up!</p>
+    </div>
+
+    <!-- PAGE 7: Famous Heroes & Legends -->
+    <h2 class="chapter-title">Famous Heroes & Legends</h2>
+
+    <p>Throughout history, brave Fighters have stood on the front lines to protect the world. Here are a few legendary heroes to inspire you:</p>
+
+    <h3>🛡️ Bruenor Battlehammer</h3>
+    <p>A tough and grumpy dwarf with a heart of gold. He uses a legendary axe and a shield with a foaming mug symbol on it. He is a loyal friend and the king of his dwarf clan!</p>
+
+    <h3>🗡️ Lae'zel of Crèche K'liir</h3>
+    <p>A fierce alien warrior called a Githyanki. She rides flying red dragons and fights with an incredibly sharp silver sword. She is all about discipline, strength, and never backing down from a challenge.</p>
+
+    <h3>🏹 Percy de Rolo</h3>
+    <p>A brilliant fighter who used his smarts to invent a brand new weapon! Instead of a sword or bow, he fights from a distance using gadgets and sharp shooting to help his friends.</p>
+
+    <div class="callout">
+        <h3>Create Your Legend</h3>
+        <p>What will your story be? Will you be the knight who defeats the evil king, or the gladiator who wins the grand tournament?</p>
+    </div>
+
+    <!-- PAGE 8: Best Magic Items -->
+    <h2 class="chapter-title">Best Magic Items</h2>
+
+    <p>As you explore dangerous dungeons, keep your eyes open for these amazing magic items that are absolutely perfect for a Fighter!</p>
+
+    <h3>🔥 Flametongue Sword</h3>
+    <p>Speak a magical command word, and this sword bursts into bright, hot flames! It does extra fire damage every time you hit a bad guy and doubles as a great torch in dark caves.</p>
+
+    <h3>🛡️ Sentinel Shield</h3>
+    <p>A magical shield with a glowing, watchful eye painted on the front. It actually helps you see better and makes sure enemies can never surprise you or sneak up on you!</p>
+
+    <h3>👢 Boots of Striding and Springing</h3>
+    <p>These enchanted boots make you move faster and let you jump incredibly high! You can leap over giant holes, jump right over enemies, or reach tall ledges with ease.</p>
+
+    <h3>🗡️ Dancing Sword</h3>
+    <p>You can throw this sword into the air, and it will magically fly around and fight enemies all by itself while you use another weapon! It's like having an extra helper in battle.</p>
+
+    <!-- PAGE 9: Combat Cheat Sheet -->
+    <h2 class="chapter-title">Combat Cheat Sheet</h2>
+
+    <p>Battles can be crazy! Use this quick guide to remember what you can do on your turn.</p>
+
+    <div class="callout">
+        <h3>🟢 1. Your Action (Pick One!)</h3>
+        <ul>
+            <li><strong>Attack:</strong> Swing your sword or shoot your bow! (Remember, at Level 5 you get to do this TWICE per Action!)</li>
+            <li><strong>Dodge:</strong> Focus entirely on defense to make it super hard for enemies to hit you.</li>
+            <li><strong>Help:</strong> Give a friend an advantage on their next attack!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🟡 2. Your Bonus Action (If you have one!)</h3>
+        <ul>
+            <li><strong>Second Wind:</strong> Catch your breath and heal yourself for free!</li>
+            <li><strong>Two-Weapon Fighting:</strong> If you are holding two light weapons (like two daggers), you get a free extra attack!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🔴 3. Your Reaction (Not on your turn!)</h3>
+        <ul>
+            <li><strong>Attack of Opportunity:</strong> If an enemy tries to run away from you, you get one free swing to stop them!</li>
+            <li><strong>Protection Style:</strong> If you have a shield and the Protection style, you can block an attack meant for your friend!</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>⭐ Special: ACTION SURGE!</h3>
+        <p>Once per short rest, you can push the "I win" button and take a <strong>whole extra Action</strong> right now!</p>
+    </div>
+
+    <!-- PAGE 10: Draw Your Hero! -->
+    <h2 class="chapter-title">Draw Your Hero!</h2>
+
+    <p>Every legendary hero needs a portrait. What does your Fighter look like? What kind of armor do they wear? Do they have a really cool, giant sword?</p>
+
+    <ul>
+        <li><strong>What is your Fighter's name?</strong> ________________________________</li>
+        <li><strong>What is your favorite weapon to use?</strong> ________________________________</li>
+        <li><strong>What is your favorite food to eat after a battle?</strong> ________________________</li>
+    </ul>
+
+    <div style="border: 4px dashed #c5a059; height: 500px; margin-top: 20px; background-color: white; border-radius: 10px;"></div>
+
+</div>
+
+</body>
+</html>

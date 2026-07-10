@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwarf Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Dwarf Handbook</h1>
+        <p class="intro-text">Stout, sturdy, and masters of stone and metal!</p>
+
+        <h2 class="chapter-title first">Who are the Dwarves?</h2>
+        <p>Dwarves are short, broad, and incredibly tough. They are famous for their magnificent beards (which both men and sometimes women grow with pride!), their skill at the forge, and their deep love for the earth. They live in grand cities carved into the hearts of mountains, filled with glowing gems and echoing with the sound of hammers.</p>
+
+        <h3>Personality</h3>
+        <p>Dwarves are brave, hardworking, and very stubborn. When a Dwarf makes up their mind, it's almost impossible to change it! They value loyalty, tradition, and a job well done. They can sometimes be grumpy or suspicious of strangers, but once you earn a Dwarf's friendship, they will be your friend for life.</p>
+
+        <h3>History and Lore</h3>
+        <p>Dwarves believe they were carved from the very stone of the world by their creator god, Moradin. For thousands of years, they have mined the deep earth, fighting off goblins and dragons to protect their underground kingdoms. They keep careful records of their history and honor their ancestors by singing epic songs about their deeds.</p>
+
+        <div class="callout">
+            <h3>General Alignment</h3>
+            <p><strong>Dwarves like rules and order.</strong> They are usually Lawful Good. They believe in fairness, keeping promises, and working together to build a safe and prosperous community.</p>
+        </div>
+
+        <h3>Feelings Towards Other Races</h3>
+        <ul>
+            <li><strong>Elves:</strong> "Too flighty and they spend too much time in the trees. But they do make beautiful things."</li>
+            <li><strong>Halflings:</strong> "Good folk! They appreciate a good meal and a comfortable home, just like we do."</li>
+            <li><strong>Humans:</strong> "They don't live very long, so they are always in a rush. But they are good trading partners."</li>
+        </ul>
+
+        <h2 class="chapter-title">Dwarf Traits</h2>
+        
+        <p>Your Dwarf character has the following special abilities:</p>
+
+        <ul>
+            <li><strong>Ability Score Increase:</strong> Your Constitution score increases by 2. You are incredibly tough and healthy!</li>
+            <li><strong>Age:</strong> Dwarves mature at the same rate as humans, but they are considered young until they reach the age of 50. On average, they live about 350 years.</li>
+            <li><strong>Size:</strong> Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium.</li>
+            <li><strong>Speed:</strong> Your base walking speed is 25 feet. Your speed is not reduced by wearing heavy armor.</li>
+            <li><strong>Darkvision:</strong> Accustomed to life underground, you have superior vision in dark and dim conditions up to 60 feet.</li>
+            <li><strong>Dwarven Resilience:</strong> You have advantage on saving throws against poison, and you have resistance against poison damage.</li>
+            <li><strong>Dwarven Combat Training:</strong> You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.</li>
+            <li><strong>Tool Proficiency:</strong> You gain proficiency with the artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools.</li>
+            <li><strong>Stonecunning:</strong> Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check!</li>
+        </ul>
+
+        <div class="callout">
+            <h3>Your Clan</h3>
+            <p>Dwarves belong to ancient clans, like the Battlehammers or the Frostbeards. Your clan is your family and your identity. What is your clan's symbol, and what are they famous for crafting?</p>
+        </div>
+    </div>
+</body>
+</html>

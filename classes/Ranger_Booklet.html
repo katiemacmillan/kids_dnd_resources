@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranger Booklet - Kids D&D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always; /* Forces a new page when printing */
+            break-before: page;
+        }
+
+        /* Don't break the first chapter title */
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .monster-block {
+            background-color: #f4eedc;
+            border: 1px solid #c5a059;
+            padding: 15px;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 8px;
+        }
+
+        .monster-block h4 {
+            margin-top: 0;
+            color: #58180D;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+
+        img.line-art {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 20px auto;
+            mix-blend-mode: multiply; /* Blends the white background into the parchment */
+            border-radius: 10px;
+            break-inside: avoid;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th, .monster-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout, img, .monster-block {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>Ranger Booklet</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Wilderness Explorer!</strong></p>
+        <p>Welcome, tracker! As a Ranger, you are a master of the wild. You know how to survive in deep forests, dark caves, and freezing mountains. You are amazing with a bow, you can cast nature magic, and you are an expert at hunting down dangerous monsters!</p>
+    </div>
+
+    <img src="../assets/ranger_lineart.png" class="line-art" alt="Ranger Line Art">
+
+    <h2 class="chapter-title first">Awesome Ranger Powers</h2>
+    
+    <div class="callout">
+        <h3>🎯 Hunter's Mark</h3>
+        <p>This is your signature spell! You magically mark a monster as your prey. As long as the spell lasts, every time you hit that monster, you do extra damage. You also have an easier time tracking them if they try to run away!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🌲 Natural Explorer</h3>
+        <p>You are a survival expert. You can't get lost in the wild, you can easily find food and water for your friends, and you can track monsters by looking at their footprints. You are the ultimate guide!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🐾 Animal Companions</h3>
+        <p>Many Rangers (like the Beast Master) get a loyal animal friend! You can have a pet wolf, hawk, or even a bear that fights by your side and helps you scout ahead.</p>
+    </div>
+
+    <h2 class="chapter-title">Strengths and Weaknesses</h2>
+    <ul>
+        <li><strong>Strengths:</strong> You are amazing at fighting from far away with a bow. You are also the best class for exploring and surviving in the wild. Your mix of fighting skills and nature magic makes you very versatile!</li>
+        <li><strong>Weaknesses:</strong> You don't have as much heavy armor as a Fighter or Paladin, so you can get hurt if surrounded. Your magic is also mostly focused on nature and fighting, so you don't have big explosive spells like a Wizard.</li>
+    </ul>
+
+    <h2 class="chapter-title">Leveling Up (Levels 1-5)</h2>
+    <p>As you adventure and defeat monsters, you will gain experience points and level up! Here is what you get at the first 5 levels:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 1</strong></td>
+            <td><strong>Favored Enemy:</strong> You pick a type of monster (like Dragons or Goblins) that you are an expert at hunting.<br><strong>Natural Explorer:</strong> You become a master of a specific environment, like forests or mountains!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 2</strong></td>
+            <td><strong>Fighting Style:</strong> You become an expert at Archery or fighting with two weapons.<br><strong>Spellcasting:</strong> You learn to cast nature magic, like <em>Cure Wounds</em> or <em>Speak with Animals</em>!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 3</strong></td>
+            <td><strong>Ranger Archetype:</strong> You choose your special subclass (like Beast Master or Hunter).<br><strong>Primeval Awareness:</strong> You can use your magic to sense if monsters are hiding nearby!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 4</strong></td>
+            <td><strong>Ability Score Improvement:</strong> You can make your Dexterity or Wisdom even higher, making you a better shot or a better spellcaster!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 5</strong></td>
+            <td><strong>Extra Attack:</strong> You are so fast you can now shoot two arrows or swing your swords twice in one turn!<br><strong>2nd-Level Spells:</strong> You learn more powerful spells, like <em>Pass without Trace</em> to make your whole team super sneaky!</td>
+        </tr>
+    </table>
+
+    <h2 class="chapter-title">Subclasses: Your Ranger Archetype</h2>
+    <p>At Level 3, you choose a Ranger Archetype. This is your special style of being a Ranger! Here are two fun options:</p>
+
+    <div class="callout">
+        <h3>🐾 Beast Master (The Animal Friend)</h3>
+        <p>You have a magical bond with an animal! You get a loyal pet that follows you everywhere and helps you fight.</p>
+        <ul>
+            <li><strong>Ranger's Companion:</strong> You can choose a beast, like a wolf, panther, or giant crab, to be your best friend. It fights on your turn and protects you!</li>
+            <li><strong>Teamwork:</strong> You and your pet learn to attack together, making you a deadly duo.</li>
+        </ul>
+    </div>
+
+    <div class="callout">
+        <h3>🏹 Hunter (The Monster Tracker)</h3>
+        <p>You are the ultimate monster hunter! You learn special fighting moves to take down the biggest, scariest creatures.</p>
+        <ul>
+            <li><strong>Hunter's Prey:</strong> You get to pick a special combat trick. For example, <em>Colossus Slayer</em> lets you do extra damage to giant monsters, or <em>Horde Breaker</em> lets you hit multiple small monsters at once!</li>
+            <li><strong>Defensive Tactics:</strong> As you level up, you learn how to dodge attacks from giant monsters.</li>
+        </ul>
+    </div>
+
+    <h2 class="chapter-title">Gear & Strategy</h2>
+    
+    <h3>Weapons & Armor 🛡️</h3>
+    <p>Rangers need to be quick and quiet!</p>
+    <ul>
+        <li><strong>Armor:</strong> Wear light or medium armor, like Leather or Studded Leather. It protects you but lets you sneak around.</li>
+        <li><strong>The Longbow:</strong> Your best friend! You can hit monsters from very far away before they even see you.</li>
+        <li><strong>Two Shortswords:</strong> If monsters get close, you can pull out two swords and attack with a flurry of slashes!</li>
+    </ul>
+
+    <h3>How to Fight ⚔️</h3>
+    <p>Stay back and use your bow! Cast <strong>Hunter's Mark</strong> on the toughest monster on the battlefield, and then pepper them with arrows. If monsters get too close, you can use your nature magic to create thorny vines to trap them, or pull out your swords to fight them up close. If you have an animal companion, send them in to distract the monsters!</p>
+
+    <h2 class="chapter-title">Roleplaying Your Ranger</h2>
+    
+    <h3>Background Ideas 📜</h3>
+    <p>Who were you before you became a Ranger?</p>
+    <ul>
+        <li><strong>The Outlander:</strong> You grew up in the wild, raised by wolves or living in a treehouse far from any city.</li>
+        <li><strong>The Bounty Hunter:</strong> You travel from town to town, getting paid to track down dangerous monsters that are bothering the villagers.</li>
+        <li><strong>The Guide:</strong> You know all the secret paths through the mountains and help travelers cross safely.</li>
+    </ul>
+
+    <h3>How to Act 🗣️</h3>
+    <p>You are the eyes and ears of the party! When you are traveling, you should be the one leading the way, looking for traps, and tracking footprints. Think about what kind of environment you grew up in—are you a forest ranger, a desert survivor, or an underground cave explorer? Use your knowledge to keep your friends safe! You might prefer talking to animals more than talking to people.</p>
+
+    <h2 class="chapter-title">Leveling Up (Levels 6-10)</h2>
+    <p>You are becoming a true master of the wild! Here are the awesome powers you get from levels 6 to 10:</p>
+    
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>New Powers!</th>
+        </tr>
+        <tr>
+            <td><strong>Level 6</strong></td>
+            <td><strong>Greater Favored Enemy & Natural Explorer:</strong> You pick another type of monster you are an expert at fighting, and another type of environment you can easily survive in!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 7</strong></td>
+            <td><strong>Ranger Archetype Feature:</strong> You get a special defensive power from your subclass. Beast Masters get a pet with magic attacks!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 8</strong></td>
+            <td><strong>Ability Score Improvement:</strong> Make your Dexterity or Wisdom even higher, or learn a new Feat!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 9</strong></td>
+            <td><strong>3rd-Level Spells:</strong> You learn super cool nature spells, like <em>Conjure Animals</em> to summon friendly beasts to fight for you!</td>
+        </tr>
+        <tr>
+            <td><strong>Level 10</strong></td>
+            <td><strong>Hide in Plain Sight:</strong> You are so sneaky that you can cover yourself in mud and leaves and become practically invisible!</td>
+        </tr>
+    </table>
+
+    <h2 class="chapter-title">Famous Heroes & Legends</h2>
+    <p>Rangers are the protectors of the wild. Here are some legendary trackers you might have heard of:</p>
+    
+    <div class="callout">
+        <h3>🏹 Robin Hood</h3>
+        <p>The classic outlaw hero who hides in the forest! He is a master archer who sets clever traps for the bad guys and shares his treasure with those in need.</p>
+    </div>
+
+    <div class="callout">
+        <h3>⚔️ Drizzt Do'Urden</h3>
+        <p>A famous dark elf Ranger who fights with two glowing scimitars. He left the evil underground world to be a hero on the surface, traveling with his magical panther friend, Guenhwyvar!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🐾 Vex'ahlia</h3>
+        <p>A brilliant archer who never misses a shot! She travels everywhere with her giant, cuddly bear named Trinket. They are the perfect team!</p>
+    </div>
+
+    <h2 class="chapter-title">Best Magic Items</h2>
+    <p>Every survival expert needs great gear! Look for these amazing magical items on your travels:</p>
+    <ul>
+        <li><strong>Oathbow:</strong> An enchanted bow that whispers in Elvish! When you swear to defeat an enemy, it shoots magical arrows that almost never miss.</li>
+        <li><strong>Cloak of Elvenkind:</strong> This magical, leafy-green cape changes color to match your surroundings. It makes you incredibly good at hiding!</li>
+        <li><strong>Boots of Striding and Springing:</strong> These boots let you run super fast and jump incredibly high, perfect for leaping over rivers or climbing trees.</li>
+        <li><strong>Bag of Tricks:</strong> A small fuzzy bag that lets you pull out friendly magical animals (like giant badgers or boars) to help you in a fight!</li>
+    </ul>
+
+    <h2 class="chapter-title">Combat Cheat Sheet</h2>
+    <p>Not sure what to do on your turn? Here is a quick guide to your Ranger moves!</p>
+    
+    <div class="monster-block">
+        <h4>⚔️ Action (Choose One)</h4>
+        <ul>
+            <li><strong>Attack:</strong> Shoot your bow or swing your swords! (At Level 5, you attack twice!)</li>
+            <li><strong>Cast a Spell:</strong> Use your action to cast a spell like <em>Cure Wounds</em> or <em>Spike Growth</em> to trap enemies.</li>
+            <li><strong>Hide:</strong> Dive behind a bush or rock so monsters can't see you.</li>
+        </ul>
+    </div>
+
+    <div class="monster-block">
+        <h4>⚡ Bonus Action (Choose One)</h4>
+        <ul>
+            <li><strong>Hunter's Mark:</strong> Magically target a boss monster so your attacks do extra damage! (You can also move the mark to a new monster when the first one is defeated).</li>
+            <li><strong>Two-Weapon Fighting:</strong> If you are holding two light weapons (like shortswords), you can make one extra attack with your second sword!</li>
+            <li><strong>Command your Pet:</strong> If you are a Beast Master, tell your animal companion who to attack!</li>
+        </ul>
+    </div>
+
+    <div class="monster-block">
+        <h4>🛡️ Reaction (When it's not your turn)</h4>
+        <ul>
+            <li><strong>Opportunity Attack:</strong> If a monster tries to run past you, you can take a quick swing at them with your sword!</li>
+            <li><strong>Absorb Elements:</strong> If a dragon breathes fire on you, use this spell to take less damage!</li>
+        </ul>
+    </div>
+
+    <h2 class="chapter-title">Draw Your Hero!</h2>
+    <p>What does your incredible Ranger look like? Do you wear a hooded cloak? What kind of bow do you use? If you have an animal companion, draw them too!</p>
+    
+    <ul>
+        <li><strong>What is their name?</strong> ___________________________</li>
+        <li><strong>What is their favorite animal?</strong> ___________________________</li>
+        <li><strong>What is their favorite place in nature?</strong> ___________________________</li>
+    </ul>
+
+    <div style="border: 4px dashed #c5a059; height: 500px; margin-top: 20px; border-radius: 10px; background-color: rgba(255,255,255,0.5);"></div>
+
+</div>
+</body>
+</html>

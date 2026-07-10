@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human - Kids D&D Species Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <h1>Human Handbook</h1>
+    
+    <div class="intro-text">
+        <p><strong>Adaptable, ambitious, and brave. Humans are good at a little bit of everything!</strong></p>
+        <p>If you want to play a character who can learn any skill, fit in anywhere, and forge their own unique destiny, the Human is for you!</p>
+    </div>
+
+    <h2 class="chapter-title first">Personality</h2>
+    <p>Humans are incredibly diverse! Some are quiet and studious, while others are loud and adventurous. Because humans don't live as long as Elves or Dwarves (who can live for hundreds of years!), humans are always in a hurry to make their mark on the world. They are curious, ambitious, and always ready to try something new.</p>
+
+    <h2 class="chapter-title">History & Lore</h2>
+    <p>Humans are the builders of empires and the explorers of the unknown. You can find them everywhere in the D&D world, from scorching deserts to freezing tundras. They build massive cities, sail across dangerous oceans, and invent new ways to use magic and technology. They are the ultimate survivors!</p>
+
+    <h2 class="chapter-title">General Alignment</h2>
+    <p>Humans can be <strong>Any Alignment!</strong> Because humans are so different from one another, they can be the greatest, most noble heroes (Lawful Good) or the sneakiest, most mischievous rogues (Chaotic Neutral). It's entirely up to you how your human behaves!</p>
+
+    <h2 class="chapter-title">Feelings Towards Others</h2>
+    <p>Humans are very social and love mixing with other cultures.</p>
+    <ul>
+        <li><strong>Dwarves:</strong> Humans respect Dwarven craftsmanship and love trading with them.</li>
+        <li><strong>Elves:</strong> They admire Elven magic and art, even if they think Elves take too long to make decisions.</li>
+        <li><strong>Halflings:</strong> Humans love sharing stories and meals with Halflings; they make the best travel buddies!</li>
+    </ul>
+
+    <h2 class="chapter-title">Specific Traits</h2>
+    <div class="callout">
+        <h3>Versatile</h3>
+        <p>Because humans are so adaptable, they learn things very quickly. You get to choose one extra Skill to be Proficient in! Whether it's Acrobatics, Stealth, or History, you get to pick what makes your human special.</p>
+    </div>
+    
+    <div class="callout">
+        <h3>Resourceful</h3>
+        <p>Humans always seem to find a way to succeed when things look bad. You get a free "Heroic Inspiration" every day after you finish a Long Rest. You can use this Inspiration to reroll a bad d20 roll when you really need to save the day!</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gnome Handbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Gnome Handbook</h1>
+        <p class="intro-text">Curious, inventive, and full of boundless energy!</p>
+
+        <h2 class="chapter-title first">Who are the Gnomes?</h2>
+        <p>Gnomes are small, cheerful folks who are bursting with enthusiasm for life. They are even shorter than dwarves, usually standing around 3 feet tall, and they often have wild hair and bright, expressive eyes. They love to invent things, play pranks, and discover how the world works. To a Gnome, every day is a new adventure!</p>
+
+        <h3>Personality</h3>
+        <p>Gnomes are incredibly curious and love to talk! They speak quickly, often jumping from one idea to the next. They are natural tinkerers and illusionists, always building strange clockwork gadgets or practicing fun magic tricks. They love jokes, games, and making people smile. It's very hard to keep a Gnome in a bad mood for long.</p>
+
+        <h3>History and Lore</h3>
+        <p>Gnomes traditionally live in hidden, underground burrows nestled under rolling hills or deep in magical forests. Their homes are cozy and filled with the sounds of whirring gears and bubbling potions. They have a special connection to the magic of the earth and often befriend burrowing animals like badgers and moles.</p>
+
+        <div class="callout">
+            <h3>General Alignment</h3>
+            <p><strong>Gnomes just want to have fun and help out!</strong> They are usually Good, and often lean towards Chaotic Good. They love freedom, creativity, and making the world a happier place.</p>
+        </div>
+
+        <h3>Feelings Towards Other Races</h3>
+        <ul>
+            <li><strong>Dwarves:</strong> "They make great metalwork, but they need to learn how to tell a good joke!"</li>
+            <li><strong>Elves:</strong> "So magical and elegant! We love sharing stories and learning about the Feywild from them."</li>
+            <li><strong>Humans:</strong> "They are always busy doing something interesting. We love seeing what they'll come up with next!"</li>
+        </ul>
+
+        <h2 class="chapter-title">Gnome Traits</h2>
+        
+        <p>Your Gnome character has the following special abilities:</p>
+
+        <ul>
+            <li><strong>Ability Score Increase:</strong> Your Intelligence score increases by 2. You are super smart and quick-witted!</li>
+            <li><strong>Age:</strong> Gnomes mature at the same rate humans do, and most are expected to settle down into an adult life by around age 40. They can live 350 to almost 500 years.</li>
+            <li><strong>Size:</strong> Gnomes are between 3 and 4 feet tall and average about 40 pounds. Your size is Small.</li>
+            <li><strong>Speed:</strong> Your base walking speed is 25 feet.</li>
+            <li><strong>Darkvision:</strong> Accustomed to life underground, you have superior vision in dark and dim conditions up to 60 feet.</li>
+            <li><strong>Gnome Cunning:</strong> You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic. Your mind is too quick to be easily tricked!</li>
+        </ul>
+
+        <div class="callout">
+            <h3>Your Gnome Names</h3>
+            <p>Gnomes love names, and most have half a dozen or so! A gnome's mother, father, clan elder, aunts, and uncles each give the gnome a name, and various nicknames from just about everyone else might or might not stick over time. What are some of your favorite nicknames?</p>
+        </div>
+    </div>
+</body>
+</html>

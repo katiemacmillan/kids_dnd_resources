@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rogue Handbook - Kids D&D</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #e8e4d9;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fdf6e3;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            padding: 60px 70px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            column-count: 2;
+            column-gap: 50px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-align: center;
+            column-span: all;
+            border-bottom: 4px solid #c5a059;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+        }
+
+        .chapter-title {
+            font-size: 2.4em;
+            border-bottom: 3px solid #c5a059;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            column-span: all;
+            text-align: center;
+            page-break-before: always; /* Forces a new page when printing */
+            break-before: page;
+        }
+
+        /* Don't break the first chapter title */
+        .chapter-title.first {
+            page-break-before: avoid;
+            break-before: auto;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #58180D;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            break-after: avoid;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+        
+        h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .callout {
+            background-color: #efe9d3;
+            border: 2px solid #d4c395;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .callout h3, .callout h4 {
+            margin-top: 0;
+            border-bottom: none;
+            color: #58180D;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            column-span: all;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            break-inside: avoid;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #d4c395;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #efe9d3;
+            color: #58180D;
+            font-family: 'Cinzel', serif;
+        }
+
+        .flavor-text {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .monster-block {
+            background-color: #f4eedc;
+            border: 1px solid #c5a059;
+            padding: 15px;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 8px;
+        }
+
+        .monster-block h4 {
+            margin-top: 0;
+            color: #58180D;
+            border-bottom: 1px solid #d4c395;
+            padding-bottom: 5px;
+        }
+
+        img.line-art {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 20px auto;
+            mix-blend-mode: multiply; /* Blends the white background into the parchment */
+            border-radius: 10px;
+            break-inside: avoid;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+                max-width: 100%;
+                background-color: #fdf6e3 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .callout, th, .monster-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #efe9d3 !important;
+            }
+            h1, h2, h3, h4 {
+                break-after: avoid;
+            }
+            p, li, table, .callout, img, .monster-block {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>Rogue Handbook</h1>
+    
+    <div class="intro-text">
+        <p><strong>The Sneaky Shadow!</strong></p>
+        <p>Welcome, master of stealth! As a Rogue, you are the sneakiest, quickest, and cleverest hero in the group. You are an expert at picking locks, disarming traps, and hiding in the shadows. When monsters aren't looking, you strike with deadly precision!</p>
+    </div>
+
+    <h2 class="chapter-title first">Awesome Rogue Powers</h2>
+    
+    <div class="callout">
+        <h3>🗡️ Sneak Attack</h3>
+        <p>This is your most powerful move! Once per turn, if you have Advantage on your attack (like if you are hiding), OR if one of your friends is standing right next to the monster, you get to roll a handful of extra damage dice! You know exactly where to hit to make it hurt.</p>
+    </div>
+
+    <div class="callout">
+        <h3>🏃 Cunning Action</h3>
+        <p>You are incredibly fast! You can use your Bonus Action to Dash (run super fast), Disengage (run away safely without getting hit), or Hide. This means you can attack a monster and then zip away before they can hit you back!</p>
+    </div>
+
+    <div class="callout">
+        <h3>🛠️ Expertise</h3>
+        <p>You are a master of your skills. You get to pick a few skills (like Stealth, Sleight of Hand, or Perception) and double your Proficiency Bonus for them. You are the absolute best at what you do!</p>
+    </div>
+
+    <h2 class="chapter-title">Strengths and Weaknesses</h2>
+    <ul>
+        <li><strong>Strengths:</strong> You do massive damage with a single hit using Sneak Attack. You are also the most useful character outside of combat because you can pick locks, find traps, and scout ahead safely.</li>
+        <li><strong>Weaknesses:</strong> You wear light armor and don't have a lot of health. If you get stuck in the middle of a big group of monsters, you can get knocked out quickly. You have to stay mobile!</li>
+    </ul>
+
+    <h2 class="chapter-title">How to Play Your Rogue</h2>
+    
+    <h3>In Combat ⚔️</h3>
+    <p>Never fight fair! Always try to attack monsters that are already fighting your friends so you can use your <strong>Sneak Attack</strong>. Use your bow from the shadows, or run in with your daggers, attack, and use your <strong>Cunning Action</strong> to run away and hide behind a rock or barrel.</p>
+    
+    <h3>In Roleplay 🗣️</h3>
+    <p>You are the problem solver! When there is a locked door, a trapped treasure chest, or a sleeping guard, it's your time to shine. Are you a heroic thief who steals from the rich to give to the poor? Or are you a secret agent spy? Use your cleverness to trick enemies and get your friends out of trouble!</p>
+</div>
+</body>
+</html>
