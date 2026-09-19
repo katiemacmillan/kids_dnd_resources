@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
 
         body {
-            background-color: #e8e4d9;
+            background-color: #d9c69a;
             background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
             font-family: 'Lora', Georgia, serif;
             color: #222;
@@ -21,8 +21,8 @@
         .page {
             max-width: 900px;
             margin: 0 auto;
-            background-color: #fdf6e3;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(228,217,197,0.6) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            background-color: #f6e6bf;
+            background-image: radial-gradient(circle, rgba(255,249,232,0.35) 0%, rgba(210,186,138,0.7) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
             padding: 60px 70px;
             box-shadow: 0 0 25px rgba(0,0,0,0.4);
             column-count: 2;
@@ -103,8 +103,8 @@
         }
 
         .callout {
-            background-color: #efe9d3;
-            border: 2px solid #d4c395;
+            background-color: #ebdcb0;
+            border: 2px solid #cbb069;
             border-radius: 5px;
             padding: 15px 20px;
             margin: 20px 0;
@@ -145,7 +145,7 @@
         }
         
         th {
-            background-color: #efe9d3;
+            background-color: #ebdcb0;
             color: #58180D;
             font-family: 'Cinzel', serif;
         }
@@ -157,7 +157,7 @@
         }
 
         .monster-block {
-            background-color: #f4eedc;
+            background-color: #ecdfb6;
             border: 1px solid #c5a059;
             padding: 15px;
             margin-bottom: 15px;
@@ -182,25 +182,216 @@
             break-inside: avoid;
         }
 
+        /* Cover art page and Table of Contents are shown only when printing. */
+        .cover-page, .toc { display: none; }
+
+        /*
+         * BOOKLET / BOOK-FORMAT PRINTING
+         * Each printed page is sized to HALF of a US Letter sheet (5.5in x 8.5in),
+         * portrait. That way two book pages fit on one landscape Letter sheet,
+         * which is exactly what your printer's "Booklet" / "2 pages per sheet"
+         * option needs. Content becomes a single, kid-friendly column.
+         */
         @media print {
-            body {
-                background: none;
-                padding: 0;
+            @page {
+                size: 5.5in 8.5in;
+                margin: 0.45in 0.5in 0.55in 0.5in;
             }
+            /* Page numbers in the OUTER corner: right-hand (odd) pages get the
+               number at bottom-right, left-hand (even) pages at bottom-left. */
+            @page :right {
+                @bottom-right {
+                    content: counter(page);
+                    font-family: 'Lora', Georgia, serif;
+                    font-size: 10pt;
+                    color: #58180D;
+                }
+            }
+            @page :left {
+                @bottom-left {
+                    content: counter(page);
+                    font-family: 'Lora', Georgia, serif;
+                    font-size: 10pt;
+                    color: #58180D;
+                }
+            }
+            /* Cover page: full-bleed art, no margins, no page number. */
+            @page :first {
+                margin: 0;
+                @bottom-right { content: none; }
+                @bottom-left { content: none; }
+            }
+
+            body {
+                background: none !important;
+                background-color: #f6e6bf !important;
+                padding: 0;
+                margin: 0;
+                font-size: 10.5pt;
+                line-height: 1.4;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
             .page {
                 box-shadow: none;
                 margin: 0;
-                padding: 40px;
+                padding: 0;
                 max-width: 100%;
-                background-color: #fdf6e3 !important;
+                width: 100%;
+                /* Fully disable multi-column so forced page breaks work
+                   (a multicol container turns page breaks into column breaks). */
+                column-count: auto;
+                column-width: auto;
+                column-gap: 0;
+                background: none !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+
+            /* The on-screen text title is replaced by the cover-art page in print. */
+            .book-title { display: none; }
+
+            /* Full-bleed illustrated cover as page 1 */
+            .cover-page {
+                display: block;
+                position: relative;
+                width: 5.5in;
+                height: 8.5in;
+                overflow: hidden;
+                background-image: url('assets/cover_art.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                break-after: page;
+                page-break-after: always;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Decorative inset frame to tie the cover to the book's gold accents */
+            .cover-page::after {
+                content: "";
+                position: absolute;
+                top: 0.28in;
+                left: 0.28in;
+                right: 0.28in;
+                bottom: 0.28in;
+                border: 2px solid #58180D;
+                outline: 5px solid #c5a059;
+                outline-offset: 2px;
+                pointer-events: none;
+            }
+
+            .cover-title {
+                position: absolute;
+                top: 0.62in;
+                left: 0.55in;
+                right: 0.55in;
+                text-align: center;
+                background-color: rgba(246, 230, 191, 0.86);
+                border: 3px solid #c5a059;
+                border-radius: 8px;
+                padding: 12px 10px 14px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .cover-title .line1 {
+                display: block;
+                font-family: 'Cinzel', serif;
+                font-weight: 700;
+                font-size: 25pt;
+                line-height: 1.05;
+                color: #58180D;
+            }
+            .cover-title .line2 {
+                display: block;
+                font-family: 'Cinzel', serif;
+                font-weight: 700;
+                font-size: 16pt;
+                margin-top: 8px;
+                color: #58180D;
+            }
+
+            /* Table of Contents */
+            .toc {
+                display: block;
+                break-after: page;
+                page-break-after: always;
+            }
+            .toc-title {
+                font-size: 22pt;
+                text-align: center;
+                border-bottom: 3px solid #c5a059;
+                padding-bottom: 10px;
+                margin: 0 0 24px 0;
+            }
+            .toc ol {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .toc li {
+                margin-bottom: 14px;
+                font-size: 1.05em;
+            }
+            .toc a {
+                display: block;
+                color: #58180D;
+                text-decoration: none;
+                font-family: 'Lora', Georgia, serif;
+            }
+            .toc a::after {
+                content: ' ' leader('.') ' ' target-counter(attr(href), page);
+                font-weight: 700;
+            }
+
+            .intro-text {
+                font-size: 1.05em;
+                padding: 0;
+                margin-bottom: 0;
+            }
+
+            .chapter-title {
+                font-size: 19pt;
+                margin-top: 0;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+            }
+
+            .chapter-title.first {
+                /* Chapter 1 follows the intro on the first content page. */
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            h3 { font-size: 13pt; margin-top: 16px; }
+            h4 { font-size: 11.5pt; margin-top: 10px; }
+
+            p, li {
+                orphans: 2;
+                widows: 2;
+            }
+
+            table { font-size: 0.85em; }
+            th, td { padding: 5px 6px; }
+
+            img.line-art {
+                max-width: 2.6in;
+                margin: 12px auto;
+            }
+
             .callout, th, .monster-block {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                background-color: #efe9d3 !important;
+                background-color: #ebdcb0 !important;
             }
+
+            .callout, .monster-block {
+                padding: 10px 12px;
+                margin: 12px 0;
+            }
+
             h1, h2, h3, h4 {
                 break-after: avoid;
             }
@@ -213,7 +404,31 @@
 <body>
 
 <div class="page">
-    <h1>Dungeons & Dragons<br>Hero's Handbook</h1>
+    <div class="cover-page">
+        <div class="cover-title">
+            <span class="line1">Dungeons &amp; Dragons</span>
+            <span class="line2">Hero's Handbook</span>
+        </div>
+    </div>
+
+    <nav class="toc">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ol>
+            <li><a href="#ch1">Chapter 1: The Core Rules</a></li>
+            <li><a href="#ch2">Chapter 2: Your Hero's Origins</a></li>
+            <li><a href="#ch3">Chapter 3: Your Hero's Job (Classes)</a></li>
+            <li><a href="#ch4">Chapter 4: Stats &amp; Skills</a></li>
+            <li><a href="#ch5">Chapter 5: Equipment &amp; Magic Items</a></li>
+            <li><a href="#ch6">Chapter 6: Adventuring &amp; Exploration</a></li>
+            <li><a href="#ch7">Chapter 7: Combat!</a></li>
+            <li><a href="#ch8">Chapter 8: Conditions &amp; Hazards</a></li>
+            <li><a href="#ch9">Chapter 9: Magic &amp; Spells</a></li>
+            <li><a href="#ch10">Chapter 10: Know Your Monsters</a></li>
+            <li><a href="#ch11">Chapter 11: How to be a Great Player</a></li>
+        </ol>
+    </nav>
+
+    <h1 class="book-title">Dungeons & Dragons<br>Hero's Handbook</h1>
     
     <div class="intro-text">
         <p><strong>Welcome, Adventurer!</strong></p>
@@ -221,7 +436,7 @@
         <p>One person is the <strong>Dungeon Master (DM)</strong>. They are the narrator and the referee. They describe the world, play the monsters, and tell you what happens when you try to do something cool.</p>
     </div>
 
-    <h2 class="chapter-title first">Chapter 1: The Core Rules</h2>
+    <h2 class="chapter-title first" id="ch1">Chapter 1: The Core Rules</h2>
     
     <img src="assets/dice_roll_lineart.png" class="line-art" alt="Rolling a d20">
     
@@ -260,7 +475,7 @@
     <h3>Rounding Down</h3>
     <p>If you ever have to divide a number in half (like taking half damage from a fire spell), and it ends up as a fraction (like 7 divided by 2 is 3.5), <strong>always round down</strong> (so it becomes 3). </p>
 
-    <h2 class="chapter-title">Chapter 2: Your Hero's Origins</h2>
+    <h2 class="chapter-title" id="ch2">Chapter 2: Your Hero's Origins</h2>
     
     <img src="assets/species_lineart.png" class="line-art" alt="Different D&D Species">
     <p>To make your hero, the first thing you choose is your <strong>Species</strong>. This is what your character looks like and where they come from. There are 10 main species in D&D, and each one gives you special, magical traits!</p>
@@ -345,7 +560,7 @@
         <li><strong>Innate Magic:</strong> As you level up, you naturally learn how to cast a few spells, like creating magical darkness or rebuking enemies with fire, without needing a spellbook!</li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 3: Your Hero's Job (Classes)</h2>
+    <h2 class="chapter-title" id="ch3">Chapter 3: Your Hero's Job (Classes)</h2>
     
     <img src="assets/adventurers_lineart.png" class="line-art" alt="Adventurers Line Art">
 
@@ -411,7 +626,7 @@
         <p>A brilliant student of magic. Wizards carry a giant Spellbook. They are the most versatile magic users in the game, capable of learning hundreds of different spells, from shooting fireballs to turning invisible or teleporting! <em>(Primary Stat: Intelligence)</em></p>
     </div>
 
-    <h2 class="chapter-title">Chapter 4: Stats & Skills</h2>
+    <h2 class="chapter-title" id="ch4">Chapter 4: Stats & Skills</h2>
     
     <img src="assets/skills_lineart.png" class="line-art" alt="Rogue Picking a Lock">
     <p>Every character has 6 main <strong>Ability Scores</strong>. These numbers measure how good you are at different things. They give you a <strong>Modifier</strong> (usually between -1 and +5) that you add to your d20 rolls.</p>
@@ -479,7 +694,7 @@
         <li><strong>Survival (WIS):</strong> Following tracks, finding food, and not getting lost.</li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 5: Equipment & Magic Items</h2>
+    <h2 class="chapter-title" id="ch5">Chapter 5: Equipment & Magic Items</h2>
     
     <img src="assets/weapons_lineart.png" class="line-art" alt="Weapons Line Art">
 
@@ -544,7 +759,7 @@
         <li><strong>Ioun Stones:</strong> These are legendary glowing crystals. When you activate one, it floats in the air and slowly orbits around your head like a tiny moon, giving you a permanent magical power (like no longer needing to eat, or boosting your Strength!).</li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 6: Adventuring & Exploration</h2>
+    <h2 class="chapter-title" id="ch6">Chapter 6: Adventuring & Exploration</h2>
     
     <img src="assets/exploration_lineart.png" class="line-art" alt="Adventurer Exploring a Dungeon">
     <p>When you aren't fighting monsters, you are exploring the world! The DM will describe what you see, and you tell the DM what you want to do.</p>
@@ -571,7 +786,7 @@
         <li><strong>Suffocating:</strong> You can hold your breath for a number of minutes equal to 1 + your Constitution modifier. After that, you start running out of air!</li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 7: Combat!</h2>
+    <h2 class="chapter-title" id="ch7">Chapter 7: Combat!</h2>
     
     <img src="assets/combat_lineart.png" class="line-art" alt="Knight Blocking an Attack">
     <p>When monsters attack, time slows down into <strong>Rounds</strong> and <strong>Turns</strong>. A Round is 6 seconds in the game world, but it gives everyone at the table a chance to take a turn.</p>
@@ -636,7 +851,7 @@
         </li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 8: Conditions & Hazards</h2>
+    <h2 class="chapter-title" id="ch8">Chapter 8: Conditions & Hazards</h2>
     
     <img src="assets/conditions_lineart.png" class="line-art" alt="Adventurer Restrained in a Spider Web">
     <p>Sometimes monsters do nasty things to you that give you a "Condition." Here is what they mean:</p>
@@ -692,7 +907,7 @@
         </tr>
     </table>
 
-    <h2 class="chapter-title">Chapter 9: Magic & Spells</h2>
+    <h2 class="chapter-title" id="ch9">Chapter 9: Magic & Spells</h2>
     
     <img src="assets/magic_lineart.png" class="line-art" alt="Magic Line Art">
 
@@ -733,7 +948,7 @@
         <li>If you get hit by a monster while concentrating, you have to roll a Constitution Saving Throw. If you fail, you lose your focus and the spell turns off!</li>
     </ul>
 
-    <h2 class="chapter-title">Chapter 10: Know Your Monsters</h2>
+    <h2 class="chapter-title" id="ch10">Chapter 10: Know Your Monsters</h2>
     
     <img src="assets/dragon_lineart.png" class="line-art" alt="Dragon Line Art">
 
@@ -784,7 +999,7 @@
         <p>The ultimate boss monsters. Giant, flying, magical reptiles. They are highly intelligent, have terrifying breath weapons (like fire, ice, or acid), and love hoarding treasure. Never fight a dragon unless you are fully prepared!</p>
     </div>
 
-    <h2 class="chapter-title">Chapter 11: How to be a Great Player</h2>
+    <h2 class="chapter-title" id="ch11">Chapter 11: How to be a Great Player</h2>
     
     <img src="assets/teamwork_lineart.png" class="line-art" alt="Adventurers High Fiving">
     <p>D&D is a team game! The goal isn't to "win" or "beat the DM." The goal is to tell an awesome story with your friends. Here are some tips to be the best player at the table:</p>

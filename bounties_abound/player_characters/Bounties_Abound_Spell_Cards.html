@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bounties Abound — Party Spell Cards</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            background-color: #d9c69a;
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            font-family: 'Lora', Georgia, serif;
+            margin: 0;
+            padding: 24px 16px 48px;
+            color: #222;
+        }
+
+        .print-hint {
+            max-width: 8.5in;
+            margin: 0 auto 22px;
+            background: #ebdcb0;
+            border: 2px solid #cbb069;
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+
+        .print-hint h1 {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            font-size: 1.45em;
+            text-align: center;
+            margin: 0 0 8px;
+        }
+
+        .print-hint p, .print-hint li {
+            margin: 0 0 6px;
+            font-size: 0.92em;
+            line-height: 1.45;
+        }
+
+        .print-hint ol { margin: 0; padding-left: 22px; }
+        .print-hint li { margin-bottom: 4px; }
+
+        .sheet-label {
+            max-width: 8.5in;
+            margin: 0 auto 8px;
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            text-align: center;
+            font-size: 1.05em;
+        }
+
+        .sheet {
+            display: grid;
+            grid-template-columns: repeat(3, 2.4in);
+            grid-template-rows: repeat(3, 3.2in);
+            gap: 0.1in;
+            justify-content: center;
+            margin: 0 auto 28px;
+        }
+
+        .card {
+            background-color: #f6e6bf;
+            background-image: radial-gradient(circle, rgba(255,249,232,0.35) 0%, rgba(210,186,138,0.55) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+            border: 3px solid #c5a059;
+            border-radius: 10px;
+            padding: 7px 8px 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-sizing: border-box;
+            height: 3.2in;
+            width: 2.4in;
+        }
+
+        .card.blank {
+            visibility: hidden;
+            box-shadow: none;
+        }
+
+        .owner {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62em;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+            background: #58180D;
+            border-radius: 999px;
+            padding: 2px 0;
+            margin: 0 12px 5px;
+        }
+
+        .owner.sanebs { background: #3d4a6b; }
+        .owner.wren { background: #4a5a32; }
+        .owner.misty { background: #6b3d5c; }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            font-size: 0.92em;
+            text-align: center;
+            margin: 0 0 2px;
+            border-bottom: 2px solid #c5a059;
+            padding-bottom: 3px;
+            line-height: 1.15;
+        }
+
+        .card-subtitle {
+            text-align: center;
+            font-size: 0.68em;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 48px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            margin: 0 0 2px;
+        }
+
+        .card-stats {
+            font-size: 0.68em;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            background-color: rgba(255,255,255,0.55);
+            padding: 4px 6px;
+            border-radius: 5px;
+            border: 1px solid #e4d9c5;
+        }
+
+        .card-stats strong { color: #58180D; }
+
+        .card-desc {
+            font-size: 0.68em;
+            line-height: 1.32;
+            flex-grow: 1;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .card-back {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 10px;
+            position: relative;
+        }
+
+        .card-back::before {
+            content: "";
+            position: absolute;
+            inset: 7px;
+            border: 2px solid #58180D;
+            outline: 4px solid #c5a059;
+            outline-offset: 2px;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .card-back .back-kicker {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68em;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #58180D;
+            margin: 0 0 8px;
+        }
+
+        .card-back .back-art {
+            width: 78%;
+            height: 1.35in;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            margin: 0 auto 8px;
+        }
+
+        .card-back .back-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35em;
+            color: #58180D;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .card-back .back-campaign {
+            font-size: 0.72em;
+            font-style: italic;
+            color: #444;
+            margin: 6px 0 0;
+        }
+
+        .card-back.sanebs {
+            background-color: #d7dce8;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(170,180,205,0.65) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+        }
+
+        .card-back.wren {
+            background-color: #e4e6c8;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(186,196,150,0.65) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+        }
+
+        .card-back.misty {
+            background-color: #ead5e4;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(210,160,195,0.65) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+        }
+
+        @media print {
+            @page {
+                size: letter portrait;
+                margin: 0.28in 0.4in;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .print-hint, .sheet-label { display: none; }
+
+            .sheet {
+                margin: 0 auto;
+                width: 7.4in;
+                height: 10.44in;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 0.08in;
+                overflow: hidden;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .sheet:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+
+            .card {
+                width: auto;
+                height: auto;
+                box-shadow: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .card-image { height: 42px; }
+            .card-back .back-art { height: 1.15in; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-hint">
+    <h1>Bounties Abound Spell Cards</h1>
+    <p>Wren’s 9 cards, Sanebs’s 3 cards, then Misty’s 4 cards. Each face page is followed by a matching back page.</p>
+    <ol>
+        <li>Print on <strong>Letter</strong> paper, portrait.</li>
+        <li>Turn on <strong>Background graphics</strong>.</li>
+        <li>Choose <strong>two-sided / duplex</strong> and <strong>flip on the long edge</strong> (not the short edge).</li>
+        <li>Cut along the gold borders. Wren = mossy green, Sanebs = slate blue, Misty = pink.</li>
+    </ol>
+</div>
+
+<p class="sheet-label">Wren — fronts (page 1 of 2)</p>
+<section class="sheet">
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Spare the Dying</h3>
+        <div class="card-subtitle">Cantrip • Necromancy</div>
+        <img src="../assets/card_spell_generic.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Touch<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">Touch a living creature at 0 HP. They become <strong>stable</strong> (they stop dying). Does not work on undead or constructs — it will not help Sanebs!</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Mending</h3>
+        <div class="card-subtitle">Cantrip • Transmutation</div>
+        <img src="../assets/card_spell_nature.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 minute<br>
+            <strong>Range:</strong> Touch<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">Fix a small break or tear (broken key, torn cloak, cracked cup) no longer than 1 foot. Leaves no scar. Cannot put the magic back into a magic item.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Mage Hand</h3>
+        <div class="card-subtitle">Cantrip • Conjuration</div>
+        <img src="../assets/card_spell_nature.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 30 feet<br>
+            <strong>Duration:</strong> 1 minute
+        </div>
+        <div class="card-desc">A floating spectral hand appears. Use your action to pick up light objects (up to 10 pounds), open an unlocked door, or press a button. It cannot attack, and it vanishes if it goes more than 30 feet from you.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Cure Wounds</h3>
+        <div class="card-subtitle">Level 1 • Evocation • uses a slot</div>
+        <img src="../assets/card_spell_fire.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Touch<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">Touch a living creature. They regain <strong>1d8+3</strong> hit points. No effect on undead or constructs.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Inflict Wounds</h3>
+        <div class="card-subtitle">Level 1 • Necromancy • uses a slot</div>
+        <img src="../assets/card_spell_generic.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Touch<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">A nasty plague-doctor poke. Make a melee spell attack <strong>+5</strong>. On a hit, the target takes <strong>3d10 necrotic</strong> damage. You have to get close!</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Sanctuary</h3>
+        <div class="card-subtitle">Level 1 • Abjuration • uses a slot</div>
+        <img src="../assets/card_spell_shield.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 bonus action<br>
+            <strong>Range:</strong> 30 feet<br>
+            <strong>Duration:</strong> 1 minute
+        </div>
+        <div class="card-desc">Ward a friend. A monster that tries to attack them must pass a <strong>Wisdom save (DC 13)</strong> or pick someone else. Does not stop area effects. Ends if the warded creature attacks.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Entangle</h3>
+        <div class="card-subtitle">Level 1 • Conjuration • uses a slot</div>
+        <img src="../assets/card_spell_nature.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 90 feet<br>
+            <strong>Duration:</strong> Concentration, up to 1 minute
+        </div>
+        <div class="card-desc">Vines fill a 20-foot square. The ground is hard to walk through. Creatures there make a <strong>Strength save (DC 13)</strong> or are restrained. A restrained creature can use an action to try to break free (Strength check DC 13).</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Comprehend Languages</h3>
+        <div class="card-subtitle">Level 1 • Divination • uses a slot</div>
+        <img src="../assets/card_spell_generic.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Self<br>
+            <strong>Duration:</strong> 1 hour
+        </div>
+        <div class="card-desc">You understand any spoken language you hear. You can also read writing by touching it (about 1 minute per page). Does not decode secret codes or magical glyphs.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner wren">Wren</div>
+        <h3 class="card-title">Detect Poison and Disease</h3>
+        <div class="card-subtitle">Level 1 • Divination • uses a slot</div>
+        <img src="../assets/card_spell_generic.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Self<br>
+            <strong>Duration:</strong> Concentration, up to 10 minutes
+        </div>
+        <div class="card-desc">Sense poisons, poisonous creatures, and diseases within 30 feet, and identify what they are. Perfect plague-doctor work.</div>
+    </article>
+</section>
+
+<p class="sheet-label">Wren — backs (page 2 of 2)</p>
+<section class="sheet">
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back wren">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_shield.png" class="back-art" alt="">
+        <p class="back-name">Wren</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+</section>
+
+<p class="sheet-label">Sanebs — fronts (page 1 of 2)</p>
+<section class="sheet">
+    <article class="card">
+        <div class="owner sanebs">Sanebs</div>
+        <h3 class="card-title">Eldritch Blast</h3>
+        <div class="card-subtitle">Cantrip • Evocation</div>
+        <img src="../assets/card_spell_fire.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 120 feet<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">A beam of crackling energy. Ranged spell attack <strong>+5</strong>. Hit: <strong>1d10 force</strong> damage. You can cast this all day! At 5th level you fire two beams.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner sanebs">Sanebs</div>
+        <h3 class="card-title">Fire Bolt</h3>
+        <div class="card-subtitle">Cantrip • Evocation</div>
+        <img src="../assets/card_spell_fire.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 120 feet<br>
+            <strong>Duration:</strong> Instantaneous
+        </div>
+        <div class="card-desc">Hurl a mote of fire. Ranged spell attack <strong>+5</strong>. Hit: <strong>1d10 fire</strong> damage. Can light a torch, rope, or other unattended object on fire.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner sanebs">Sanebs</div>
+        <h3 class="card-title">Detect Evil and Good</h3>
+        <div class="card-subtitle">Level 1 • Divination • uses a slot</div>
+        <img src="../assets/card_spell_generic.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Self<br>
+            <strong>Duration:</strong> Concentration, up to 10 minutes
+        </div>
+        <div class="card-desc">You know if angels, fiends, fey, elementals, or undead are within 30 feet, and where they are. Also senses holy or unholy places nearby.</div>
+    </article>
+
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+</section>
+
+<p class="sheet-label">Sanebs — backs (page 2 of 2)</p>
+<section class="sheet">
+    <article class="card card-back sanebs">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_fire.png" class="back-art" alt="">
+        <p class="back-name">Sanebs</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back sanebs">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_fire.png" class="back-art" alt="">
+        <p class="back-name">Sanebs</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back sanebs">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_fire.png" class="back-art" alt="">
+        <p class="back-name">Sanebs</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+</section>
+
+<p class="sheet-label">Misty — fronts (page 1 of 2)</p>
+<section class="sheet">
+    <article class="card">
+        <div class="owner misty">Misty</div>
+        <h3 class="card-title">Faerie Fire</h3>
+        <div class="card-subtitle">At will • Evocation</div>
+        <img src="../assets/card_spell_fire.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 60 feet<br>
+            <strong>Duration:</strong> Concentration, up to 1 minute
+        </div>
+        <div class="card-desc">Sparkly light fills a 20-foot cube. Creatures there make a <strong>Dexterity save (DC 13)</strong> or glow. Attacks against glowing creatures have Advantage, and they can’t hide.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner misty">Misty</div>
+        <h3 class="card-title">Minor Illusion</h3>
+        <div class="card-subtitle">At will • Illusion</div>
+        <img src="../assets/card_spell_mind.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 30 feet<br>
+            <strong>Duration:</strong> 1 minute
+        </div>
+        <div class="card-desc">Create a sound or a small fake image (up to a 5-foot cube). Great for pranks! A creature can inspect it (Investigation vs DC 13) to see through the trick.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner misty">Misty</div>
+        <h3 class="card-title">Sleep</h3>
+        <div class="card-subtitle">2/day pool • Enchantment</div>
+        <img src="../assets/card_spell_mind.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> 90 feet<br>
+            <strong>Duration:</strong> 1 minute
+        </div>
+        <div class="card-desc">Roll <strong>5d8</strong>. That many HP of creatures in a 20-foot area fall asleep, starting with the weakest. Undead don’t sleep. Uses one of your 2 daily pixie-magic uses.</div>
+    </article>
+
+    <article class="card">
+        <div class="owner misty">Misty</div>
+        <h3 class="card-title">Invisibility</h3>
+        <div class="card-subtitle">2/day pool • Illusion</div>
+        <img src="../assets/card_spell_mind.png" class="card-image" alt="">
+        <div class="card-stats">
+            <strong>Time:</strong> 1 action<br>
+            <strong>Range:</strong> Touch<br>
+            <strong>Duration:</strong> Concentration, up to 1 hour
+        </div>
+        <div class="card-desc">You or a friend you touch turn invisible (gear too). Ends if that person attacks or casts a spell. Uses one of your 2 daily pixie-magic uses.</div>
+    </article>
+
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+</section>
+
+<p class="sheet-label">Misty — backs (page 2 of 2)</p>
+<section class="sheet">
+    <article class="card card-back misty">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_mind.png" class="back-art" alt="">
+        <p class="back-name">Misty</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back misty">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_mind.png" class="back-art" alt="">
+        <p class="back-name">Misty</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back misty">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_mind.png" class="back-art" alt="">
+        <p class="back-name">Misty</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card card-back misty">
+        <p class="back-kicker">Spell Card</p>
+        <img src="../assets/card_spell_mind.png" class="back-art" alt="">
+        <p class="back-name">Misty</p>
+        <p class="back-campaign">Bounties Abound</p>
+    </article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+    <article class="card blank"></article>
+</section>
+
+</body>
+</html>

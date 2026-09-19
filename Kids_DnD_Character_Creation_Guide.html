@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Your Own Hero! — Character Creation Guide</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: #d9c69a;
+    background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+    font-family: 'Lora', Georgia, serif;
+    color: #222;
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
+    font-size: 14px;
+}
+
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f6e6bf;
+    background-image: radial-gradient(circle, rgba(255,249,232,0.35) 0%, rgba(210,186,138,0.7) 100%), url('https://www.transparenttextures.com/patterns/parchment.png');
+    padding: 60px 70px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    column-count: 2;
+    column-gap: 50px;
+    position: relative;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 3.5em;
+    text-align: center;
+    column-span: all;
+    border-bottom: 4px solid #c5a059;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.chapter-title {
+    font-size: 2.4em;
+    border-bottom: 3px solid #c5a059;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    column-span: all;
+    text-align: center;
+    page-break-before: always; /* Forces a new page when printing */
+    break-before: page;
+}
+
+/* Don't break the first chapter title */
+.chapter-title.first {
+    page-break-before: avoid;
+    break-before: auto;
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 1.6em;
+    color: #58180D;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    break-after: avoid;
+    border-bottom: 1px solid #d4c395;
+    padding-bottom: 5px;
+}
+
+h4 {
+    font-size: 1.3em;
+    color: #000;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    break-after: avoid;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+ul, ol {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: #000;
+    font-weight: 700;
+}
+
+.callout {
+    background-color: #ebdcb0;
+    border: 2px solid #cbb069;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 20px 0;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    break-inside: avoid;
+}
+
+.callout h3, .callout h4 {
+    margin-top: 0;
+    border-bottom: none;
+    color: #58180D;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    column-span: all;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 40px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    break-inside: avoid;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #d4c395;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #ebdcb0;
+    color: #58180D;
+    font-family: 'Cinzel', serif;
+}
+
+.flavor-text {
+    font-style: italic;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.monster-block {
+    background-color: #ecdfb6;
+    border: 1px solid #c5a059;
+    padding: 15px;
+    margin-bottom: 15px;
+    break-inside: avoid;
+    border-radius: 8px;
+}
+
+.monster-block h4 {
+    margin-top: 0;
+    color: #58180D;
+    border-bottom: 1px solid #d4c395;
+    padding-bottom: 5px;
+}
+
+img.line-art {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 20px auto;
+    mix-blend-mode: multiply; /* Blends the white background into the parchment */
+    border-radius: 10px;
+    break-inside: avoid;
+}
+
+.fill-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 12px 0 16px 0;
+}
+.fill-row strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    margin-bottom: 3px;
+}
+.fill-line {
+    display: block;
+    width: 100%;
+    border-bottom: 1.5px solid #58180D;
+    min-height: 1.5em;
+}
+.fill-row-inline {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 10px 0 14px 0;
+}
+.fill-row-inline strong {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+}
+.fill-line-short {
+    display: inline-block;
+    min-width: 2.5em;
+    border-bottom: 1.5px solid #58180D;
+    min-height: 1.1em;
+    vertical-align: bottom;
+}
+
+/* Character sheet appendix (creation guide + standalone sheet) */
+.sheet-appendix { column-span: all; }
+.sheet-appendix .sheet-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 14px;
+}
+.sheet-appendix .sheet-section h3 {
+    font-size: 1.15em;
+    margin: 0 0 8px 0;
+    text-align: center;
+    border-bottom: 2px solid #c5a059;
+    padding-bottom: 4px;
+}
+.sheet-appendix .fill {
+    border-bottom: 1.5px solid #58180D;
+    display: inline-block;
+    min-height: 1.2em;
+    vertical-align: bottom;
+}
+.sheet-appendix .fill-wide { min-width: 100%; width: 100%; }
+.sheet-appendix .fill-med { min-width: 2.2in; }
+.sheet-appendix .fill-short { min-width: 0.55in; }
+.sheet-appendix .fill-tiny { min-width: 0.35in; }
+.sheet-appendix .hero-header { text-align: center; margin-bottom: 12px; }
+.sheet-appendix .hero-header .fill-wide {
+    font-size: 1.35em;
+    font-family: 'Cinzel', serif;
+}
+.sheet-appendix .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    justify-content: center;
+    font-size: 0.95em;
+}
+.sheet-appendix .stat-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    text-align: center;
+    font-size: 0.88em;
+}
+.sheet-appendix .stat-box {
+    background: #fff;
+    border: 2px solid #c5a059;
+    border-radius: 6px;
+    padding: 6px 4px;
+}
+.sheet-appendix .stat-box .label {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    font-size: 0.85em;
+    font-weight: 700;
+}
+.sheet-appendix .stat-box .fill-short {
+    min-width: 1.5em;
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 2px auto;
+    display: block;
+}
+.sheet-appendix .abilities {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    font-size: 0.78em;
+    text-align: center;
+}
+.sheet-appendix .ability {
+    background: #fff;
+    border: 2px solid #c5a059;
+    border-radius: 6px;
+    padding: 5px 2px;
+}
+.sheet-appendix .ability .ab-name {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    font-weight: 700;
+}
+.sheet-appendix .ability .save-line {
+    background: #ebdcb0;
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 0.85em;
+}
+.sheet-appendix .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 12px;
+    font-size: 0.82em;
+}
+.sheet-appendix .skill-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px;
+}
+.sheet-appendix .skill-line .fill-tiny {
+    min-width: 1.4em;
+    text-align: center;
+    font-weight: 700;
+}
+.sheet-appendix .sheet-table { width: 100%; font-size: 0.82em; margin: 0; }
+.sheet-appendix .sheet-table td { height: 1.6em; padding: 6px 5px; }
+.sheet-appendix .spell-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    font-size: 0.82em;
+}
+.sheet-appendix .slot-group {
+    background: #ebdcb0;
+    border: 1px solid #cbb069;
+    border-radius: 5px;
+    padding: 6px 8px;
+    text-align: center;
+}
+.sheet-appendix .slot-group strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    margin-bottom: 4px;
+}
+.sheet-appendix .circles {
+    letter-spacing: 0.15em;
+    font-size: 1.2em;
+    color: #58180D;
+}
+.sheet-appendix .story-box {
+    background: #fff;
+    border: 1px solid #d4c395;
+    border-radius: 5px;
+    min-height: 2.2em;
+    margin-bottom: 8px;
+    padding: 4px 6px;
+}
+.sheet-appendix .story-label {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    font-size: 0.88em;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+.sheet-appendix .sheet-page-break {
+    break-before: page;
+    page-break-before: always;
+}
+
+/* Cover art page and Table of Contents are shown only when printing. */
+.cover-page, .toc { display: none; }
+
+/*
+ * BOOKLET / BOOK-FORMAT PRINTING
+ * Each printed page is sized to HALF of a US Letter sheet (5.5in x 8.5in),
+ * portrait. That way two book pages fit on one landscape Letter sheet,
+ * which is exactly what your printer's "Booklet" / "2 pages per sheet"
+ * option needs. Content becomes a single, kid-friendly column.
+ */
+@media print {
+    @page {
+        size: 5.5in 8.5in;
+        margin: 0.45in 0.5in 0.55in 0.5in;
+    }
+    /* Page numbers in the OUTER corner: right-hand (odd) pages get the
+       number at bottom-right, left-hand (even) pages at bottom-left. */
+    @page :right {
+        @bottom-right {
+            content: counter(page);
+            font-family: 'Lora', Georgia, serif;
+            font-size: 10pt;
+            color: #58180D;
+        }
+    }
+    @page :left {
+        @bottom-left {
+            content: counter(page);
+            font-family: 'Lora', Georgia, serif;
+            font-size: 10pt;
+            color: #58180D;
+        }
+    }
+    /* Cover page: full-bleed art, no margins, no page number. */
+    @page :first {
+        margin: 0;
+        @bottom-right { content: none; }
+        @bottom-left { content: none; }
+    }
+
+    body {
+        background: none !important;
+        background-color: #f6e6bf !important;
+        padding: 0;
+        margin: 0;
+        font-size: 10.5pt;
+        line-height: 1.4;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .page {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+        /* Fully disable multi-column so forced page breaks work
+           (a multicol container turns page breaks into column breaks). */
+        column-count: auto;
+        column-width: auto;
+        column-gap: 0;
+        background: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* The on-screen text title is replaced by the cover-art page in print. */
+    .book-title { display: none; }
+
+    /* Full-bleed illustrated cover as page 1 */
+    .cover-page {
+        display: block;
+        position: relative;
+        width: 5.5in;
+        height: 8.5in;
+        overflow: hidden;
+        background-image: url('assets/cover_art.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        break-after: page;
+        page-break-after: always;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Decorative inset frame to tie the cover to the book's gold accents */
+    .cover-page::after {
+        content: "";
+        position: absolute;
+        top: 0.28in;
+        left: 0.28in;
+        right: 0.28in;
+        bottom: 0.28in;
+        border: 2px solid #58180D;
+        outline: 5px solid #c5a059;
+        outline-offset: 2px;
+        pointer-events: none;
+    }
+
+    .cover-title {
+        position: absolute;
+        top: 0.62in;
+        left: 0.55in;
+        right: 0.55in;
+        text-align: center;
+        background-color: rgba(246, 230, 191, 0.86);
+        border: 3px solid #c5a059;
+        border-radius: 8px;
+        padding: 12px 10px 14px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .cover-title .line1 {
+        display: block;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 25pt;
+        line-height: 1.05;
+        color: #58180D;
+    }
+    .cover-title .line2 {
+        display: block;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 16pt;
+        margin-top: 8px;
+        color: #58180D;
+    }
+
+    /* Table of Contents */
+    .toc {
+        display: block;
+        break-after: page;
+        page-break-after: always;
+    }
+    .toc-title {
+        font-size: 22pt;
+        text-align: center;
+        border-bottom: 3px solid #c5a059;
+        padding-bottom: 10px;
+        margin: 0 0 24px 0;
+    }
+    .toc ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .toc li {
+        margin-bottom: 14px;
+        font-size: 1.05em;
+    }
+    .toc a {
+        display: block;
+        color: #58180D;
+        text-decoration: none;
+        font-family: 'Lora', Georgia, serif;
+    }
+    .toc a::after {
+        content: ' ' leader('.') ' ' target-counter(attr(href), page);
+        font-weight: 700;
+    }
+
+    .intro-text {
+        font-size: 9.75pt;
+        line-height: 1.35;
+        padding: 0;
+        margin-bottom: 6px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .intro-text p {
+        margin-bottom: 8px;
+        orphans: 2;
+        widows: 2;
+    }
+
+    .chapter-title {
+        font-size: 19pt;
+        margin-top: 0;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+
+    .chapter-title.first {
+        /* Chapter 1 follows the intro on the first content page. */
+        page-break-before: avoid;
+        break-before: avoid;
+    }
+
+    h3 { font-size: 13pt; margin-top: 16px; }
+    h4 { font-size: 11.5pt; margin-top: 10px; }
+
+    p, li {
+        orphans: 2;
+        widows: 2;
+    }
+
+    table { font-size: 0.85em; }
+    th, td { padding: 5px 6px; }
+
+        img.line-art {
+            max-width: 2.6in;
+            margin: 12px auto;
+        }
+
+        .fill-row {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin: 12px 0 16px 0;
+        }
+        .fill-row strong {
+            display: block;
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-bottom: 3px;
+        }
+        .fill-line {
+            display: block;
+            width: 100%;
+            border-bottom: 1.5px solid #58180D;
+            min-height: 1.5em;
+        }
+        .fill-row-inline {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin: 10px 0 14px 0;
+        }
+        .fill-row-inline strong {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+        }
+        .fill-line-short {
+            display: inline-block;
+            min-width: 2.5em;
+            border-bottom: 1.5px solid #58180D;
+            min-height: 1.1em;
+            vertical-align: bottom;
+        }
+
+        .callout, th, .monster-block {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background-color: #ebdcb0 !important;
+    }
+
+    .callout, .monster-block {
+        padding: 10px 12px;
+        margin: 12px 0;
+    }
+
+    h1, h2, h3, h4 {
+        break-after: avoid;
+    }
+    p, li, table, .callout, img, .monster-block {
+        break-inside: avoid;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="cover-page">
+        <div class="cover-title">
+            <span class="line1">Make Your Own Hero!</span>
+            <span class="line2">Character Creation Guide</span>
+        </div>
+    </div>
+
+    <nav class="toc">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ol>
+            <li><a href="#ch-start">Before You Start</a></li>
+            <li><a href="#ch-overview">The 10 Steps</a></li>
+            <li><a href="#ch1">Step 1: Dream Up Your Hero</a></li>
+            <li><a href="#ch2">Step 2: Pick Your Species</a></li>
+            <li><a href="#ch3">Step 3: Pick Your Class</a></li>
+            <li><a href="#ch4">Step 4: Assign Your Ability Scores</a></li>
+            <li><a href="#ch5">Step 5: Modifiers and Saving Throws</a></li>
+            <li><a href="#ch6">Step 6: Choose Your Skills</a></li>
+            <li><a href="#ch7">Step 7: Armor, Weapons, and Gear</a></li>
+            <li><a href="#ch8">Step 8: AC, HP, Speed, and Attacks</a></li>
+            <li><a href="#ch9">Step 9: Spells (Magic Users Only)</a></li>
+            <li><a href="#ch10">Step 10: Personality, Background, and Quirk</a></li>
+            <li><a href="#ch-checklist">Final Checklist</a></li>
+        </ol>
+    </nav>
+
+    <h1 class="book-title">Make Your Own Hero!<br>Character Creation Guide</h1>
+
+<div class="intro-text">
+<p><strong>For players ages 9–12 · Dungeons & Dragons 5th Edition</strong></p>
+<p>You just finished an adventure with pre-made heroes. Now it is <strong>your turn</strong> to invent someone totally new — your name, your look, your personality, your powers. Work through this booklet <strong>one step at a time</strong>, then give your sheet to the DM so they can check the numbers.</p>
+<p><strong>You will also get:</strong> the <strong>Basic Rules</strong> booklet, a <strong>Species Handbook</strong>, a <strong>Class Handbook</strong>, and (if your class uses magic or gear lists) a <strong>Spell Book</strong> or <strong>Gear Book</strong>.</p>
+</div>
+<h2 class="chapter-title first" id="ch-start">Before You Start: Three Big Ideas</h2>
+<img src="assets/adventurers_lineart.png" class="line-art" alt="Adventurers">
+<div class="callout"><ol>
+<li><strong>Your character is a team player.</strong> You are brave, funny, or clever — but you care about your friends.</li>
+<li><strong>Failure is fun.</strong> If you roll low, something silly or exciting usually happens. That is part of the game!</li>
+<li><strong>There are no wrong ideas.</strong> A pastry knight, a nervous filing clerk, and a bronze golem can all be heroes. Pick what makes <em>you</em> excited.</li>
+</ol></div>
+<h2 class="chapter-title" id="ch-overview">The 10 Steps (Check Them Off!)</h2>
+<table>
+<thead><tr>
+<th>Step</th>
+<th>What you do</th>
+</tr></thead><tbody>
+<tr>
+<td>☐ 1</td>
+<td>Dream up your hero (concept)</td>
+</tr>
+<tr>
+<td>☐ 2</td>
+<td>Pick your <strong>species</strong> (who you are)</td>
+</tr>
+<tr>
+<td>☐ 3</td>
+<td>Pick your <strong>class</strong> (what you do)</td>
+</tr>
+<tr>
+<td>☐ 4</td>
+<td>Assign your <strong>ability scores</strong> (your stats)</td>
+</tr>
+<tr>
+<td>☐ 5</td>
+<td>Write down <strong>modifiers</strong> and <strong>saving throws</strong></td>
+</tr>
+<tr>
+<td>☐ 6</td>
+<td>Choose <strong>skills</strong> you are good at</td>
+</tr>
+<tr>
+<td>☐ 7</td>
+<td>Pick <strong>armor, weapons, and gear</strong></td>
+</tr>
+<tr>
+<td>☐ 8</td>
+<td>Calculate <strong>AC, HP, speed, and attacks</strong></td>
+</tr>
+<tr>
+<td>☐ 9</td>
+<td>Pick <strong>spells</strong> (if you cast magic)</td>
+</tr>
+<tr>
+<td>☐ 10</td>
+<td>Add <strong>personality, background, and a quirk</strong></td>
+</tr>
+</tbody></table>
+<h2 class="chapter-title" id="ch1">Step 1 — Dream Up Your Hero</h2>
+<p>Answer these questions in your own words. There are no wrong answers!</p>
+<table>
+<thead><tr>
+<th>Question</th>
+<th>Your answer</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>What is your hero's name?</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>What do they look like?</strong> (height, colors, clothing, anything weird)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>What is one word that describes their personality?</strong> (brave, silly, grumpy, curious…)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>What do they want?</strong> (save a village, find treasure, prove themselves, eat the world's best sandwich…)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>What are they afraid of?</strong> (spiders, being embarrassed, loud noises…)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>What is their signature thing?</strong> (a catchphrase, a lucky hat, always humming, collects buttons…)</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Tip:</strong> Steal ideas from books, games, or your pre-made hero — but change enough that this one feels like <em>yours</em>.</p>
+<h2 class="chapter-title" id="ch2">Step 2 — Pick Your Species</h2>
+<p>Your <strong>species</strong> (also called race) is <em>what kind of creature you are</em>. It gives you special traits and helps you imagine how you look.</p>
+<p>Open your <strong>Species Handbook</strong> and read the one you like. Then write it here:</p>
+<div class="fill-row"><strong>My species:</strong><span class="fill-line">&nbsp;</span></div>
+<h3>Species you can choose from</h3>
+<table>
+<thead><tr>
+<th>Species</th>
+<th>In one sentence</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Human</strong></td>
+<td>Brave and good at a little bit of everything.</td>
+</tr>
+<tr>
+<td><strong>Elf</strong></td>
+<td>Graceful, magical, pointy ears, see well in the dark.</td>
+</tr>
+<tr>
+<td><strong>Dwarf</strong></td>
+<td>Tough, sturdy, loves mountains and metalwork.</td>
+</tr>
+<tr>
+<td><strong>Halfling</strong></td>
+<td>Small, lucky, very sneaky.</td>
+</tr>
+<tr>
+<td><strong>Dragonborn</strong></td>
+<td>Dragon-person who can breathe fire, ice, or lightning.</td>
+</tr>
+<tr>
+<td><strong>Gnome</strong></td>
+<td>Small, clever, full of ideas and tinkering.</td>
+</tr>
+<tr>
+<td><strong>Tiefling</strong></td>
+<td>Horned and tail; connected to strange magic.</td>
+</tr>
+<tr>
+<td><strong>Orc</strong></td>
+<td>Strong, fierce, hard to knock down.</td>
+</tr>
+<tr>
+<td><strong>Goliath</strong></td>
+<td>Very tall and very strong.</td>
+</tr>
+<tr>
+<td><strong>Aasimar</strong></td>
+<td>Glows with holy or mysterious energy.</td>
+</tr>
+<tr>
+<td><strong>Tabaxi</strong></td>
+<td>Cat-person who is super fast, sneaky, and curious.</td>
+</tr>
+</tbody></table>
+<p>Copy any special traits from your Species Handbook onto your character sheet (darkvision, extra speed, breath weapon, etc.).</p>
+<h2 class="chapter-title" id="ch3">Step 3 — Pick Your Class</h2>
+<p>Your <strong>class</strong> is your <strong>job on the adventure team</strong>. It tells you what you are best at in fights and out of fights.</p>
+<p>Open your <strong>Class Handbook</strong> and pick one. Write it here:</p>
+<div class="fill-row"><strong>My class:</strong><span class="fill-line">&nbsp;</span></div>
+<h3>Class quick guide — which sounds like you?</h3>
+<table>
+<thead><tr>
+<th>Class</th>
+<th>You might like this if…</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Fighter</strong></td>
+<td>You want to hit hard with swords, axes, or bows.</td>
+</tr>
+<tr>
+<td><strong>Barbarian</strong></td>
+<td>You want to get angry and smash things.</td>
+</tr>
+<tr>
+<td><strong>Rogue</strong></td>
+<td>You want to sneak, pick locks, and surprise enemies.</td>
+</tr>
+<tr>
+<td><strong>Wizard</strong></td>
+<td>You want lots of spells and big brain energy.</td>
+</tr>
+<tr>
+<td><strong>Sorcerer</strong></td>
+<td>Magic runs in your blood — you cast from instinct.</td>
+</tr>
+<tr>
+<td><strong>Cleric</strong></td>
+<td>You heal friends and smite bad guys with holy power.</td>
+</tr>
+<tr>
+<td><strong>Paladin</strong></td>
+<td>You are a holy knight with armor and honor.</td>
+</tr>
+<tr>
+<td><strong>Ranger</strong></td>
+<td>You love nature, tracking, and fighting at range.</td>
+</tr>
+<tr>
+<td><strong>Druid</strong></td>
+<td>You talk to animals and control plants and weather.</td>
+</tr>
+<tr>
+<td><strong>Bard</strong></td>
+<td>You sing, joke, and help the team with charm and magic.</td>
+</tr>
+<tr>
+<td><strong>Monk</strong></td>
+<td>You fight fast with fists and fancy footwork.</td>
+</tr>
+<tr>
+<td><strong>Warlock</strong></td>
+<td>You made a deal with a mysterious power for magic.</td>
+</tr>
+</tbody></table>
+<p><strong>Ask the DM:</strong> Some classes use <strong>spell slots</strong> (magic batteries). Some use <strong>Ki</strong> or <strong>Channel Divinity</strong>. Your Class Handbook explains yours.</p>
+<h2 class="chapter-title" id="ch4">Step 4 — Assign Your Ability Scores</h2>
+<p>Every hero has <strong>six ability scores</strong>. They measure how good you are at different things.</p>
+<table>
+<thead><tr>
+<th>Ability</th>
+<th>What it means</th>
+<th>Good for…</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Strength (STR)</strong></td>
+<td>💪 Muscle</td>
+<td>Big weapons, breaking doors, climbing</td>
+</tr>
+<tr>
+<td><strong>Dexterity (DEX)</strong></td>
+<td>🏃 Speed & reflexes</td>
+<td>Bows, sneaking, dodging</td>
+</tr>
+<tr>
+<td><strong>Constitution (CON)</strong></td>
+<td>🛡️ Toughness</td>
+<td>Hit points, surviving poison</td>
+</tr>
+<tr>
+<td><strong>Intelligence (INT)</strong></td>
+<td>🧠 Book smarts</td>
+<td>Wizards, investigation, history</td>
+</tr>
+<tr>
+<td><strong>Wisdom (WIS)</strong></td>
+<td>🦉 Instinct & awareness</td>
+<td>Clerics, druids, noticing traps</td>
+</tr>
+<tr>
+<td><strong>Charisma (CHA)</strong></td>
+<td>✨ Charm & leadership</td>
+<td>Bards, paladins, talking to NPCs</td>
+</tr>
+</tbody></table>
+<h3>How to get your six numbers</h3>
+<p>Your DM will give you one of these methods:</p>
+<p><strong>Method A — The Fair Six (Standard Array)</strong>   You get these six numbers: <strong>15, 14, 13, 12, 10, 8</strong>   Assign each number to one ability. Put the <strong>big numbers</strong> on abilities your class uses most!</p>
+<p><strong>Method B — Roll for Drama</strong>   Roll <strong>4d6</strong> (four six-sided dice), drop the lowest die, add the rest. Do this <strong>six times</strong>. Ask the DM to help if any number seems too low — they may let you reroll ones.</p>
+<p><strong>Method C — The DM Helps</strong>   Describe your hero and the DM suggests scores that fit.</p>
+<h3>Where to put your numbers (cheat sheet)</h3>
+<table>
+<thead><tr>
+<th>Class</th>
+<th>Put your best scores in…</th>
+</tr></thead><tbody>
+<tr>
+<td>Fighter, Barbarian, Paladin</td>
+<td>STR, CON</td>
+</tr>
+<tr>
+<td>Rogue, Ranger, Monk</td>
+<td>DEX, then WIS or STR</td>
+</tr>
+<tr>
+<td>Wizard</td>
+<td>INT, CON</td>
+</tr>
+<tr>
+<td>Sorcerer, Warlock, Bard</td>
+<td>CHA, CON</td>
+</tr>
+<tr>
+<td>Cleric, Druid</td>
+<td>WIS, CON</td>
+</tr>
+</tbody></table>
+<p><strong>Species bonus:</strong> Some species add +2 or +1 to certain abilities. Add those <em>after</em> you assign numbers. Check your Species Handbook!</p>
+<p>Write your final scores here:</p>
+<table>
+<thead><tr>
+<th>Ability</th>
+<th>Score (after species bonuses)</th>
+</tr></thead><tbody>
+<tr>
+<td>STR</td>
+<td></td>
+</tr>
+<tr>
+<td>DEX</td>
+<td></td>
+</tr>
+<tr>
+<td>CON</td>
+<td></td>
+</tr>
+<tr>
+<td>INT</td>
+<td></td>
+</tr>
+<tr>
+<td>WIS</td>
+<td></td>
+</tr>
+<tr>
+<td>CHA</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 class="chapter-title" id="ch5">Step 5 — Modifiers and Saving Throws</h2>
+<h3>Find your modifier</h3>
+<p>Look up each score on this table. You will add the <strong>modifier</strong> to almost every roll.</p>
+<table>
+<thead><tr>
+<th>Score</th>
+<th>Modifier</th>
+<th>Score</th>
+<th>Modifier</th>
+</tr></thead><tbody>
+<tr>
+<td>8–9</td>
+<td>−1</td>
+<td>14–15</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>10–11</td>
+<td>+0</td>
+<td>16–17</td>
+<td>+3</td>
+</tr>
+<tr>
+<td>12–13</td>
+<td>+1</td>
+<td>18–19</td>
+<td>+4</td>
+</tr>
+</tbody></table>
+<p>Write your modifiers:</p>
+<table>
+<thead><tr>
+<th>Ability</th>
+<th>Score</th>
+<th>Modifier</th>
+</tr></thead><tbody>
+<tr>
+<td>STR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DEX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CON</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>WIS</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CHA</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>Proficiency bonus</h3>
+<p>Your DM tells you your <strong>level</strong>. At <strong>level 1</strong>, your proficiency bonus is <strong>+2</strong>. At <strong>level 5</strong>, it is <strong>+3</strong>.</p>
+<div class="fill-row-inline"><strong>Proficiency bonus:</strong> <span class="fill-line-short">&nbsp;</span></div>
+<p>You are <strong>proficient</strong> in some saving throws because of your class. For those, add <strong>modifier + proficiency bonus</strong>.</p>
+<p>Example: A level 5 Cleric with WIS 16 (+3) has <strong>WIS save +6</strong> (+3 mod + +3 proficiency).</p>
+<p>Copy saving throws from your Class Handbook:</p>
+<table>
+<thead><tr>
+<th>Save</th>
+<th>Roll d20 +</th>
+</tr></thead><tbody>
+<tr>
+<td>STR</td>
+<td></td>
+</tr>
+<tr>
+<td>DEX</td>
+<td></td>
+</tr>
+<tr>
+<td>CON</td>
+<td></td>
+</tr>
+<tr>
+<td>INT</td>
+<td></td>
+</tr>
+<tr>
+<td>WIS</td>
+<td></td>
+</tr>
+<tr>
+<td>CHA</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 class="chapter-title" id="ch6">Step 6 — Choose Your Skills</h2>
+<p><strong>Skills</strong> are specific things you are trained in — like Stealth, Athletics, or Persuasion.</p>
+<ul>
+<li>Your <strong>class</strong> gives you a list of skills to pick from.</li>
+<li>Your <strong>background</strong> (Step 10) may give you two more.</li>
+<li>When you are <strong>proficient</strong> in a skill, add your <strong>proficiency bonus</strong> to the roll.</li>
+</ul>
+<h3>How a skill roll works</h3>
+<p><strong>Skill roll = d20 + ability modifier + proficiency bonus</strong> (if proficient)</p>
+<table>
+<thead><tr>
+<th>Skill</th>
+<th>Uses this ability</th>
+</tr></thead><tbody>
+<tr>
+<td>Athletics</td>
+<td>STR</td>
+</tr>
+<tr>
+<td>Acrobatics, Sleight of Hand, Stealth</td>
+<td>DEX</td>
+</tr>
+<tr>
+<td>Arcana, History, Investigation, Nature, Religion</td>
+<td>INT</td>
+</tr>
+<tr>
+<td>Animal Handling, Insight, Medicine, Perception, Survival</td>
+<td>WIS</td>
+</tr>
+<tr>
+<td>Deception, Intimidation, Performance, Persuasion</td>
+<td>CHA</td>
+</tr>
+</tbody></table>
+<p><strong>My proficient skills:</strong> (list them and write the total bonus)</p>
+<table>
+<thead><tr>
+<th>Skill</th>
+<th>Roll d20 +</th>
+</tr></thead><tbody>
+</tbody></table>
+<h2 class="chapter-title" id="ch7">Step 7 — Armor, Weapons, and Gear</h2>
+<p>Your <strong>Class Handbook</strong> lists starting equipment. Your DM may let you swap similar items.</p>
+<h3>Armor quick reference</h3>
+<table>
+<thead><tr>
+<th>Armor</th>
+<th>AC it gives</th>
+<th>Who usually wears it</th>
+</tr></thead><tbody>
+<tr>
+<td>No armor</td>
+<td>10 + DEX mod</td>
+<td>Wizards in robes</td>
+</tr>
+<tr>
+<td>Leather / studded leather</td>
+<td>11–12 + DEX mod</td>
+<td>Rogues, rangers</td>
+</tr>
+<tr>
+<td>Chain mail</td>
+<td>16 (no DEX bonus)</td>
+<td>Fighters, paladins</td>
+</tr>
+<tr>
+<td>Plate</td>
+<td>18 (no DEX bonus)</td>
+<td>Heavy knights, clerics</td>
+</tr>
+</tbody></table>
+<p><strong>Shield:</strong> +2 AC if you carry one (and your class allows it).</p>
+<h3>Weapons quick reference</h3>
+<table>
+<thead><tr>
+<th>Weapon type</th>
+<th>Example</th>
+<th>Damage die</th>
+<th>Uses</th>
+</tr></thead><tbody>
+<tr>
+<td>Light & fast</td>
+<td>Dagger, shortsword</td>
+<td>1d4–1d6</td>
+<td>DEX or STR</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>Longsword, warhammer</td>
+<td>1d8</td>
+<td>Usually STR</td>
+</tr>
+<tr>
+<td>Big & heavy</td>
+<td>Greatsword, maul</td>
+<td>2d6</td>
+<td>STR</td>
+</tr>
+<tr>
+<td>Ranged</td>
+<td>Shortbow, crossbow</td>
+<td>1d6–1d8</td>
+<td>DEX</td>
+</tr>
+</tbody></table>
+<div class="fill-row"><strong>My armor:</strong><span class="fill-line">&nbsp;</span></div>
+<p><strong>My shield?</strong> ☐ Yes ☐ No</p>
+<div class="fill-row"><strong>My main weapon:</strong><span class="fill-line">&nbsp;</span></div>
+<div class="fill-row"><strong>My backup / ranged weapon:</strong><span class="fill-line">&nbsp;</span></div>
+<p><strong>Other gear:</strong> (rope, torches, rations, tools — list from class)</p>
+<h2 class="chapter-title" id="ch8">Step 8 — AC, HP, Speed, and Attacks</h2>
+<h3>Armor Class (AC)</h3>
+<p><strong>AC</strong> = how hard you are to hit. Enemies must roll <strong>your AC or higher</strong> on a d20 to hurt you.</p>
+<p>Ask the DM or use your Class Handbook to calculate AC. Write it big:</p>
+<div class="fill-row"><strong>My AC:</strong><span class="fill-line">&nbsp;</span></div>
+<h3>Hit Points (HP)</h3>
+<p><strong>HP</strong> = your health. At <strong>0 HP</strong>, you fall unconscious (but your friends can still save you!).</p>
+<p><strong>At level 1:</strong>   HP = <strong>hit die maximum</strong> + CON modifier   (Example: Fighter d10 → 10 + CON mod)</p>
+<p><strong>Each level after:</strong>   Add <strong>hit die roll</strong> (or average) + CON modifier each time you level up. Your DM helps at the table.</p>
+<div class="fill-row-inline"><strong>My HP:</strong> current / max</div>
+<div class="fill-row-inline"><strong>My hit die:</strong> d<span class="fill-line-short">&nbsp;</span> (e.g. d8 for a rogue)</div>
+<div class="fill-row-inline"><strong>My speed:</strong> <span class="fill-line-short">&nbsp;</span> ft. (usually 30; some species are faster or slower)</div>
+<h3>Attacks</h3>
+<p><strong>To hit:</strong> d20 + ability modifier + proficiency bonus (if proficient with that weapon)</p>
+<p><strong>Damage:</strong> weapon damage die + ability modifier (usually STR for melee, DEX for finesse/ranged)</p>
+<p>Fill in your main attack:</p>
+<table>
+<thead><tr>
+<th>Attack</th>
+<th>To hit (d20 +)</th>
+<th>Damage</th>
+</tr></thead><tbody>
+</tbody></table>
+<p><strong>Initiative</strong> (who goes first in combat): d20 + <strong>DEX modifier</strong> = d20 +</p>
+<h2 class="chapter-title" id="ch9">Step 9 — Spells (Magic Users Only)</h2>
+<p>Skip this step if your class does <strong>not</strong> cast spells (Fighter, Barbarian, Rogue without magic, etc.).</p>
+<h3>Two kinds of magic</h3>
+<table>
+<thead><tr>
+<th>Kind</th>
+<th>What it means</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Cantrips</strong></td>
+<td>Small spells you can cast <strong>all day long</strong> — no slot needed!</td>
+</tr>
+<tr>
+<td><strong>Leveled spells</strong></td>
+<td>Big spells that use a <strong>spell slot</strong> (1st level, 2nd level, etc.)</td>
+</tr>
+</tbody></table>
+<p>When you run out of spell slots, you need a <strong>long rest</strong> (8 hours of sleep) to get them back.</p>
+<h3>Spellcasting numbers (from Class Handbook)</h3>
+<p><strong>Spell save DC</strong> = 8 + proficiency + spellcasting ability modifier   <strong>Spell attack</strong> = d20 + proficiency + spellcasting ability modifier</p>
+<table>
+<thead><tr>
+<th>My spellcasting ability</th>
+<th></th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Spell save DC</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Spell attack (d20 +)</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Cantrips I know:</strong>   1.   2.</p>
+<p><strong>Leveled spells I know:</strong> (check your handbook for how many you can pick)</p>
+<table>
+<thead><tr>
+<th>Level</th>
+<th>Spells</th>
+<th>Spell slots</th>
+</tr></thead><tbody>
+<tr>
+<td>1st</td>
+<td></td>
+<td>/</td>
+</tr>
+<tr>
+<td>2nd</td>
+<td></td>
+<td>/</td>
+</tr>
+<tr>
+<td>3rd</td>
+<td></td>
+<td>/</td>
+</tr>
+</tbody></table>
+<p>Use your <strong>Spell Book</strong> or <strong>Spell Cards</strong> during play so you do not have to memorize everything!</p>
+<h2 class="chapter-title" id="ch10">Step 10 — Personality, Background, and Quirk</h2>
+<p>This is the <strong>most important step</strong> for making your hero feel real.</p>
+<h3>Background</h3>
+<p>Pick or invent a <strong>background</strong> — what your hero did before adventuring.</p>
+<table>
+<thead><tr>
+<th>Background idea</th>
+<th>You were…</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Folk Hero</strong></td>
+<td>A village favorite who did something brave</td>
+</tr>
+<tr>
+<td><strong>Scholar</strong></td>
+<td>A student, librarian, or inventor</td>
+</tr>
+<tr>
+<td><strong>Soldier</strong></td>
+<td>A guard, knight-in-training, or soldier</td>
+</tr>
+<tr>
+<td><strong>Urchin</strong></td>
+<td>Grew up on the streets, quick and scrappy</td>
+</tr>
+<tr>
+<td><strong>Acolyte</strong></td>
+<td>Served at a temple or shrine</td>
+</tr>
+<tr>
+<td><strong>Entertainer</strong></td>
+<td>Actor, musician, or circus performer</td>
+</tr>
+<tr>
+<td><strong>Judge</strong></td>
+<td>Sat on a bench, heard both sides, and decided the truth</td>
+</tr>
+<tr>
+<td><strong>Custom</strong></td>
+<td>Invent your own! (Ask the DM)</td>
+</tr>
+</tbody></table>
+<div class="fill-row"><strong>My background:</strong><span class="fill-line">&nbsp;</span></div>
+<div class="fill-row"><strong>One skill or tool it gives me:</strong><span class="fill-line">&nbsp;</span></div>
+<div class="callout">
+<h3>If you pick Judge</h3>
+<p>You used to decide cases. You were probably the quiet kind: people argued, you listened, then you said one short sentence and that was the verdict.</p>
+<ul>
+<li><strong>Skills:</strong> Insight and Investigation (if you don't already have them).</li>
+<li><strong>Feature — The Last Word:</strong> In a town, castle, or camp, if people are arguing about a crime, a rule, or who is lying, they often let you speak last — and they listen. You can also get a short meeting with a mayor, a captain of the guard, or a local judge by explaining you used to sit the bench. They don't have to obey you. They do have to hear you.</li>
+<li><strong>How to play it:</strong> Talk in short sentences. Give people one chance. You hate bullies more than thieves.</li>
+</ul>
+</div>
+<h3>Personality (fill in at least three)</h3>
+<table>
+<thead><tr>
+<th>Prompt</th>
+<th>Your answer</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>I always…</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>I never…</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>I love…</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>I hate…</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>My friends would say I am…</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>Quirk (optional but fun!)</h3>
+<p>Every hero in our last adventure had a <strong>quirk</strong> — a small special rule that made them unique. Work with your DM to invent one!</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Smell like fresh cookies (enemies have trouble intimidating you)</li>
+<li>Pull random useful junk from your pockets</li>
+<li>Must narrate everything as an accident</li>
+<li>Spark slightly when nervous (advantage on metal-related checks once per day)</li>
+<li>Cannot tell a lie but somehow still succeeds at deception</li>
+</ul>
+<div class="fill-row"><strong>My quirk:</strong><span class="fill-line">&nbsp;</span></div>
+<h2 class="chapter-title" id="ch-checklist">Final Checklist — Give This to Your DM</h2>
+<p>Before your first session with your new hero, make sure you have:</p>
+<table>
+<thead><tr>
+<th>☐</th>
+<th>Item</th>
+</tr></thead><tbody>
+<tr>
+<td>☐</td>
+<td>Name, species, class, and level</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>All six ability scores and modifiers</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>AC, HP, speed, initiative</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Attacks (to hit and damage)</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Saving throws and proficient skills</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Spells and spell slots (if any)</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Equipment list</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Personality, background, and quirk</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>My Hero Character Sheet</strong> filled in (ask your DM for the booklet!)</td>
+</tr>
+<tr>
+<td>☐</td>
+<td>Species Handbook + Class Handbook tucked in your folder</td>
+</tr>
+</tbody></table>
+<p><strong>Well done, adventurer. Your hero is ready for the next quest!</strong></p>
+<p>Copy everything onto your <strong>My Hero Character Sheet</strong> — your DM has a separate booklet for that.</p>
+<p><em>Dungeon Master: pair this guide with <code>Kids_DnD_Basic_Rules</code>, the species handbooks in <code>species/</code>, the class handbooks in <code>classes/</code>, and <code>Kids_DnD_Character_Sheet</code> for fill-in sheets.</em></p>
+</div>
+
+</body>
+</html>

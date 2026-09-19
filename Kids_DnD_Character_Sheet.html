@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hero — Kids D&amp;D Character Sheet</title>
+    <link rel="stylesheet" href="kids_book_styles.css">
+    <style>
+        /* Single-column layout — easier to fill in than the rules book's two columns */
+        .sheet-page .page {
+            column-count: 1;
+            max-width: 5.5in;
+            padding: 0.5in 0.55in;
+        }
+
+        .sheet-section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 14px;
+        }
+
+        .sheet-section h3 {
+            font-size: 1.15em;
+            margin: 0 0 8px 0;
+            text-align: center;
+            border-bottom: 2px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        .fill {
+            border-bottom: 1.5px solid #58180D;
+            display: inline-block;
+            min-height: 1.2em;
+            vertical-align: bottom;
+        }
+        .fill-wide { min-width: 100%; width: 100%; }
+        .fill-med { min-width: 2.2in; }
+        .fill-short { min-width: 0.55in; }
+        .fill-tiny { min-width: 0.35in; }
+
+        .hero-header {
+            text-align: center;
+            column-span: all;
+            margin-bottom: 12px;
+        }
+        .hero-header .fill-wide {
+            font-size: 1.35em;
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            justify-content: center;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .meta-row span { white-space: nowrap; }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            text-align: center;
+            font-size: 0.88em;
+        }
+        .stat-box {
+            background: #fff;
+            border: 2px solid #c5a059;
+            border-radius: 6px;
+            padding: 6px 4px;
+        }
+        .stat-box .label {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+        .stat-box .fill-short {
+            min-width: 1.5em;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin: 2px auto;
+            display: block;
+        }
+
+        .abilities {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            font-size: 0.78em;
+            text-align: center;
+        }
+        .ability {
+            background: #fff;
+            border: 2px solid #c5a059;
+            border-radius: 6px;
+            padding: 5px 2px;
+        }
+        .ability .ab-name {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        .ability .score {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin: 2px 0;
+        }
+        .ability .mod-line, .ability .save-line {
+            font-size: 0.85em;
+            margin-top: 2px;
+        }
+        .ability .save-line {
+            background: #ebdcb0;
+            border-radius: 3px;
+            padding: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 12px;
+            font-size: 0.82em;
+        }
+        .skill-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 4px;
+            padding: 1px 0;
+        }
+        .skill-line .fill-tiny {
+            min-width: 1.4em;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .sheet-table {
+            width: 100%;
+            font-size: 0.82em;
+            margin: 0;
+        }
+        .sheet-table th {
+            font-size: 0.9em;
+            padding: 4px 5px;
+        }
+        .sheet-table td {
+            padding: 6px 5px;
+            height: 1.6em;
+        }
+
+        .spell-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            font-size: 0.82em;
+        }
+        .slot-group {
+            background: #ebdcb0;
+            border: 1px solid #cbb069;
+            border-radius: 5px;
+            padding: 6px 8px;
+            text-align: center;
+        }
+        .slot-group strong {
+            display: block;
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            margin-bottom: 4px;
+        }
+        .circles {
+            letter-spacing: 0.15em;
+            font-size: 1.2em;
+            color: #58180D;
+        }
+
+        .story-box {
+            background: #fff;
+            border: 1px solid #d4c395;
+            border-radius: 5px;
+            min-height: 2.2em;
+            margin-bottom: 8px;
+            padding: 4px 6px;
+        }
+        .story-label {
+            font-family: 'Cinzel', serif;
+            color: #58180D;
+            font-size: 0.88em;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .mini-ref {
+            font-size: 0.78em;
+            line-height: 1.35;
+        }
+        .mini-ref li { margin-bottom: 4px; }
+
+        .page-break {
+            break-before: page;
+            page-break-before: always;
+        }
+
+        @media print {
+            body { padding: 0; }
+            .sheet-page .page {
+                max-width: 100%;
+                padding: 0;
+                box-shadow: none;
+            }
+            .sheet-section { margin-bottom: 10px; }
+            .abilities { font-size: 0.72em; }
+            .stat-row { font-size: 0.82em; }
+        }
+    </style>
+</head>
+<body class="sheet-page">
+
+<div class="page">
+
+    <div class="cover-page">
+        <div class="cover-title">
+            <span class="line1">My Hero</span>
+            <span class="line2">Character Sheet</span>
+        </div>
+    </div>
+
+    <!-- PAGE 1: Identity & combat essentials -->
+    <div class="sheet-section">
+        <div class="callout mini-ref">
+            <h3>How to Use This Sheet</h3>
+            <ul>
+                <li>When the DM says <strong>“roll [skill]”</strong> → find it below, roll <strong>d20 + your number</strong>.</li>
+                <li>When you <strong>attack</strong> → roll d20 + <strong>To Hit</strong>. If you beat the monster’s AC, roll <strong>Damage</strong>.</li>
+                <li>On your turn you get: <strong>Move</strong> + <strong>Action</strong> + maybe a <strong>Bonus Action</strong> (only if a spell or ability says so).</li>
+                <li>At <strong>0 HP</strong> you fall unconscious — friends can heal you!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sheet-section hero-header">
+        <span class="fill fill-wide">&nbsp;</span>
+        <p style="margin:4px 0 8px;font-size:0.85em;font-style:italic;">Hero name</p>
+        <div class="meta-row">
+            <span>Species: <span class="fill fill-med">&nbsp;</span></span>
+            <span>Class: <span class="fill fill-med">&nbsp;</span></span>
+            <span>Level: <span class="fill fill-short">&nbsp;</span></span>
+        </div>
+    </div>
+
+    <div class="sheet-section">
+        <h3>In a Fight</h3>
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="label">AC</div>
+                <span class="fill fill-short">&nbsp;</span>
+                <div style="font-size:0.75em;margin-top:2px;">Armor Class</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">HP</div>
+                <span class="fill fill-short">&nbsp;</span>
+                <div style="font-size:0.75em;">/ max <span class="fill fill-short">&nbsp;</span></div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Speed</div>
+                <span class="fill fill-short">&nbsp;</span>
+                <div style="font-size:0.75em;">feet</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Initiative</div>
+                <span class="fill fill-short">&nbsp;</span>
+                <div style="font-size:0.75em;">d20 +</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Proficiency</div>
+                <span class="fill fill-short">&nbsp;</span>
+                <div style="font-size:0.75em;">+ bonus</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sheet-section page-break">
+        <h3>Ability Scores</h3>
+        <p class="flavor-text" style="font-size:0.82em;text-align:center;margin:-4px 0 8px;">
+            Write your score, modifier (mod), and saving throw bonus. Bold saves = you’re trained!
+        </p>
+        <div class="abilities">
+            <div class="ability">
+                <div class="ab-name">STR</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+            <div class="ability">
+                <div class="ab-name">DEX</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+            <div class="ability">
+                <div class="ab-name">CON</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+            <div class="ability">
+                <div class="ab-name">INT</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+            <div class="ability">
+                <div class="ab-name">WIS</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+            <div class="ability">
+                <div class="ab-name">CHA</div>
+                <div class="score"><span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="mod-line">mod <span class="fill fill-tiny">&nbsp;</span></div>
+                <div class="save-line">save +<span class="fill fill-tiny">&nbsp;</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sheet-section">
+        <h3>Skills I’m Good At</h3>
+        <p class="flavor-text" style="font-size:0.8em;text-align:center;margin:-4px 0 6px;">
+            Only fill in skills from your class &amp; background. Roll <strong>d20 + bonus</strong>.
+        </p>
+        <div class="skills-grid">
+            <div class="skill-line">Athletics <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Acrobatics <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Stealth <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Sleight of Hand <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Perception <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Investigation <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Insight <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Survival <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Persuasion <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Deception <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Performance <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Intimidation <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Arcana <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">History <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Nature <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Religion <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Medicine <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Animal Handling <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Other: <span class="fill fill-med">&nbsp;</span> <span class="fill fill-tiny">&nbsp;</span></div>
+            <div class="skill-line">Other: <span class="fill fill-med">&nbsp;</span> <span class="fill fill-tiny">&nbsp;</span></div>
+        </div>
+    </div>
+
+    <div class="sheet-section page-break">
+        <h3>Attacks &amp; Weapons</h3>
+        <table class="sheet-table">
+            <thead>
+                <tr>
+                    <th>Attack name</th>
+                    <th>To hit (d20 +)</th>
+                    <th>Damage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="sheet-section">
+        <h3>Spells &amp; Magic</h3>
+        <p class="flavor-text" style="font-size:0.8em;text-align:center;margin:-4px 0 6px;">
+            Skip this section if your class doesn’t cast spells.
+        </p>
+        <div class="meta-row" style="margin-bottom:10px;">
+            <span>Spell save DC: <span class="fill fill-short">&nbsp;</span></span>
+            <span>Spell attack: d20 + <span class="fill fill-short">&nbsp;</span></span>
+        </div>
+        <p style="font-size:0.85em;margin:0 0 4px;"><strong>Cantrips</strong> (cast anytime!):</p>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <p style="font-size:0.85em;margin:10px 0 4px;"><strong>Spell slots</strong> — cross out ○ when used; long rest restores them:</p>
+        <div class="spell-slots">
+            <div class="slot-group">
+                <strong>1st level</strong>
+                <span class="circles">○ ○ ○ ○</span>
+            </div>
+            <div class="slot-group">
+                <strong>2nd level</strong>
+                <span class="circles">○ ○ ○</span>
+            </div>
+            <div class="slot-group">
+                <strong>3rd level</strong>
+                <span class="circles">○ ○</span>
+            </div>
+        </div>
+        <p style="font-size:0.85em;margin:10px 0 4px;"><strong>My spells:</strong></p>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+        <div class="story-box" style="min-height:1.4em;">&nbsp;</div>
+    </div>
+
+    <div class="sheet-section page-break">
+        <h3>Special Powers</h3>
+        <p class="flavor-text" style="font-size:0.8em;text-align:center;margin:-4px 0 6px;">
+            Class features, magic items, or your quirk — write what it does!
+        </p>
+        <div class="story-box" style="min-height:2em;">&nbsp;</div>
+        <div class="story-box" style="min-height:2em;">&nbsp;</div>
+        <div class="story-box" style="min-height:2em;">&nbsp;</div>
+        <div class="story-box" style="min-height:2em;">&nbsp;</div>
+    </div>
+
+    <div class="sheet-section">
+        <h3>Who Is My Hero?</h3>
+        <div class="story-label">What I look like</div>
+        <div class="story-box">&nbsp;</div>
+        <div class="story-label">Personality (how I act)</div>
+        <div class="story-box">&nbsp;</div>
+        <div class="story-label">My quirk (something unique &amp; fun)</div>
+        <div class="story-box">&nbsp;</div>
+        <div class="story-label">My goal on this adventure</div>
+        <div class="story-box">&nbsp;</div>
+    </div>
+
+    <div class="sheet-section">
+        <div class="callout mini-ref">
+            <h3>Quick Reminders</h3>
+            <ul>
+                <li><strong>Advantage</strong> = roll 2d20, use the <strong>higher</strong> number.</li>
+                <li><strong>Disadvantage</strong> = roll 2d20, use the <strong>lower</strong> number.</li>
+                <li><strong>Natural 20</strong> on an attack = automatic hit + extra damage dice!</li>
+                <li><strong>Natural 1</strong> on an attack = automatic miss.</li>
+                <li><strong>Short rest</strong> (1 hour) = catch your breath, spend hit dice to heal.</li>
+                <li><strong>Long rest</strong> (8 hours sleep) = full HP &amp; all spell slots back.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

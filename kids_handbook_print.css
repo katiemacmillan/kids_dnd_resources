@@ -1,0 +1,211 @@
+/* Shared print-ready styles for species/class handbooks and reference books.
+   Extends the main kids book stylesheet with reference-book tweaks. */
+@import url('kids_book_styles.css');
+
+/* Reference books (shopping guide, spell book) use h2 section breaks. */
+h2.section-title {
+    font-size: 2.2em;
+    border-bottom: 3px solid #c5a059;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    column-span: all;
+    page-break-before: always;
+    break-before: page;
+}
+
+h2.section-title.first {
+    page-break-before: avoid;
+    break-before: auto;
+    margin-top: 0;
+}
+
+/* Spell book: one card per spell, full-width descriptions. */
+body.spell-book .spell-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+body.spell-book .spell-entry {
+    background-color: #fff;
+    border: 1px solid #d4c395;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.06);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+body.spell-book .spell-entry.spell-long {
+    break-inside: auto;
+    page-break-inside: auto;
+}
+
+body.spell-book .spell-name {
+    font-family: 'Cinzel', serif;
+    color: #58180D;
+    font-size: 1.25em;
+    margin: 0 0 6px 0;
+    border-bottom: none;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+body.spell-book .spell-meta {
+    font-size: 0.92em;
+    color: #444;
+    margin: 0 0 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px dotted #d4c395;
+    line-height: 1.45;
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+body.spell-book .spell-description {
+    margin: 0;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+body.shopping-book .intro-art {
+    margin-bottom: 24px;
+}
+
+body.handbook-booklet .intro-art {
+    margin-bottom: 18px;
+}
+
+body.handbook-booklet img.line-art {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 20px auto;
+    mix-blend-mode: multiply;
+    border-radius: 10px;
+    break-inside: avoid;
+}
+
+body.handbook-booklet h2.handbook-section-start {
+    column-span: all;
+    text-align: center;
+}
+
+body.handbook-booklet h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+}
+
+@media print {
+    body.reference-book h2 {
+        font-size: 19pt;
+        margin-top: 0;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid #c5a059;
+        text-align: center;
+        break-before: page;
+        page-break-before: always;
+    }
+
+    body.reference-book h2.first,
+    body.reference-book h2.section-title.first {
+        break-before: avoid;
+        page-break-before: avoid;
+    }
+
+    /* Long spell/gear tables may span pages. */
+    body.reference-book table {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    body.reference-book tr {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    body.reference-book thead {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    /* Each species/class starts on a fresh page in the combined book. */
+    .handbook-section-start {
+        break-before: page;
+        page-break-before: always;
+    }
+
+    .handbook-section-start.first-in-part {
+        break-before: avoid;
+        page-break-before: avoid;
+    }
+
+    body.spell-book .spell-list {
+        gap: 10px;
+    }
+
+    body.spell-book .spell-entry {
+        padding: 8px 10px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    body.spell-book .spell-entry.spell-long {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    body.spell-book .spell-name {
+        font-size: 12.5pt;
+        margin-bottom: 4px;
+    }
+
+    body.spell-book .spell-meta {
+        font-size: 9pt;
+        margin-bottom: 6px;
+        padding-bottom: 5px;
+    }
+
+    body.spell-book .spell-description {
+        font-size: 10pt;
+        line-height: 1.42;
+        orphans: 2;
+        widows: 2;
+    }
+
+    body.shopping-book img.line-art {
+        max-width: 2.6in;
+        margin: 10px auto 14px auto;
+    }
+
+    body.shopping-book .intro-art {
+        max-width: 2.8in;
+        margin-bottom: 12px;
+    }
+
+    body.handbook-booklet img.line-art {
+        max-width: 2.6in;
+        margin: 10px auto 14px auto;
+        mix-blend-mode: multiply;
+    }
+
+    body.handbook-booklet .intro-art {
+        max-width: 2.8in;
+        margin-bottom: 10px;
+    }
+
+    body.handbook-booklet h2.handbook-section-start {
+        font-size: 19pt;
+        margin-top: 0;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    body.handbook-booklet h3 {
+        font-size: 13pt;
+        margin-top: 14px;
+    }
+}
